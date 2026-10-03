@@ -100,7 +100,7 @@ export function isUsableTrial(t: TrialResult): boolean {
   return t.isValid && [t.candidateSens, t.totalAcquisitionTimeMs, t.movementTimeMs,
     t.pathEfficiency, t.totalEndpointErrorDeg ?? t.endpointErrorDeg,
     t.firstShotTotalErrorDeg ?? t.totalEndpointErrorDeg ?? t.endpointErrorDeg, t.correctionCount].every(v => typeof v === 'number' && Number.isFinite(v))
-    && [t.peakVelocityDegPerSec, t.timeToPeakVelocityMs, t.stoppingControlScore,
+    && [t.peakVelocityDegPerSec, t.peakAccelerationDegPerSec2, t.peakDecelerationDegPerSec2, t.timeToPeakVelocityMs, t.stoppingControlScore,
       t.initialFlickErrorDeg, t.overshootMagnitudeDeg, t.undershootMagnitudeDeg,
       t.rawSamplesCount].every(v => v === undefined || Number.isFinite(v))
     && t.candidateSens > 0 && t.totalAcquisitionTimeMs >= 65
@@ -289,8 +289,10 @@ export class SensitivityOptimizer {
     const madAcq = medianAbsoluteDeviation(acqTimes, c.medianAcquisitionMs);
     c.consistencyScore = Math.max(0, 100 - madAcq / 10);
     c.efficiencyScore = c.medianPathEfficiency * 100;
-    c.speedScore = Math.max(0, 100 - c.medianAcquisitionMs / 10);
-    c.controlScore = Math.max(0, 100 - c.avgCorrectionCount * 20);
+    // Fixed batteries share the same target distribution; movement time measures
+    // aiming speed without rewarding a lucky faster stimulus reaction.
+    c.speedScore = Math.max(0, 100 - c.medianMovementMs / 10);
+    c.controlScore = Math.max(0, Math.min(100, c.stoppingControl) - c.avgCorrectionCount * 20);
 
     // Penalties (Task 45 & 46)
     let penalty = 0;

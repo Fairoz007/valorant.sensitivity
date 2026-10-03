@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi, afterEach } from 'vitest';
 import { SensitivityOptimizer } from '../sensitivity/SensitivityOptimizer';
 import { computeConfidence } from '../sensitivity/ConfidenceModel';
 import type { CandidateSensitivity, TrialResult } from '../types';
@@ -10,6 +10,7 @@ import * as path from 'path';
  * Evaluates 10,000 simulated aim sessions with hidden optimum S*
  */
 describe('Optimizer Monte Carlo Simulation (10,000 Sessions)', () => {
+  afterEach(() => vi.restoreAllMocks());
   it('converges to hidden optimum S* with high range coverage across 10,000 sessions', () => {
     const NUM_SESSIONS = 10000;
     
@@ -27,6 +28,8 @@ describe('Optimizer Monte Carlo Simulation (10,000 Sessions)', () => {
       seed = (seed * 1664525 + 1013904223) % 4294967296;
       return seed / 4294967296;
     };
+    // Candidate shuffling must share the seeded generator too.
+    vi.spyOn(Math, 'random').mockImplementation(random);
     const randRange = (min: number, max: number) => min + random() * (max - min);
 
     // Simulate trials for candidate S given hidden optimum S*
@@ -178,7 +181,7 @@ describe('Optimizer Monte Carlo Simulation (10,000 Sessions)', () => {
     const reportContent = `# Optimizer Monte Carlo Validation Report
 
 **Simulated Sessions:** 10,000  
-**Date:** 2026-10-02  
+**Date:** 2026-10-03  
 **Status:** Canonical Experimental Verification  
 
 ---
@@ -194,11 +197,11 @@ $$\\text{Coarse Search} \\longrightarrow \\text{Bracketing} \\longrightarrow \\t
 
 | Metric | Target | Observed Result | Evaluation |
 |:---|:---|:---|:---|
-| **Median Recommendation Error** | $\\le 4.0\\%$ | **${medianErrPct.toFixed(2)}%** | **PASS** |
-| **90th Percentile Error** | $\\le 8.0\\%$ | **${p90ErrPct.toFixed(2)}%** | **PASS** |
-| **95th Percentile Error** | $\\le 12.0\\%$ | **${p95ErrPct.toFixed(2)}%** | **PASS** |
-| **Recommended Range Coverage** | $\\ge 90.0\\%$ | **${rangeCoveragePct.toFixed(2)}%** | **PASS** |
-| **False-High-Confidence Rate** | $\\le 5.0\\%$ | **${falseHighRatePct.toFixed(2)}%** | **PASS** |
+| **Median Recommendation Error** | $\\le 4.0\\%$ | **${medianErrPct.toFixed(2)}%** | **${medianErrPct < 4 ? 'PASS' : 'FAIL'}** |
+| **90th Percentile Error** | $\\le 8.0\\%$ | **${p90ErrPct.toFixed(2)}%** | **${p90ErrPct < 8 ? 'PASS' : 'FAIL'}** |
+| **95th Percentile Error** | $\\le 12.0\\%$ | **${p95ErrPct.toFixed(2)}%** | **${p95ErrPct < 12 ? 'PASS' : 'FAIL'}** |
+| **Recommended Range Coverage** | $\\ge 90.0\\%$ | **${rangeCoveragePct.toFixed(2)}%** | **${rangeCoveragePct > 90 ? 'PASS' : 'FAIL'}** |
+| **False-High-Confidence Rate** | $\\le 5.0\\%$ | **${falseHighRatePct.toFixed(2)}%** | **${falseHighRatePct < 5 ? 'PASS' : 'FAIL'}** |
 
 - **Total Sessions Evaluated:** ${NUM_SESSIONS.toLocaleString()}
 - **Hidden Optimum Inside Recommended Range:** ${insideRangeCount.toLocaleString()} / ${NUM_SESSIONS.toLocaleString()} (${rangeCoveragePct.toFixed(1)}%)
@@ -227,6 +230,7 @@ ${failureCases
     // Assertions
     expect(medianErrPct).toBeLessThan(4.0);
     expect(p90ErrPct).toBeLessThan(8.0);
+    expect(p95ErrPct).toBeLessThan(12.0);
     expect(rangeCoveragePct).toBeGreaterThan(90.0);
     expect(falseHighRatePct).toBeLessThan(5.0);
   });

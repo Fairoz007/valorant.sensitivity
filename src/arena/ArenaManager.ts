@@ -442,7 +442,7 @@ export class ArenaManager {
 
     // 3. TARGET INTERSECTION (Task 7, 8, 9, 10)
     // Only test against targets (dummy gun and environment are NEVER tested)
-    const targetMeshes = this.targets.map((t) => t.mesh);
+    const targetMeshes = this.targets.filter(t => !t.isHitState).map((t) => t.mesh);
     const intersects = this.raycaster.intersectObjects(targetMeshes, true);
 
     let hitTarget: TargetEntity | null = null;
@@ -502,19 +502,18 @@ export class ArenaManager {
     this.lastShotDebug = eventData;
 
     if (hitTarget) {
-      hitTarget.hit();
-
-      // Remove hit target from active pool
+      // Deactivate before any callbacks or cosmetic material/disposal work.
+      hitTarget.isHitState = true;
+      hitTarget.mesh.visible = false;
       const targetIndex = this.targets.indexOf(hitTarget);
       this.scene.remove(hitTarget.mesh);
-      hitTarget.dispose();
       if (targetIndex !== -1) {
         this.targets.splice(targetIndex, 1);
       }
     }
 
     // Synchronous trial finalization precedes all cosmetic work.
-    if (!this.alignmentCheck) {
+    if (!this.alignmentCheck && targetRef) {
       if (this.onShotCallback) this.onShotCallback(eventData);
       if (hitTarget && this.onHitCallback) this.onHitCallback(hitTarget);
     } else if (hitTarget) {
@@ -524,12 +523,17 @@ export class ArenaManager {
 
     // 7. VISUAL-ONLY FEEDBACK (Task 11, 13, 14, 15, 16, 17)
     // Strictly decoupled from physics & calculations
-    this.dummyWeapon.triggerFireAnimation();
-    this.spawnTracer(hitPoint);
-    this.playShotAudio(isHit);
-
-    if (this.debugMode) {
-      this.renderDebugVisuals(rayOrigin, hitPoint, isHit);
+    // A failed cosmetic effect must never interrupt completed trial processing
+    // or prevent subsequent independent feedback effects from running.
+    const effects = [
+      () => hitTarget?.dispose(),
+      () => this.dummyWeapon.triggerFireAnimation(),
+      () => this.spawnTracer(hitPoint),
+      () => this.playShotAudio(isHit),
+      () => { if (this.debugMode) this.renderDebugVisuals(rayOrigin, hitPoint, isHit); },
+    ];
+    for (const effect of effects) {
+      try { effect(); } catch (error) { console.warn('Shot visual feedback failed', error); }
     }
 
     return eventData;

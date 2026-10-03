@@ -106,13 +106,17 @@ export function computeConfidence(input: ConfidenceInput): ConfidenceOutput {
   // Strict Gating Rules to prevent false high confidence:
   // - Must have >= 80% expected trials
   // - Confirmation MUST agree
-  // - Cannot have extreme plateau (margin < 1.5)
+  // - Cannot have extreme plateau (margin < 4.0)
+  const everyCandidateSampled = candidates.every(c => c.trials.filter(isUsableTrial).length >= MIN_TRIALS_PER_CANDIDATE);
+  if (!everyCandidateSampled) reasons.push('At least one candidate lacks the required valid trial baseline.');
   const failsHighCriteria =
+    !everyCandidateSampled ||
+    ranked.length < 2 ||
     trialCompletenessRatio < 0.8 ||
     validityRatio < 0.8 ||
     !confirmationAgreement ||
     fatigueDetected ||
-    (ranked.length >= 2 && (ranked[0].compositeScore - ranked[1].compositeScore) < 2.0);
+    (ranked.length >= 2 && (ranked[0].compositeScore - ranked[1].compositeScore) < 4.0);
 
   let tier: ConfidenceTier = 'LOW';
   let recommendedRangeMultiplier = 0.08; // default +/- 8%

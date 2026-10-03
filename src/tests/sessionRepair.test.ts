@@ -42,10 +42,11 @@ describe('Repaired measured session', () => {
     const applied = new Set<number>();
     let shots = 0;
     while (useAppStore.getState().phase !== 'results' && shots < 300) {
+      vi.advanceTimersByTime(120);
+      if (useAppStore.getState().phase === 'results') break;
       const state = useAppStore.getState();
       phases.add(state.phase);
       if (state.phase === 'rest') { coordinator.resumeAfterRest(); continue; }
-      vi.advanceTimersByTime(120);
       const internals = coordinator as unknown as {activeTarget: {yaw:number; pitch:number}};
       const target = internals.activeTarget;
       expect(target).toBeDefined();
@@ -135,3 +136,4 @@ describe('Repaired measured session', () => {
     expect(result.downsampledTrajectory.every(p=>p.timestamp<=250)).toBe(true);
   });
 });
+

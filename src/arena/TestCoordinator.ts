@@ -459,11 +459,8 @@ export class TestCoordinator {
     store.updateHud(remaining, hits, store.missesCount);
 
     this.currentTargetIdx++;
-    if (this.currentTargetIdx < this.currentTargets.length) {
-      this.scheduleNextTarget();
-    } else {
-      this.completeCandidateBlock();
-    }
+    // The interval also separates candidate blocks and phase transitions.
+    this.scheduleNextTarget();
   }
 
   private completeCandidateBlock() {

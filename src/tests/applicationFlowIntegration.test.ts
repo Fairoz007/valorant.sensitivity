@@ -30,11 +30,12 @@ describe('Application session completion and result rendering', () => {
     coordinator.startWarmup();
     try {
       for (let shot = 0; shot < 2000 && useAppStore.getState().phase !== 'results'; shot++) {
+        clock += 120;
+        vi.advanceTimersByTime(120);
+        if (useAppStore.getState().phase === 'results') break;
         const state = useAppStore.getState();
         phases.add(state.phase);
         if (state.phase === 'rest') { coordinator.resumeAfterRest(); continue; }
-        clock += 120;
-        vi.advanceTimersByTime(120);
         const target = arena.getActiveTargets()[0];
         expect(target).toBeDefined();
         const start = arena.getCameraOrientation();
