@@ -33,6 +33,19 @@ describe('measured sensitivity ranking regressions', () => {
     expect(fast.compositeScore).toBeGreaterThan(slow.compositeScore);
     expect(fast.compositeScore).toBeGreaterThan(corrected.compositeScore);
   });
+  it('penalizes measured subthreshold overshoot rates and excursion magnitudes', () => {
+    const clean = candidate('clean');
+    const occasional = candidate('occasional');
+    occasional.trials[0] = measured({ isOvershoot: true, overshootMagnitudeDeg: 0.2 });
+    const severe = candidate('severe');
+    severe.trials[0] = measured({ isOvershoot: true, overshootMagnitudeDeg: 2 });
+    SensitivityOptimizer.computeCandidateScore(occasional);
+    SensitivityOptimizer.computeCandidateScore(severe);
+    expect(clean.compositeScore).toBeGreaterThan(occasional.compositeScore);
+    expect(occasional.compositeScore).toBeGreaterThan(severe.compositeScore);
+    expect(clean.medianMovementMs).toBe(severe.medianMovementMs);
+    expect(clean.hitRate).toBe(severe.hitRate);
+  });
   it('scores movement speed separately from reaction latency', () => {
     const first = candidate('first');
     const delayedReaction = candidate('delayed', { reactionLatencyMs: 500, totalAcquisitionTimeMs: 700 });

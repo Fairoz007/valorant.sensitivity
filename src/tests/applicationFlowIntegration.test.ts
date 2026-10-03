@@ -49,7 +49,7 @@ describe('Application session completion and result rendering', () => {
           engine.handleMouseMove({ movementX: yawDelta / scale / 8, movementY: -(pitch - start.pitchDeg) / scale / 8, timeStamp: clock } as MouseEvent);
         }
         clock += 40;
-        const event = arena.processShot(clock); expect(event.isHit, JSON.stringify({ shot, phase: state.phase, yaw, pitch, start, camera: arena.getCameraOrientation(), event })).toBe(true);
+        const event = arena.processShot(clock); expect(event.isHit, JSON.stringify({ shot, phase: state.phase, yaw, pitch, start, camera: arena.getCameraOrientation(), event: { ...event, target: undefined } })).toBe(true);
       }
       expect([...phases]).toEqual(expect.arrayContaining(['warmup', 'coarse', 'bracketing', 'fine', 'confirmation']));
       const result = useAppStore.getState().finalRecommendation;
@@ -94,4 +94,5 @@ describe('Application session completion and result rendering', () => {
     expect(renderResults()).toContain('Calculating');
   });
 });
+
 

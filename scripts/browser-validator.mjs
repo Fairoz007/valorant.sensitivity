@@ -117,6 +117,7 @@ try {
         movementY: Math.round(-(target.pitch * 180 / Math.PI - cam.pitchDeg) / deg),
       }));
       document.dispatchEvent(new MouseEvent('mousedown', { button: 0 }));
+      if (arena.getLastShotDebug()?.isHit && arena.getActiveTargets().length !== 0) throw new Error('Hit target remained logically visible');
       document.dispatchEvent(new MouseEvent('mouseup', { button: 0 }));
     });
     shots++;
@@ -130,6 +131,7 @@ try {
       trialCount: s.allTrialResults.length, validTrials: s.allTrialResults.filter(t => t.isValid).length,
       candidateCount: new Set(s.allTrialResults.map(t => t.candidateId)).size,
       rawCount: s.allTrialResults.reduce((n, t) => n + t.rawCounts.totalRawVectorTravel, 0),
+      completeTrajectories: s.allTrialResults.every(t => t.rawTrajectory?.length === t.rawSamplesCount && t.fullTrajectory?.length >= t.trajectorySummary.length && t.rawTrajectory.every(p => p.timestamp <= t.shotTime)),
       arenaTornDown: !window.__valorantArena };
   });
   assert.equal(final.phase, 'results', JSON.stringify(final));
@@ -138,6 +140,7 @@ try {
   assert.ok(final.result.recommendedRange[0] <= final.result.recommendedSens);
   assert.ok(final.result.recommendedRange[1] >= final.result.recommendedSens);
   assert.ok(final.trialCount > 0 && final.validTrials > 0 && final.candidateCount > 1 && final.rawCount > 0);
+  assert.ok(final.completeTrajectories, 'Full event trajectories were not persisted');
   for (const phase of ['warmup', 'coarse', 'bracketing', 'fine', 'confirmation', 'results']) assert.ok(phases.has(phase), phase);
   await page.getByText(final.result.recommendedSens.toFixed(3), { exact: true }).first().waitFor();
   assert.equal(errors.length, 0, errors.join('\n'));

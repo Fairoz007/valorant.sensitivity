@@ -233,5 +233,5 @@ ${failureCases
     expect(p95ErrPct).toBeLessThan(12.0);
     expect(rangeCoveragePct).toBeGreaterThan(90.0);
     expect(falseHighRatePct).toBeLessThan(5.0);
-  });
+  }, 30_000);
 });

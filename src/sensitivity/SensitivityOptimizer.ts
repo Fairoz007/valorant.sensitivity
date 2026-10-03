@@ -98,12 +98,13 @@ function computeDirectionSummary(trials: TrialResult[]): DirectionalMetricSummar
  */
 export function isUsableTrial(t: TrialResult): boolean {
   return t.isValid && [t.candidateSens, t.totalAcquisitionTimeMs, t.movementTimeMs,
-    t.pathEfficiency, t.totalEndpointErrorDeg ?? t.endpointErrorDeg,
+    t.pathEfficiency, t.targetPosDeg?.radius, t.totalEndpointErrorDeg ?? t.endpointErrorDeg,
     t.firstShotTotalErrorDeg ?? t.totalEndpointErrorDeg ?? t.endpointErrorDeg, t.correctionCount].every(v => typeof v === 'number' && Number.isFinite(v))
     && [t.peakVelocityDegPerSec, t.peakAccelerationDegPerSec2, t.peakDecelerationDegPerSec2, t.timeToPeakVelocityMs, t.stoppingControlScore,
-      t.initialFlickErrorDeg, t.overshootMagnitudeDeg, t.undershootMagnitudeDeg,
+      t.targetRadiusDeg, t.initialFlickErrorDeg, t.overshootMagnitudeDeg, t.undershootMagnitudeDeg,
       t.rawSamplesCount].every(v => v === undefined || Number.isFinite(v))
     && t.candidateSens > 0 && t.totalAcquisitionTimeMs >= 65
+    && t.targetPosDeg.radius > 0 && (t.targetRadiusDeg === undefined || t.targetRadiusDeg > 0)
     && t.movementTimeMs >= 0 && t.pathEfficiency >= 0 && t.pathEfficiency <= 1;
 }
 
@@ -295,10 +296,15 @@ export class SensitivityOptimizer {
     c.controlScore = Math.max(0, Math.min(100, c.stoppingControl) - c.avgCorrectionCount * 20);
 
     // Penalties (Task 45 & 46)
-    let penalty = 0;
-    if (c.overshootRate > 0.35) penalty += 15;
+    // Every measured excursion contributes. A 30% overshoot rate should not
+    // disappear merely because it falls below an arbitrary binary cutoff.
+    const meanNormalizedExcursion = valid.reduce((sum, t) => {
+      const radius = Math.max(0.1, t.targetRadiusDeg ?? t.targetPosDeg.radius);
+      return sum + Math.min(2, (Math.max(0, t.overshootMagnitudeDeg) + Math.max(0, t.undershootMagnitudeDeg)) / radius);
+    }, 0) / valid.length;
+    let penalty = c.overshootRate * 15 + c.undershootRate * 10 + meanNormalizedExcursion * 5;
     if (c.avgCorrectionCount > 2.2) penalty += 20;
-    if (c.undershootRate > 0.35 && c.medianAcquisitionMs > 500) penalty += 15;
+
 
     // Directional Asymmetry Penalty (Task 43)
     if (c.directionalAnalysis.left.trialCount > 0 && c.directionalAnalysis.right.trialCount > 0) {

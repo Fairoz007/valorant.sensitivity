@@ -30,3 +30,13 @@ Browser scheduling cannot guarantee a newly processed mouse event has already re
 PHYSICAL HUMAN VALIDATION: REQUIRED.
 
 Required human acceptance: 20 center shots; 10 off-target shots each left/right/above/below with error signs; 20 fast flick-and-click shots checking no lost/duplicate/stale shots; comparison with real VALORANT mouse feel; one complete hardware-driven session through results; Alt+Tab/pointer-lock interruption and relock; zoom/fullscreen and normal device-pixel-ratio behavior. No physical mouse validation is claimed here.
+
+## Follow-up sensitivity analysis and scoring repair
+
+The requested fast clean 100% hits / slow clean 100% hits / corrected 100% hits comparison now has direct regression coverage. Candidate speed scoring uses measured movement time, separately from reaction latency. Control scoring includes measured stopping quality. Continuous overshoot/undershoot rates and normalized excursion magnitudes replace binary rate cutoffs, so real excursions below 35% are not ignored. Non-finite or nonpositive target radii cannot reach normalized excursion scoring.
+
+Confidence requires the minimum valid trial count for every candidate and a four-point winner separation, preventing one well-sampled candidate from hiding an undersampled neighbor. Measured performance plateaus produce a moderate, broader range instead of a precise high-confidence result.
+
+The 10,000-session synthetic Monte Carlo experiment now seeds both telemetry generation and candidate shuffling, restores the random spy after each test, checks the 95th percentile too, and derives each report PASS/FAIL from observed results. Current synthetic observations: 90th percentile error 3.04%; 95th 3.51%; range coverage 99.36%; 524 HIGH cases with one >8% error (0.19%). These are generated synthetic data findings, not physical performance guarantees.
+
+Browser evidence received from root: full real application browser run passed with 208 shooting actions including 13 warmup and 195 valid scored trials in 15 blocks; every phase visited; 0.300 recommended sensitivity visible; zero page errors; three viewport sizes centered exactly; 20 F3/F4 center diagnostic hits excluded from scored trials; pointer-lock release/relock restarted the interrupted trial; restart reset results; optional horizontal/vertical calibration and three debounced input clicks passed. Root owns the runnable script and artifacts.

@@ -1,0 +1,116 @@
+{
+  "date": "2026-10-03",
+  "results": [
+    {
+      "name": "fast clean hit",
+      "movementMs": 60,
+      "corrections": 0,
+      "overshoot": false,
+      "undershoot": false,
+      "direction": "RIGHT",
+      "rawSamples": 2,
+      "immediateRemoval": true,
+      "cleanNextTrial": true
+    },
+    {
+      "name": "slow accurate hit",
+      "movementMs": 1000,
+      "corrections": 0,
+      "overshoot": false,
+      "undershoot": false,
+      "direction": "RIGHT",
+      "rawSamples": 2,
+      "immediateRemoval": true,
+      "cleanNextTrial": true
+    },
+    {
+      "name": "overshoot correction hit",
+      "movementMs": 140,
+      "corrections": 1,
+      "overshoot": true,
+      "undershoot": false,
+      "direction": "RIGHT",
+      "rawSamples": 3,
+      "immediateRemoval": true,
+      "cleanNextTrial": true
+    },
+    {
+      "name": "undershoot correction hit",
+      "movementMs": 220,
+      "corrections": 1,
+      "overshoot": false,
+      "undershoot": true,
+      "direction": "RIGHT",
+      "rawSamples": 4,
+      "immediateRemoval": true,
+      "cleanNextTrial": true
+    },
+    {
+      "name": "miss then hit",
+      "movementMs": 160,
+      "corrections": 1,
+      "overshoot": false,
+      "undershoot": true,
+      "direction": "RIGHT",
+      "rawSamples": 3,
+      "immediateRemoval": true,
+      "cleanNextTrial": true
+    },
+    {
+      "name": "left flick",
+      "movementMs": 60,
+      "corrections": 0,
+      "overshoot": false,
+      "undershoot": false,
+      "direction": "LEFT",
+      "rawSamples": 2,
+      "immediateRemoval": true,
+      "cleanNextTrial": true
+    },
+    {
+      "name": "right flick",
+      "movementMs": 60,
+      "corrections": 0,
+      "overshoot": false,
+      "undershoot": false,
+      "direction": "RIGHT",
+      "rawSamples": 2,
+      "immediateRemoval": true,
+      "cleanNextTrial": true
+    },
+    {
+      "name": "vertical flick",
+      "movementMs": 60,
+      "corrections": 0,
+      "overshoot": false,
+      "undershoot": false,
+      "direction": "UP",
+      "rawSamples": 2,
+      "immediateRemoval": true,
+      "cleanNextTrial": true
+    },
+    {
+      "name": "diagonal flick",
+      "movementMs": 60,
+      "corrections": 0,
+      "overshoot": false,
+      "undershoot": false,
+      "direction": "UP_RIGHT",
+      "rawSamples": 2,
+      "immediateRemoval": true,
+      "cleanNextTrial": true
+    },
+    {
+      "name": "rapid moving flick click",
+      "movementMs": 20,
+      "corrections": 0,
+      "overshoot": false,
+      "undershoot": false,
+      "direction": "RIGHT",
+      "rawSamples": 3,
+      "immediateRemoval": true,
+      "cleanNextTrial": true
+    }
+  ],
+  "errors": []
+}
