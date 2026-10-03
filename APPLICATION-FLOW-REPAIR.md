@@ -1,0 +1,18 @@
+# Application flow repair evidence
+
+TASK: Setup, diagnostics/calibration, arena routing, fatigue resume, result transfer/display and restart.
+STATUS: Implemented; automated integration PASS. Browser validation owned by MASTER-VALORANT-VALIDATOR.
+
+ROOT CAUSE: Arena occupied a 100svh region below the 64px navbar, while its crosshair was fixed at viewport center. Rest overlay only cleared fatigue without resuming the coordinator. Store reset left calibration statistics, targets, time and capture badges behind. Results had no computation/loading state and clipboard copy reported success before completion. Calibration completion invented 1000 Hz when no rate was measured.
+
+FILES INSPECTED: App, app store, SetupView, SystemCheckView, CalibrationView, ArenaView, ArenaHud, RestModal, ResultsView, TestCoordinator, RawInputEngine, CalibrationManager, domain types and existing tests.
+FILES CHANGED: src/App.tsx; src/store/useAppStore.ts; src/components/SetupView.tsx; src/components/SystemCheckView.tsx; src/components/CalibrationView.tsx; src/components/ArenaView.tsx; src/components/ArenaHud.tsx; src/components/RestModal.tsx; src/components/ResultsView.tsx; src/tests/applicationFlowIntegration.test.ts.
+
+FIX IMPLEMENTED: Viewport-fixed arena shares viewport center with reticle. One arena instance remains mounted across warmup/search/rest. RestModal calls coordinator.resumeAfterRest and uses a monotonic wall-clock countdown with a single completion guard. Store completeSession persists validated recommendation and route atomically; failSession conveys actual failure reason; restart clears every session field while retaining hardware profile. ResultsContent consumes the exact recommendation object, shows actual shot/trial/candidate/endpoint and overshoot/undershoot fields, explicit result states, clipboard errors, and zero-length metric bars. Calibration state persists to store and displays unknown rate truthfully; capture badges reset on teardown. Setup rejects nonfinite/fractional DPI and invalid mousepad width. Mouse capture failure appears to user. Development-only ?e2e bridge permits actual browser shot injection.
+
+AUTOMATED VERIFICATION: npx vitest run src/tests/applicationFlowIntegration.test.ts: 2/2 PASS. Test completes real RawInputEngine movement → ArenaManager raycast → TestCoordinator trials → all search phases → optimizer → same recommendation in ResultsContent. Recommendation and trials survive coordinator stop, arena disposal and engine disposal. Restart removes results and trials. Loading/insufficient/error rendering is verified. npm test: 16 files, 128 tests PASS. npx tsc -b PASS.
+BROWSER VERIFICATION: Root validator owns live browser evidence; do not infer physical input validation from this report.
+OBSERVED VALUES: Full synthetic session returns finite positive recommendation inside range, nonzero real trial count; all warmup/coarse/bracketing/fine/confirmation phases exercised. Recommendation varies within ranked tested candidates because blinded candidate order remains randomized.
+REGRESSION STATUS: Current shared full suite PASS.
+REMAINING RISK: Physical mouse/hardware latency and true sensor raw-count equivalence require human validation. Headless rendering is supplementary; root browser E2E verifies mounted React/Zustand route. SSR uses ResultsContent props because Zustand's server snapshot intentionally reads initial state.
+Final validator integration: F4 stationary alignment callback wired to arena; F3 reticle switches white. Renderer availability gate disposes failed WebGL resources and routes to explicit computation error with remedy. RestModal callback-ref lifecycle updated in effect. Latest tsc and application integration tests PASS.
