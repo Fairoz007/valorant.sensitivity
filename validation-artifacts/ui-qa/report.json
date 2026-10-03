@@ -1,0 +1,197 @@
+{
+  "report": [
+    {
+      "name": "setup",
+      "width": 1920,
+      "height": 1080,
+      "scrollWidth": 1920,
+      "scrollHeight": 1341,
+      "overflow": []
+    },
+    {
+      "name": "setup",
+      "width": 2560,
+      "height": 1440,
+      "scrollWidth": 2560,
+      "scrollHeight": 1440,
+      "overflow": []
+    },
+    {
+      "name": "setup",
+      "width": 1366,
+      "height": 768,
+      "scrollWidth": 1366,
+      "scrollHeight": 768,
+      "overflow": []
+    },
+    {
+      "name": "setup",
+      "width": 960,
+      "height": 720,
+      "scrollWidth": 960,
+      "scrollHeight": 1517,
+      "overflow": []
+    },
+    {
+      "name": "diagnostics",
+      "width": 1920,
+      "height": 1080,
+      "scrollWidth": 1920,
+      "scrollHeight": 1220,
+      "overflow": []
+    },
+    {
+      "name": "diagnostics",
+      "width": 2560,
+      "height": 1440,
+      "scrollWidth": 2560,
+      "scrollHeight": 1440,
+      "overflow": []
+    },
+    {
+      "name": "diagnostics",
+      "width": 1366,
+      "height": 768,
+      "scrollWidth": 1366,
+      "scrollHeight": 1220,
+      "overflow": []
+    },
+    {
+      "name": "diagnostics",
+      "width": 960,
+      "height": 720,
+      "scrollWidth": 960,
+      "scrollHeight": 1258,
+      "overflow": []
+    },
+    {
+      "name": "calibration",
+      "width": 1920,
+      "height": 1080,
+      "scrollWidth": 1920,
+      "scrollHeight": 1168,
+      "overflow": []
+    },
+    {
+      "name": "calibration",
+      "width": 2560,
+      "height": 1440,
+      "scrollWidth": 2560,
+      "scrollHeight": 1440,
+      "overflow": []
+    },
+    {
+      "name": "calibration",
+      "width": 1366,
+      "height": 768,
+      "scrollWidth": 1366,
+      "scrollHeight": 1168,
+      "overflow": []
+    },
+    {
+      "name": "calibration",
+      "width": 960,
+      "height": 720,
+      "scrollWidth": 960,
+      "scrollHeight": 1206,
+      "overflow": []
+    },
+    {
+      "name": "aim-battery",
+      "width": 1920,
+      "height": 1080,
+      "scrollWidth": 1920,
+      "scrollHeight": 1080,
+      "overflow": []
+    },
+    {
+      "name": "aim-battery",
+      "width": 2560,
+      "height": 1440,
+      "scrollWidth": 2560,
+      "scrollHeight": 1440,
+      "overflow": []
+    },
+    {
+      "name": "aim-battery",
+      "width": 1366,
+      "height": 768,
+      "scrollWidth": 1366,
+      "scrollHeight": 768,
+      "overflow": []
+    },
+    {
+      "name": "aim-battery",
+      "width": 960,
+      "height": 720,
+      "scrollWidth": 960,
+      "scrollHeight": 720,
+      "overflow": []
+    },
+    {
+      "name": "gameplay",
+      "width": 1920,
+      "height": 1080,
+      "scrollWidth": 1920,
+      "scrollHeight": 1080,
+      "overflow": []
+    },
+    {
+      "name": "gameplay",
+      "width": 2560,
+      "height": 1440,
+      "scrollWidth": 2560,
+      "scrollHeight": 1440,
+      "overflow": []
+    },
+    {
+      "name": "gameplay",
+      "width": 1366,
+      "height": 768,
+      "scrollWidth": 1366,
+      "scrollHeight": 768,
+      "overflow": []
+    },
+    {
+      "name": "gameplay",
+      "width": 960,
+      "height": 720,
+      "scrollWidth": 960,
+      "scrollHeight": 720,
+      "overflow": []
+    },
+    {
+      "name": "results",
+      "width": 1920,
+      "height": 1080,
+      "scrollWidth": 1920,
+      "scrollHeight": 1080,
+      "overflow": []
+    },
+    {
+      "name": "results",
+      "width": 2560,
+      "height": 1440,
+      "scrollWidth": 2560,
+      "scrollHeight": 1440,
+      "overflow": []
+    },
+    {
+      "name": "results",
+      "width": 1366,
+      "height": 768,
+      "scrollWidth": 1366,
+      "scrollHeight": 768,
+      "overflow": []
+    },
+    {
+      "name": "results",
+      "width": 960,
+      "height": 720,
+      "scrollWidth": 960,
+      "scrollHeight": 720,
+      "overflow": []
+    }
+  ],
+  "errors": []
+}

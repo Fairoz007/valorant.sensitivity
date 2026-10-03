@@ -32,7 +32,7 @@ export const ResultsContent: React.FC<{
   const [copyError, setCopyError] = useState<string | null>(null);
 
   if (resultStatus === 'loading') {
-    return <div role="status" className="max-w-xl mx-auto px-4 py-16 text-center">Calculating your measured recommendation…</div>;
+    return <div role="status" className="lab-panel max-w-xl mx-auto px-6 py-16 text-center">Calculating your measured recommendation…</div>;
   }
   if (!finalRecommendation || !Number.isFinite(finalRecommendation.recommendedSens) || finalRecommendation.recommendedSens <= 0) {
     return (
@@ -41,7 +41,7 @@ export const ResultsContent: React.FC<{
         <p role="alert" className="text-val-muted mb-6">{resultError || 'Additional valid shooting trials are required to calculate a sensitivity.'}</p>
         <button
           onClick={resetSession}
-          className="px-6 py-2.5 bg-val-red text-white font-mono rounded-lg"
+          className="px-6 py-2.5 bg-val-cyan text-val-dark font-mono font-bold rounded-lg"
         >
           Return to Setup
         </button>
@@ -97,39 +97,40 @@ export const ResultsContent: React.FC<{
   const isFaster = percentageChange > 0;
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-8 space-y-8">
+    <div className="results-dashboard max-w-7xl mx-auto px-4 sm:px-6 py-8 md:py-12 space-y-6">
       {/* Header Banner */}
-      <div className="text-center">
+      <div className="text-left max-w-3xl">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-val-cyan/10 border border-val-cyan/30 text-val-cyan text-xs font-mono tracking-widest uppercase mb-3">
-          <ShieldCheck className="w-3.5 h-3.5" /> Biomechanical Analysis Complete
+          <ShieldCheck className="w-3.5 h-3.5" /> Analysis complete
         </div>
-        <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-white font-sans">
+        <h1 className="text-4xl md:text-6xl font-black tracking-tight text-white font-sans">
           Recommended Sensitivity
         </h1>
-        <p className="text-val-muted text-sm max-w-xl mx-auto mt-2">
+        <p className="text-val-muted text-sm md:text-base max-w-2xl mt-4 leading-relaxed">
           Calculated strictly from your measured ballistic accuracy, path efficiency, stopping control, and correction kinematics.
         </p>
       </div>
 
       {copyError && <p role="alert" className="text-amber-300 text-sm">{copyError}</p>}
       {/* Primary Sensitivity Hero Card */}
-      <div className="bg-val-card border-2 border-val-cyan/50 rounded-2xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-val-cyan via-val-red to-val-cyan" />
+      <div className="lab-panel border border-val-cyan/30 rounded-2xl p-6 md:p-10 shadow-2xl relative overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-val-cyan/0 via-val-cyan to-val-cyan/0" />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           {/* Left Column: Big Number & Copy */}
           <div className="lg:col-span-6 text-center lg:text-left space-y-4">
             <span className="text-xs font-mono uppercase tracking-widest text-val-muted">
-              Best Performing In-Game Value
+              Recommended sensitivity
             </span>
             <div className="flex items-baseline justify-center lg:justify-start gap-4">
-              <span className="text-6xl md:text-7xl font-black font-mono text-white tracking-tight">
+              <span className="text-7xl sm:text-8xl xl:text-9xl font-black font-mono text-val-cyan tracking-tight">
                 {recommendedSens.toFixed(3)}
               </span>
               <button
                 onClick={handleCopy}
                 className="p-2.5 rounded-xl bg-val-dark border border-val-border hover:border-val-cyan text-val-cyan transition-all"
                 title="Copy to Clipboard"
+                aria-label={copied ? "Sensitivity copied" : "Copy recommended sensitivity"}
               >
                 {copied ? <Check className="w-5 h-5 text-emerald-400" /> : <Copy className="w-5 h-5" />}
               </button>
@@ -207,6 +208,38 @@ export const ResultsContent: React.FC<{
         </div>
       </div>
 
+      <section aria-label="Recommendation confidence and measured range" className="grid md:grid-cols-2 gap-4">
+        <div className="lab-panel rounded-2xl p-5 md:p-7">
+          <p className="lab-eyebrow">Recommendation confidence</p>
+          <div className="flex items-end justify-between gap-3 mt-4"><span className="text-4xl font-mono font-bold text-white">{Math.round(confidenceScore)}<span className="text-lg text-val-muted">%</span></span><span className="text-xs font-mono text-val-cyan">{confidence}</span></div>
+          <div role="progressbar" aria-label="Recommendation confidence" aria-valuenow={confidenceScore} aria-valuemin={0} aria-valuemax={100} className="h-1.5 bg-val-dark rounded-full mt-5 overflow-hidden"><div className="h-full bg-val-cyan rounded-full" style={{ width: Math.min(100, Math.max(0, confidenceScore)) + '%' }} /></div>
+        </div>
+        <div className="lab-panel rounded-2xl p-5 md:p-7">
+          <p className="lab-eyebrow">Strong-performing range</p>
+          <p className="text-3xl sm:text-4xl font-bold font-mono text-white mt-4">{recommendedRange[0].toFixed(3)} <span className="text-val-muted">–</span> {recommendedRange[1].toFixed(3)}</p>
+          <p className="text-xs text-val-muted mt-4">Measured in-game sensitivity range</p>
+        </div>
+      </section>
+
+      <section aria-label="Current and recommended sensitivity comparison" className="lab-panel rounded-2xl p-5 md:p-7">
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
+          <div><p className="lab-eyebrow">Sensitivity comparison</p><h2 className="text-xl font-bold text-white mt-2">Your next adjustment</h2></div>
+          <span className="font-mono text-sm text-val-cyan">{percentageChange > 0 ? '+' : ''}{percentageChange}% adjustment</span>
+        </div>
+        <div className="grid sm:grid-cols-2 gap-4">
+          <div className="rounded-xl border border-val-border bg-val-dark/70 p-5">
+            <p className="text-xs uppercase tracking-widest text-val-muted">Current baseline</p>
+            <p className="text-4xl font-mono font-bold text-white mt-3">{currentSens.toFixed(3)}</p>
+            <p className="text-xs text-val-muted mt-3">{currentEdpi} eDPI · {currentCm360} cm / 360°</p>
+          </div>
+          <div className="rounded-xl border border-val-cyan/30 bg-val-cyan/5 p-5">
+            <p className="text-xs uppercase tracking-widest text-val-cyan">Measured recommendation</p>
+            <p className="text-4xl font-mono font-bold text-val-cyan mt-3">{recommendedSens.toFixed(3)}</p>
+            <p className="text-xs text-val-muted mt-3">{edpi} eDPI · {cm360} cm / 360°</p>
+          </div>
+        </div>
+      </section>
+
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
         {[
           ['Shots analyzed', finalRecommendation.shotsAnalyzed],
@@ -215,11 +248,11 @@ export const ResultsContent: React.FC<{
           ['Median endpoint error', finalRecommendation.medianEndpointErrorDeg === undefined ? undefined : `${finalRecommendation.medianEndpointErrorDeg.toFixed(3)}°`],
           ['Overshoot rate', finalRecommendation.overshootRate === undefined ? undefined : `${Math.round(finalRecommendation.overshootRate * 100)}%`],
           ['Undershoot rate', finalRecommendation.undershootRate === undefined ? undefined : `${Math.round(finalRecommendation.undershootRate * 100)}%`],
-        ].map(([label, value]) => <div key={label} className="bg-val-card p-4 rounded-lg border border-val-border"><div className="text-xs text-val-muted">{label}</div><div className="font-mono text-white mt-1">{value ?? 'Not measured'}</div></div>)}
+        ].map(([label, value]) => <div key={label} className="lab-panel p-5 rounded-xl"><div className="text-xs text-val-muted">{label}</div><div className="font-mono text-white mt-1">{value ?? 'Not measured'}</div></div>)}
       </div>
 
       {/* Telemetry Explanation Card (Task 52) */}
-      <div className="bg-val-card border border-val-border rounded-xl p-6 shadow-xl">
+      <div className="lab-panel rounded-2xl p-5 md:p-7">
         <h3 className="text-base font-bold text-white uppercase font-mono mb-2 flex items-center gap-2">
           <Activity className="w-4 h-4 text-val-cyan" />
           Kinematic Telemetry Rationale
@@ -228,7 +261,7 @@ export const ResultsContent: React.FC<{
       </div>
 
       {/* Directional Analysis Card (Task 53) */}
-      <div className="bg-val-card border border-val-border rounded-xl p-6 shadow-xl space-y-4">
+      <div className="lab-panel p-6 space-y-4">
         <div className="flex items-center justify-between">
           <h3 className="text-base font-bold text-white uppercase font-mono flex items-center gap-2">
             <Compass className="w-4 h-4 text-val-cyan" />
@@ -266,7 +299,7 @@ export const ResultsContent: React.FC<{
 
           <div className="bg-val-dark p-4 rounded-xl border border-val-border text-center">
             <div className="text-xs text-val-muted uppercase font-mono">DIAGONAL CONTROL</div>
-            <div className="text-2xl font-bold font-mono text-purple-400 mt-1">
+            <div className="text-2xl font-bold font-mono text-val-cyan mt-1">
               {directionalScores.diagonalControlPct}%
             </div>
             <div className="text-[10px] text-gray-400 mt-1">Compound Vector</div>
@@ -285,7 +318,7 @@ export const ResultsContent: React.FC<{
       </div>
 
       {/* Aim Profile Radar / Component Breakdown */}
-      <div className="bg-val-card border border-val-border rounded-xl p-6 shadow-xl space-y-6">
+      <div className="lab-panel p-6 space-y-6">
         <h3 className="text-base font-bold text-white uppercase font-mono flex items-center gap-2">
           <Layers className="w-4 h-4 text-val-cyan" />
           Multi-Dimensional Aim Performance
@@ -295,9 +328,9 @@ export const ResultsContent: React.FC<{
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {[
             { label: 'Micro Precision (1°–4°)', score: radar.microPrecision, color: 'bg-val-cyan' },
-            { label: 'Flick Accuracy (8°–20°)', score: radar.flickAccuracy, color: 'bg-val-red' },
+            { label: 'Flick Accuracy (8°–20°)', score: radar.flickAccuracy, color: 'bg-val-cyan' },
             { label: 'Target Switching', score: radar.targetSwitching, color: 'bg-val-cyan' },
-            { label: 'Stopping & Deceleration Control', score: radar.control, color: 'bg-purple-400' },
+            { label: 'Stopping & Deceleration Control', score: radar.control, color: 'bg-val-cyan' },
             { label: 'Movement Efficiency', score: radar.movementEfficiency, color: 'bg-emerald-400' },
             { label: 'Inter-Trial Consistency', score: radar.consistency, color: 'bg-amber-400' },
           ].map((item) => (
@@ -398,7 +431,7 @@ export const ResultsContent: React.FC<{
 
           <button
             onClick={handleCopy}
-            className="px-6 py-2.5 bg-val-red hover:bg-val-darkRed text-white font-bold rounded-lg uppercase tracking-wider font-mono text-xs flex items-center gap-2 shadow-lg shadow-val-red/20"
+            className="px-6 py-3 bg-val-cyan hover:bg-val-cyan/80 text-val-black font-bold rounded-lg uppercase tracking-wider font-mono text-xs flex items-center gap-2 shadow-lg shadow-val-cyan/10"
           >
             <Crosshair className="w-4 h-4" /> Copy {recommendedSens.toFixed(3)}
           </button>

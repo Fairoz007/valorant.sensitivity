@@ -11,7 +11,7 @@ export const VisualTrajectory: React.FC<VisualTrajectoryProps> = ({ trials }) =>
 
   if (!trials || trials.length === 0) {
     return (
-      <div className="bg-val-dark/60 rounded-xl p-8 text-center border border-val-border text-val-muted">
+      <div className="lab-panel rounded-2xl p-8 text-center text-val-muted">
         No trajectory data available.
       </div>
     );
@@ -81,7 +81,7 @@ export const VisualTrajectory: React.FC<VisualTrajectoryProps> = ({ trials }) =>
     .join(' ');
 
   return (
-    <div className="bg-val-card border border-val-border rounded-xl p-6 shadow-xl">
+    <div className="lab-panel rounded-2xl p-5 md:p-7">
       <div className="flex flex-wrap items-center justify-between gap-4 mb-4 pb-3 border-b border-val-border/60">
         <div>
           <h3 className="text-base font-bold text-white uppercase font-mono flex items-center gap-2">
@@ -98,7 +98,7 @@ export const VisualTrajectory: React.FC<VisualTrajectoryProps> = ({ trials }) =>
           <button
             onClick={() => setSelectedIndex((prev) => Math.max(0, prev - 1))}
             disabled={selectedIndex === 0}
-            className="p-1.5 rounded bg-val-dark border border-val-border text-val-muted hover:text-white disabled:opacity-40"
+            aria-label="Next trajectory sample" className="p-2.5 rounded-lg bg-val-dark border border-val-border text-val-muted hover:text-white hover:border-val-cyan disabled:opacity-40"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
@@ -116,8 +116,9 @@ export const VisualTrajectory: React.FC<VisualTrajectoryProps> = ({ trials }) =>
       </div>
 
       {/* SVG Trajectory Canvas */}
-      <div className="relative bg-val-black rounded-lg border border-val-border/80 overflow-hidden">
+      <div className="relative bg-val-black/80 rounded-xl border border-val-border/80 overflow-hidden">
         <svg
+          role="img" aria-label="Recorded mouse trajectory, target, first flick endpoint and click position"
           viewBox="0 0 500 350"
           className="w-full h-72 md:h-80 select-none"
         >
@@ -198,7 +199,7 @@ export const VisualTrajectory: React.FC<VisualTrajectoryProps> = ({ trials }) =>
         </svg>
 
         {/* Legend Overlay */}
-        <div className="absolute bottom-2 left-2 bg-val-dark/90 backdrop-blur border border-val-border/60 rounded px-2.5 py-1.5 flex flex-wrap gap-3 text-[10px] font-mono text-gray-300">
+        <div className="bg-val-dark/90 border-t border-val-border/60 px-4 py-3 flex flex-wrap gap-3 text-[11px] font-mono text-gray-300">
           <div className="flex items-center gap-1">
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block" /> Start
           </div>
@@ -219,7 +220,7 @@ export const VisualTrajectory: React.FC<VisualTrajectoryProps> = ({ trials }) =>
 
       {/* Numerical Metrics for this trial */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
-        <div className="bg-val-dark p-2.5 rounded-lg border border-val-border">
+        <div className="bg-val-dark/70 p-4 rounded-xl border border-val-border">
           <div className="text-[11px] text-val-muted uppercase font-mono">Result</div>
           <div className="text-sm font-bold flex items-center gap-1.5 mt-0.5">
             {isHit ? (
@@ -236,21 +237,21 @@ export const VisualTrajectory: React.FC<VisualTrajectoryProps> = ({ trials }) =>
           </div>
         </div>
 
-        <div className="bg-val-dark p-2.5 rounded-lg border border-val-border">
+        <div className="bg-val-dark/70 p-4 rounded-xl border border-val-border">
           <div className="text-[11px] text-val-muted uppercase font-mono">Path Efficiency</div>
           <div className="text-sm font-bold font-mono text-white mt-0.5">
             {Math.round(pathEfficiency * 100)}%
           </div>
         </div>
 
-        <div className="bg-val-dark p-2.5 rounded-lg border border-val-border">
+        <div className="bg-val-dark/70 p-4 rounded-xl border border-val-border">
           <div className="text-[11px] text-val-muted uppercase font-mono">Acquisition Time</div>
           <div className="text-sm font-bold font-mono text-white mt-0.5">
             {Math.round(totalAcquisitionTimeMs)} ms
           </div>
         </div>
 
-        <div className="bg-val-dark p-2.5 rounded-lg border border-val-border">
+        <div className="bg-val-dark/70 p-4 rounded-xl border border-val-border">
           <div className="text-[11px] text-val-muted uppercase font-mono">Corrections</div>
           <div className="text-sm font-bold font-mono text-white mt-0.5">
             {correctionCount} {isOvershoot ? '(Overshoot)' : isUndershoot ? '(Undershoot)' : '(Crisp)'}

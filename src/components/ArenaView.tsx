@@ -148,7 +148,7 @@ export const ArenaView: React.FC = () => {
       className="fixed inset-0 z-50 w-full h-[100svh] bg-val-black overflow-hidden select-none cursor-crosshair"
     >
       <ArenaHud debugActive={debugActive} />
-      {lockError && <div role="alert" className="absolute bottom-8 left-1/2 -translate-x-1/2 z-50 bg-val-dark border border-val-red p-4 text-sm max-w-lg">{lockError}</div>}
+      {lockError && <div role="alert" className="absolute bottom-20 left-1/2 -translate-x-1/2 z-50 bg-[#101923]/95 backdrop-blur border border-rose-400/40 rounded-2xl p-4 text-sm text-rose-200 shadow-xl w-[calc(100%-2rem)] max-w-lg leading-relaxed">{lockError}</div>}
       {isFatigued && <RestModal fatigueWarning durationSeconds={20} onComplete={() => coordinatorRef.current?.resumeAfterRest()} />}
       <DebugHud getDebugData={getDebugData} onToggleDebug={handleToggleDebug} onToggleAlignmentCheck={handleToggleAlignmentCheck} />
     </div>

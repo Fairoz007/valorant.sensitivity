@@ -38,28 +38,31 @@ export const SystemCheckView: React.FC = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-12">
-      <div className="text-center mb-8">
-        <h2 className="text-3xl font-black uppercase tracking-tight text-white mb-2">
-          Environment & Hardware Diagnostics
+    <div className="lab-page max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12">
+      <header className="mb-8 max-w-3xl">
+        <div className="lab-eyebrow mb-4">PRECISION LAB / DIAGNOSTICS</div>
+        <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-white mb-4">
+          Know your environment.
         </h2>
         <p className="text-val-muted text-sm">
           Verifying browser input APIs, raw mouse capture capabilities, and display timing integrity.
         </p>
-      </div>
+      </header>
 
-      <div className="bg-val-card border border-val-border rounded-xl p-6 md:p-8 shadow-2xl space-y-6">
+      <div className="lab-panel p-5 sm:p-8 space-y-6">
         {checking ? (
-          <div className="py-16 text-center">
+          <div role="status" className="py-20 text-center">
             <div className="w-10 h-10 border-4 border-val-cyan border-t-transparent rounded-full animate-spin mx-auto mb-4" />
             <p className="text-sm font-mono text-gray-300">Measuring display frame timing & checking Pointer Lock API...</p>
           </div>
         ) : (
           <>
+            <div className="flex flex-wrap justify-between gap-3 items-center border-b border-val-border pb-5"><div><span className="lab-eyebrow">02 / SYSTEM INTEGRITY</span><h3 className="text-xl text-white font-bold mt-1">Hardware readiness</h3></div><span className="text-xs text-val-cyan font-mono border border-val-cyan/25 rounded-full px-3 py-1.5">CHECK COMPLETE</span></div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4"><div className="bg-val-cyan/5 border border-val-cyan/20 rounded-xl p-5"><p className="lab-eyebrow">DISPLAY TIMING</p><p className="text-3xl text-white font-mono font-bold mt-3">{report.estimatedRefreshRateHz > 0 ? report.estimatedRefreshRateHz : '—'} <span className="text-sm text-val-muted">Hz</span></p></div><div className="bg-val-dark/60 border border-val-border rounded-xl p-5"><p className="lab-eyebrow">VIEWPORT</p><p className="text-2xl text-white font-mono font-bold mt-3">{report.viewportWidth} <span className="text-val-muted">×</span> {report.viewportHeight}</p></div><div className="bg-val-dark/60 border border-val-border rounded-xl p-5"><p className="lab-eyebrow">PIXEL DENSITY</p><p className="text-3xl text-white font-mono font-bold mt-3">{report.devicePixelRatio}<span className="text-sm text-val-muted ml-2">DPR</span></p></div></div>
             {/* Grid of Diagnostics */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Pointer Lock */}
-              <div className="bg-val-dark p-4 rounded-lg border border-val-border flex items-start gap-3">
+              <div className="bg-val-dark/70 p-5 sm:p-6 rounded-xl border border-val-border flex items-start gap-4">
                 <ShieldCheck className={`w-5 h-5 shrink-0 mt-0.5 ${report.pointerLockSupported ? 'text-val-cyan' : 'text-val-red'}`} />
                 <div>
                   <h4 className="text-sm font-semibold text-white">Pointer Lock API</h4>
@@ -70,7 +73,7 @@ export const SystemCheckView: React.FC = () => {
               </div>
 
               {/* Raw Input / unadjustedMovement */}
-              <div className="bg-val-dark p-4 rounded-lg border border-val-border flex items-start gap-3">
+              <div className="bg-val-dark/70 p-5 sm:p-6 rounded-xl border border-val-border flex items-start gap-4">
                 <Cpu className="w-5 h-5 text-val-cyan shrink-0 mt-0.5" />
                 <div>
                   <h4 className="text-sm font-semibold text-white">Unadjusted Movement (Raw Input)</h4>
@@ -81,7 +84,7 @@ export const SystemCheckView: React.FC = () => {
               </div>
 
               {/* Display Refresh */}
-              <div className="bg-val-dark p-4 rounded-lg border border-val-border flex items-start gap-3">
+              <div className="bg-val-dark/70 p-5 sm:p-6 rounded-xl border border-val-border flex items-start gap-4">
                 <CheckCircle2 className="w-5 h-5 text-val-cyan shrink-0 mt-0.5" />
                 <div>
                   <h4 className="text-sm font-semibold text-white">Estimated Display Refresh</h4>
@@ -92,7 +95,7 @@ export const SystemCheckView: React.FC = () => {
               </div>
 
               {/* Browser Zoom */}
-              <div className="bg-val-dark p-4 rounded-lg border border-val-border flex items-start gap-3">
+              <div className="bg-val-dark/70 p-5 sm:p-6 rounded-xl border border-val-border flex items-start gap-4">
                 {report.isZoomStandard ? (
                   <CheckCircle2 className="w-5 h-5 text-val-cyan shrink-0 mt-0.5" />
                 ) : (
@@ -129,7 +132,7 @@ export const SystemCheckView: React.FC = () => {
             </div>
 
             {/* Navigation buttons */}
-            <div className="flex items-center justify-between pt-4 border-t border-val-border">
+            <div className="flex flex-col sm:flex-row gap-3 items-center justify-between pt-4 border-t border-val-border">
               <button
                 type="button"
                 onClick={() => setPhase('setup')}
@@ -142,7 +145,7 @@ export const SystemCheckView: React.FC = () => {
                 type="button"
                 disabled={!report.pointerLockSupported}
                 onClick={() => setPhase('calibration')}
-                className="px-6 py-2.5 bg-val-red hover:bg-val-darkRed text-white font-bold rounded-lg uppercase tracking-wider font-mono text-sm flex items-center gap-2 transition-all"
+                className="px-6 py-2.5 bg-val-cyan hover:bg-val-cyan/80 text-val-dark disabled:opacity-40 disabled:cursor-not-allowed font-bold rounded-lg uppercase tracking-wider font-mono text-sm flex items-center gap-2 transition-all"
               >
                 Continue to Motion Calibration <ArrowRight className="w-4 h-4" />
               </button>

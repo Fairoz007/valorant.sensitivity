@@ -92,7 +92,7 @@ export const DebugHud: React.FC<DebugHudProps> = ({ getDebugData, onToggleDebug,
   const shot = liveData?.lastShot;
 
   return (
-    <div className="absolute top-16 left-4 z-50 bg-black/90 border border-val-cyan/60 rounded-lg p-3 font-mono text-[10px] text-gray-200 pointer-events-none shadow-2xl backdrop-blur-md max-w-sm space-y-2 max-h-[85vh] overflow-y-auto">
+    <div className="absolute top-36 xl:top-24 left-4 z-50 bg-[#07131c]/95 border border-val-cyan/25 rounded-2xl p-4 font-mono text-[10px] leading-relaxed text-gray-200 pointer-events-none shadow-2xl backdrop-blur-md w-[calc(100%-2rem)] max-w-sm space-y-3 max-h-[calc(100svh-12rem)] overflow-y-auto break-words">
       <div className="flex items-center justify-between border-b border-val-border/80 pb-1 text-val-cyan font-bold">
         <span>SHOOTING DEBUG (F3)</span>
         <span className="text-emerald-400">ACTIVE</span>

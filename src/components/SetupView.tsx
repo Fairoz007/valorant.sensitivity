@@ -60,27 +60,26 @@ export const SetupView: React.FC = () => {
   ) / 10;
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-      {/* Header Banner */}
-      <div className="text-center mb-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-val-red/10 border border-val-red/30 text-val-red text-xs font-mono tracking-widest uppercase mb-4">
-          <Crosshair className="w-3.5 h-3.5" /> Scientific Aim Testing Lab
+    <div className="lab-page max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12">
+      <header className="mb-8 md:mb-10 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+        <div className="max-w-2xl">
+          <div className="lab-eyebrow flex items-center gap-2 mb-4"><Crosshair className="w-4 h-4" /> PRECISION LAB / PLAYER SETUP</div>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white mb-4">Find your<br /><span className="text-val-cyan">competitive edge.</span></h1>
+          <p className="text-val-muted text-sm sm:text-base leading-relaxed max-w-xl">A sensitivity built around your motor control. Measure flick accuracy, path efficiency and micro-corrections in a controlled 3D aim environment.</p>
         </div>
-        <h1 className="text-4xl md:text-5xl font-black tracking-tight text-white uppercase font-sans mb-3">
-          VALORANT Precision Sensitivity Finder
-        </h1>
-        <p className="text-val-muted text-base max-w-2xl mx-auto">
-          Calibrate your personal motor control through controlled 3D angular target acquisition.
-          Measures path efficiency, ballistic flick errors, overshoots, and micro-corrections to discover your
-          statistically optimal sensitivity.
-        </p>
-      </div>
+        <div className="lab-panel px-5 py-4 lg:max-w-xs border-l-2 border-l-val-cyan">
+          <span className="lab-eyebrow">YOUR SESSION</span>
+          <p className="text-white text-sm font-semibold mt-2">Configure. Calibrate. Compete.</p>
+          <p className="text-val-muted text-xs leading-relaxed mt-2">Start with your current settings. Every measurement stays on your device.</p>
+        </div>
+      </header>
 
       {/* Main Form Container */}
-      <div className="bg-val-card border border-val-border rounded-xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-val-red via-val-cyan to-val-red opacity-80" />
+      <div className="lab-panel p-5 sm:p-7 md:p-9 relative overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-val-cyan to-transparent opacity-60" />
 
-        <form onSubmit={handleStart} className="space-y-6">
+        <form onSubmit={handleStart} className="space-y-7">
+          <div className="flex items-center gap-4 border-b border-val-border pb-5"><div className="w-10 h-10 rounded-xl bg-val-cyan/10 flex items-center justify-center text-val-cyan"><Mouse className="w-5 h-5" /></div><div><span className="lab-eyebrow">01 / CONFIGURATION</span><h2 className="text-xl font-bold text-white mt-1">Player & hardware profile</h2></div></div>
           {errors.pad && <p role="alert" className="text-val-red text-xs">{errors.pad}</p>}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* DPI Input */}
@@ -93,10 +92,11 @@ export const SetupView: React.FC = () => {
                 <input
                   type="number"
                   step="1"
+                  aria-label="Mouse DPI / CPI"
                   value={dpi}
                   onChange={(e) => setDpi(e.target.value)}
                   placeholder="800"
-                  className="w-full bg-val-dark border border-val-border rounded-lg px-4 py-2.5 text-white font-mono focus:border-val-cyan focus:outline-none focus:ring-1 focus:ring-val-cyan"
+                  className="min-h-12 w-full bg-val-dark/80 border border-val-border rounded-lg px-4 py-2.5 text-white font-mono focus:border-val-cyan focus:outline-none focus:ring-1 focus:ring-val-cyan"
                   required
                 />
                 <div className="flex gap-1.5 mt-2">
@@ -122,16 +122,17 @@ export const SetupView: React.FC = () => {
             {/* Current Sensitivity */}
             <div>
               <label className="flex items-center gap-2 text-sm font-semibold text-gray-200 mb-2">
-                <Crosshair className="w-4 h-4 text-val-red" />
+                <Crosshair className="w-4 h-4 text-val-cyan" />
                 Current In-Game VALORANT Sensitivity <span className="text-val-red">*</span>
               </label>
               <input
                 type="number"
                 step="0.001"
-                value={sens}
+                aria-label="Current VALORANT sensitivity"
+                  value={sens}
                 onChange={(e) => setSens(e.target.value)}
                 placeholder="0.30"
-                className="w-full bg-val-dark border border-val-border rounded-lg px-4 py-2.5 text-white font-mono focus:border-val-red focus:outline-none focus:ring-1 focus:ring-val-red"
+                className="min-h-12 w-full bg-val-dark/80 border border-val-border rounded-lg px-4 py-2.5 text-white font-mono focus:border-val-cyan focus:outline-none focus:ring-1 focus:ring-val-cyan"
                 required
               />
               <p className="text-xs text-val-muted mt-2">
@@ -146,9 +147,10 @@ export const SetupView: React.FC = () => {
                 Mouse Polling Rate (Hz)
               </label>
               <select
-                value={pollingRate}
+                aria-label="Mouse polling rate"
+                  value={pollingRate}
                 onChange={(e) => setPollingRate(e.target.value)}
-                className="w-full bg-val-dark border border-val-border rounded-lg px-4 py-2.5 text-white font-mono focus:border-val-cyan focus:outline-none"
+                className="min-h-12 w-full bg-val-dark/80 border border-val-border rounded-lg px-4 py-2.5 text-white font-mono focus:border-val-cyan focus:outline-none"
               >
                 <option value="125">125 Hz (8ms)</option>
                 <option value="500">500 Hz (2ms)</option>
@@ -166,9 +168,10 @@ export const SetupView: React.FC = () => {
                 Monitor Refresh Rate (Hz)
               </label>
               <select
-                value={refreshRate}
+                aria-label="Monitor refresh rate"
+                  value={refreshRate}
                 onChange={(e) => setRefreshRate(e.target.value)}
-                className="w-full bg-val-dark border border-val-border rounded-lg px-4 py-2.5 text-white font-mono focus:border-val-cyan focus:outline-none"
+                className="min-h-12 w-full bg-val-dark/80 border border-val-border rounded-lg px-4 py-2.5 text-white font-mono focus:border-val-cyan focus:outline-none"
               >
                 <option value="60">60 Hz</option>
                 <option value="75">75 Hz</option>
@@ -190,10 +193,11 @@ export const SetupView: React.FC = () => {
               <input
                 type="number"
                 step="1"
-                value={mousepadWidth}
+                aria-label="Mousepad usable width in centimeters"
+                  value={mousepadWidth}
                 onChange={(e) => setMousepadWidth(e.target.value)}
                 placeholder="45"
-                className="w-full bg-val-dark border border-val-border rounded-lg px-4 py-2.5 text-white font-mono focus:border-val-cyan focus:outline-none"
+                className="min-h-12 w-full bg-val-dark/80 border border-val-border rounded-lg px-4 py-2.5 text-white font-mono focus:border-val-cyan focus:outline-none"
               />
               <p className="text-xs text-val-muted mt-2">
                 Used to ensure recommended sensitivity fits within your physical swipe area.
@@ -215,6 +219,7 @@ export const SetupView: React.FC = () => {
                   <button
                     key={style.id}
                     type="button"
+                    aria-pressed={aimingStyle === style.id}
                     onClick={() => setAimingStyle(style.id as AimingStyle)}
                     className={`py-2 px-3 rounded-lg text-xs font-semibold border transition-all text-center ${
                       aimingStyle === style.id
@@ -230,17 +235,17 @@ export const SetupView: React.FC = () => {
           </div>
 
           {/* Current Baseline Preview */}
-          <div className="bg-val-dark/70 border border-val-border/60 rounded-xl p-4 flex flex-wrap items-center justify-between gap-4">
+          <div className="bg-val-cyan/5 border border-val-cyan/20 rounded-xl p-5 flex flex-wrap items-center justify-between gap-4">
             <div>
               <span className="text-xs text-val-muted uppercase tracking-wider font-mono">Current Baseline</span>
               <div className="flex items-baseline gap-4 mt-1">
                 <div>
-                  <span className="text-xl font-bold font-mono text-white">{currentEdpi}</span>
+                  <span className="text-3xl font-bold font-mono text-white">{currentEdpi}</span>
                   <span className="text-xs text-val-muted ml-1 font-mono">eDPI</span>
                 </div>
                 <div className="text-val-border">|</div>
                 <div>
-                  <span className="text-xl font-bold font-mono text-white">{currentCm360}</span>
+                  <span className="text-3xl font-bold font-mono text-white">{currentCm360}</span>
                   <span className="text-xs text-val-muted ml-1 font-mono">cm/360</span>
                 </div>
               </div>
@@ -248,7 +253,7 @@ export const SetupView: React.FC = () => {
             <div className="text-xs text-val-muted flex items-center gap-1.5 max-w-sm">
               <HelpCircle className="w-4 h-4 text-val-cyan shrink-0" />
               <span>
-                Standard VCT pro median is ~250 eDPI (52 cm/360). Your personal test will optimize around your individual motor control.
+                Your baseline updates as you configure your profile. The test evaluates sensitivity around your individual motor control.
               </span>
             </div>
           </div>
@@ -265,7 +270,7 @@ export const SetupView: React.FC = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-4 bg-val-red hover:bg-val-darkRed text-white font-bold rounded-lg uppercase tracking-wider font-mono transition-all transform active:scale-[0.99] flex items-center justify-center gap-2 shadow-lg shadow-val-red/20"
+            className="w-full py-4 bg-val-cyan hover:bg-val-cyan/80 text-val-dark font-bold rounded-lg uppercase tracking-wider font-mono transition-all transform active:scale-[0.99] flex items-center justify-center gap-2 shadow-lg shadow-val-cyan/20"
           >
             Proceed to System Check & Calibration
             <MoveRight className="w-5 h-5" />

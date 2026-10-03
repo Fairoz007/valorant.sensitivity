@@ -149,18 +149,19 @@ export const CalibrationView: React.FC = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 space-y-6">
-      <div className="text-center">
-        <h2 className="text-3xl font-black uppercase tracking-tight text-white mb-2 font-sans">
-          Mouse Movement & Click Calibration
+    <div className="lab-page max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12 space-y-6">
+      <header className="mb-8">
+        <div className="lab-eyebrow mb-4">PRECISION LAB / SENSOR CALIBRATION</div>
+        <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-white mb-4">
+          Precision starts at the sensor.
         </h2>
-        <p className="text-val-muted text-sm max-w-xl mx-auto">
+        <p className="text-val-muted text-sm max-w-2xl leading-relaxed">
           Calibrate raw sensor deltas, directional swipe detection, and primary button debounce without affecting scoring.
         </p>
-      </div>
+      </header>
 
       {/* Calibration Stepper Tabs */}
-      <div className="flex items-center justify-center gap-3 font-mono text-xs">
+      <div className="lab-panel p-4 flex flex-wrap items-center justify-start gap-3 font-mono text-xs">
         <div
           className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border transition-all ${
             step === 'horizontal-motion'
@@ -200,10 +201,10 @@ export const CalibrationView: React.FC = () => {
       <div
         ref={arenaRef}
         onClick={handlePointerLock}
-        className={`relative h-80 w-full rounded-2xl border-2 transition-all flex flex-col items-center justify-center cursor-crosshair select-none overflow-hidden ${
+        className={`relative min-h-80 h-auto py-8 sm:min-h-96 w-full rounded-2xl border transition-all flex flex-col items-center justify-center cursor-crosshair select-none overflow-hidden ${
           isLocked
             ? 'border-val-cyan bg-val-dark shadow-2xl shadow-val-cyan/15'
-            : 'border-dashed border-val-border hover:border-val-cyan/60 bg-val-card/90'
+            : 'border-val-border hover:border-val-cyan/60 bg-val-dark/90'
         }`}
       >
         {!isLocked && step !== 'complete' && (
@@ -252,13 +253,13 @@ export const CalibrationView: React.FC = () => {
               </div>
             </div>
             
-            <div className="w-72 bg-val-dark border border-val-border rounded-full h-3.5 mx-auto overflow-hidden">
+            <div className="w-full max-w-72 bg-val-dark border border-val-border rounded-full h-3.5 mx-auto overflow-hidden">
               <div
                 className="bg-val-cyan h-full transition-all duration-150"
                 style={{ width: `${Math.min(100, (motionStats.horizontalSwipes / 4) * 100)}%` }}
               />
             </div>
-            <div className="flex items-center justify-between text-xs font-mono text-gray-300 w-72 mx-auto">
+            <div className="flex items-center justify-between text-xs font-mono text-gray-300 w-full max-w-72 mx-auto">
               <span>Direction: <strong className="text-val-cyan">{motionStats.currentHorizontalDir}</strong></span>
               <span>Swipes completed: <strong className="text-val-cyan">{motionStats.horizontalSwipes} / 4</strong></span>
             </div>
@@ -284,13 +285,13 @@ export const CalibrationView: React.FC = () => {
                   : '↓ Now swipe DOWN'}
               </div>
             </div>
-            <div className="w-72 bg-val-dark border border-val-border rounded-full h-3.5 mx-auto overflow-hidden">
+            <div className="w-full max-w-72 bg-val-dark border border-val-border rounded-full h-3.5 mx-auto overflow-hidden">
               <div
                 className="bg-val-cyan h-full transition-all duration-150"
                 style={{ width: `${Math.min(100, (motionStats.verticalSwipes / 4) * 100)}%` }}
               />
             </div>
-            <div className="flex items-center justify-between text-xs font-mono text-gray-300 w-72 mx-auto">
+            <div className="flex items-center justify-between text-xs font-mono text-gray-300 w-full max-w-72 mx-auto">
               <span>Direction: <strong className="text-val-cyan">{motionStats.currentVerticalDir}</strong></span>
               <span>Swipes completed: <strong className="text-val-cyan">{motionStats.verticalSwipes} / 4</strong></span>
             </div>
@@ -337,7 +338,7 @@ export const CalibrationView: React.FC = () => {
               All horizontal/vertical motion deltas and button clicks registered cleanly.
               Hardware input rate observed: <span className="text-val-cyan font-mono font-bold">{debugStats.eventRateHz > 0 ? `${debugStats.eventRateHz} Hz` : 'Not measured'}</span>.
             </p>
-            <div className="flex items-center justify-center gap-4 pt-2">
+            <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
               <button
                 type="button"
                 onClick={handleRerun}
@@ -349,7 +350,7 @@ export const CalibrationView: React.FC = () => {
               <button
                 type="button"
                 onClick={handleProceedToWarmup}
-                className="px-6 py-2.5 bg-val-red hover:bg-val-darkRed text-white font-bold rounded-lg uppercase tracking-wider font-mono text-sm shadow-lg shadow-val-red/20"
+                className="px-6 py-2.5 bg-val-cyan hover:bg-val-cyan/80 text-val-dark font-bold rounded-lg uppercase tracking-wider font-mono text-sm shadow-lg shadow-val-cyan/20"
               >
                 Proceed to Warm-Up Arena
               </button>
@@ -379,8 +380,8 @@ export const CalibrationView: React.FC = () => {
       </div>
 
       {/* Task 1 & 2 Live Development Telemetry Instrumentation */}
-      <div className="bg-val-dark/95 border border-val-border rounded-xl p-4 font-mono text-xs text-gray-300 shadow-xl space-y-3">
-        <div className="flex items-center justify-between border-b border-val-border/60 pb-2">
+      <div className="lab-panel p-5 sm:p-6 font-mono text-xs text-gray-300 space-y-4">
+        <div className="flex flex-wrap gap-3 items-center justify-between border-b border-val-border/60 pb-2">
           <div className="flex items-center gap-2 text-val-cyan font-bold uppercase tracking-wider text-[11px]">
             <Cpu className="w-4 h-4" /> Live Hardware Input Telemetry
           </div>
@@ -407,38 +408,38 @@ export const CalibrationView: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3">
-          <div className="bg-val-card p-2 rounded border border-val-border/50">
+          <div className="min-w-0 bg-val-dark/60 p-3 rounded-lg border border-val-border/50 break-words">
             <div className="text-[10px] text-val-muted">mousemove events</div>
             <div className="text-sm font-bold text-white mt-0.5">{debugStats.totalEvents.toLocaleString()}</div>
           </div>
 
-          <div className="bg-val-card p-2 rounded border border-val-border/50">
+          <div className="min-w-0 bg-val-dark/60 p-3 rounded-lg border border-val-border/50 break-words">
             <div className="text-[10px] text-val-muted">movementX / Y</div>
             <div className="text-sm font-bold text-white mt-0.5">
               {debugStats.lastDx} / {debugStats.lastDy}
             </div>
           </div>
 
-          <div className="bg-val-card p-2 rounded border border-val-border/50">
+          <div className="min-w-0 bg-val-dark/60 p-3 rounded-lg border border-val-border/50 break-words">
             <div className="text-[10px] text-val-muted">accumulatedX / Y</div>
             <div className="text-sm font-bold text-white mt-0.5">
               {debugStats.accumulatedX} / {debugStats.accumulatedY}
             </div>
           </div>
 
-          <div className="bg-val-card p-2 rounded border border-val-border/50">
+          <div className="min-w-0 bg-val-dark/60 p-3 rounded-lg border border-val-border/50 break-words">
             <div className="text-[10px] text-val-muted">event rate</div>
             <div className="text-sm font-bold text-val-cyan mt-0.5">{debugStats.eventRateHz} Hz</div>
           </div>
 
-          <div className="bg-val-card p-2 rounded border border-val-border/50">
+          <div className="min-w-0 bg-val-dark/60 p-3 rounded-lg border border-val-border/50 break-words">
             <div className="text-[10px] text-val-muted">swipes / threshold</div>
             <div className="text-sm font-bold text-white mt-0.5">
               {step === 'horizontal-motion' ? motionStats.horizontalSwipes : motionStats.verticalSwipes} / 4
             </div>
           </div>
 
-          <div className="bg-val-card p-2 rounded border border-val-border/50">
+          <div className="min-w-0 bg-val-dark/60 p-3 rounded-lg border border-val-border/50 break-words">
             <div className="text-[10px] text-val-muted">last event</div>
             <div className="text-[11px] font-bold text-gray-300 mt-1">
               {Math.round(debugStats.lastEventTimestamp)} ms

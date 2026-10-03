@@ -52,41 +52,42 @@ export const App: React.FC = () => {
   const currentStepIdx = getCurrentStepIndex();
 
   return (
-    <div className="min-h-screen bg-val-black text-white flex flex-col font-sans selection:bg-val-cyan selection:text-black">
+    <div data-phase={phase} className="app-shell min-h-screen text-white flex flex-col font-sans selection:bg-val-cyan selection:text-black">
       {/* Top Navbar */}
-      <header className="border-b border-val-border/60 bg-val-dark/90 backdrop-blur-md sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+      <header className="lab-header sticky top-0 z-40">
+        <div className="lab-header-inner mx-auto px-4 flex items-center justify-between">
           {/* Brand */}
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-val-red flex items-center justify-center text-white shadow-md shadow-val-red/30">
+            <div className="lab-brand-mark w-9 h-9 flex items-center justify-center text-val-cyan">
               <Crosshair className="w-5 h-5" />
             </div>
             <div>
               <span className="font-mono font-bold tracking-tight text-white text-sm uppercase">
-                VALORANT SENS FINDER
+                VALORANT / SENS LAB
               </span>
               <span className="hidden sm:inline-block ml-2 text-[10px] font-mono px-2 py-0.5 rounded bg-val-cyan/15 text-val-cyan border border-val-cyan/30">
-                v2.0 LAB
+                PRECISION LAB
               </span>
             </div>
           </div>
 
           {/* Stepper Progress */}
-          <div className="hidden md:flex items-center gap-1.5 font-mono text-xs">
+          <div className="lab-stepper flex items-center gap-1.5 font-mono text-xs">
             {steps.map((s, idx) => (
               <React.Fragment key={s.id}>
                 <span
+                  aria-current={idx === currentStepIdx ? 'step' : undefined}
                   className={`px-2.5 py-1 rounded-md transition-colors ${
                     idx === currentStepIdx
                       ? 'bg-val-cyan/20 border border-val-cyan text-val-cyan font-bold'
                       : idx < currentStepIdx
                       ? 'text-gray-400'
-                      : 'text-gray-600'
+                      : 'text-gray-400'
                   }`}
                 >
                   {s.label}
                 </span>
-                {idx < steps.length - 1 && <span className="text-gray-600">/</span>}
+                {idx < steps.length - 1 && <span className="text-gray-400">/</span>}
               </React.Fragment>
             ))}
           </div>
@@ -108,7 +109,7 @@ export const App: React.FC = () => {
       </header>
 
       {/* Main View Area */}
-      <main className="flex-1 flex flex-col justify-center">
+      <main className="lab-main flex-1 flex flex-col justify-center">
         {phase === 'setup' && <SetupView />}
         {phase === 'system-check' && <SystemCheckView />}
         {phase === 'calibration' && <CalibrationView />}
@@ -135,6 +136,7 @@ export const App: React.FC = () => {
               Engine yaw constant: <code className="text-val-cyan">{VALORANT_YAW_DEG_PER_COUNT}°/count</code>
             </p>
           </div>
+        <a className="lab-signature" href="https://deerflow.tech" target="_blank" rel="noopener noreferrer">Created By Deerflow</a>
         </footer>
       )}
     </div>

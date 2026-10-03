@@ -39,15 +39,16 @@ export const RestModal: React.FC<RestModalProps> = ({
   }, [durationSeconds]);
 
   return (
-    <div className="fixed inset-0 z-50 bg-val-black/90 backdrop-blur-md flex items-center justify-center p-4">
-      <div className="bg-val-card border border-val-border rounded-2xl p-8 max-w-md w-full text-center shadow-2xl relative overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-val-cyan to-val-red" />
+    <div className="fixed inset-0 z-50 bg-[#040b12]/85 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
+      <div role="dialog" aria-modal="true" aria-labelledby="rest-title" className="bg-[#0b1923]/95 border border-val-cyan/20 rounded-3xl p-6 sm:p-10 max-w-md w-full text-center shadow-[0_24px_100px_#000a] relative overflow-hidden">
+        <div className="absolute top-0 left-12 right-12 h-px bg-gradient-to-r from-transparent via-val-cyan to-transparent" />
 
-        <div className="w-16 h-16 rounded-full bg-val-cyan/15 border-2 border-val-cyan flex items-center justify-center mx-auto text-val-cyan mb-4 animate-bounce">
+        <div className="w-14 h-14 rounded-2xl bg-val-cyan/10 border border-val-cyan/25 flex items-center justify-center mx-auto text-val-cyan mb-6">
           <Coffee className="w-8 h-8" />
         </div>
 
-        <h3 className="text-2xl font-black uppercase tracking-tight text-white mb-2">
+        <p className="text-[10px] uppercase tracking-[0.25em] text-val-cyan mb-3 font-mono">Recovery interval</p>
+        <h3 id="rest-title" className="text-2xl font-bold tracking-tight text-white mb-3">
           Tactical Rest Interval
         </h3>
 
@@ -60,14 +61,14 @@ export const RestModal: React.FC<RestModalProps> = ({
             </p>
           </div>
         ) : (
-          <p className="text-val-muted text-sm mb-6">
+          <p className="text-slate-400 text-sm leading-relaxed mb-6">
             Relax your wrist and forearm. Scientific aim testing requires consistent neuromuscular freshness to isolate sensitivity.
           </p>
         )}
 
         {/* Countdown Ring / Display */}
         <div className="my-6">
-          <div className="inline-flex items-center justify-center w-24 h-24 rounded-full border-4 border-val-cyan/30 text-3xl font-black font-mono text-val-cyan">
+          <div className="inline-flex items-center justify-center w-28 h-28 rounded-full border border-val-cyan/40 ring-8 ring-val-cyan/5 text-4xl font-bold tabular-nums font-mono text-val-cyan shadow-[0_0_32px_#00f5d40a]">
             {secondsRemaining}s
           </div>
         </div>
@@ -76,7 +77,7 @@ export const RestModal: React.FC<RestModalProps> = ({
           <button
             type="button"
             onClick={complete}
-            className="w-full py-3 bg-val-red hover:bg-val-darkRed text-white font-bold rounded-lg uppercase tracking-wider font-mono text-sm flex items-center justify-center gap-2 transition-all"
+            className="w-full py-3.5 bg-val-cyan hover:bg-teal-200 text-[#06131a] font-bold rounded-xl tracking-wide text-sm flex items-center justify-center gap-2 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-val-cyan"
           >
             <Play className="w-4 h-4" /> Ready to Resume
           </button>

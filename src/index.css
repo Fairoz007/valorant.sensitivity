@@ -2,38 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  color-scheme: dark;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #0c1218;
-  color: #ece8e1;
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  overflow-x: hidden;
-  user-select: none;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* Custom scrollbars */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #0f1923;
-}
-::-webkit-scrollbar-thumb {
-  background: #2b3846;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #ff4655;
-}
-
-/* Prevent canvas pointer events from interfering with default browser behaviors */
-canvas {
-  touch-action: none;
-}
+:root { color-scheme: dark; --lab-accent: #00f5d4; --lab-border: rgba(122,181,201,.19); }
+body { margin:0; background:#080e15; color:#edf5f8; font-family:Bahnschrift,'Segoe UI',sans-serif; -webkit-font-smoothing:antialiased; }
+* { box-sizing:border-box; }
+button,input,select { font:inherit; }
+button,a,input,select { -webkit-tap-highlight-color:transparent; }
+button { transition:background-color .18s, border-color .18s, box-shadow .18s, transform .18s; }
+button:not(:disabled):hover { box-shadow:0 0 22px rgba(0,245,212,.1); }
+button:not(:disabled):active { transform:translateY(1px); }
+:focus-visible { outline:2px solid #00f5d4!important; outline-offset:4px; }
+input,select { min-height:46px; }
+input:focus,select:focus { box-shadow:0 0 0 3px rgba(0,245,212,.1); }
+canvas { touch-action:none; }
+.app-shell { position:relative; isolation:isolate; background:radial-gradient(ellipse at 5% 0%,rgba(0,245,212,.07),transparent 48%),#080e15; }
+.app-shell::before { content:''; position:fixed; z-index:-1; inset:0; background:linear-gradient(90deg,rgba(8,14,21,.98) 0%,rgba(8,14,21,.85) 45%,rgba(8,14,21,.66)),linear-gradient(0deg,#080e15,transparent 70%),url('/art/cyberpunk-corridor.webp') center/cover; opacity:.7; pointer-events:none; }
+.app-shell[data-phase='warmup']::before,.app-shell[data-phase='coarse']::before,.app-shell[data-phase='bracketing']::before,.app-shell[data-phase='confirmation']::before,.app-shell[data-phase='rest']::before,.app-shell[data-phase='fine']::before { display:none; }
+.lab-header { background:rgba(8,14,21,.94); border-bottom:1px solid var(--lab-border); backdrop-filter:blur(16px); }
+.lab-header-inner { max-width:1600px; min-height:80px; gap:24px; }
+.lab-brand-mark { border:1px solid rgba(0,245,212,.4); background:rgba(0,245,212,.07); border-radius:10px; box-shadow:inset 0 0 20px rgba(0,245,212,.05); }
+.lab-stepper [aria-current='step'] { box-shadow:0 0 20px rgba(0,245,212,.08); }
+.lab-main { position:relative; }
+.lab-panel { border:1px solid var(--lab-border); background:linear-gradient(145deg,rgba(24,40,53,.92),rgba(12,22,32,.95)); border-radius:18px; box-shadow:0 18px 55px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.025); }
+.lab-eyebrow { font-family:Consolas,monospace; font-size:10px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:#00f5d4; }
+.lab-page { width:100%; max-width:1400px; margin-inline:auto; padding:48px 32px; }
+.lab-signature { display:inline-block; margin-top:16px; font-size:10px; color:#8a9daa; }
+h1,h2,h3 { text-wrap:balance; }
+p { text-wrap:pretty; }
+.font-mono { font-variant-numeric:tabular-nums; }
+::-webkit-scrollbar { width:7px; height:7px; }
+::-webkit-scrollbar-track { background:#080e15; }
+::-webkit-scrollbar-thumb { background:#304553; border-radius:6px; }
+@keyframes lab-enter { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+.lab-page { animation:lab-enter .35s ease-out both; }
+@media(min-width:1920px) { .lab-page { padding-block:64px; } }
+@media(max-width:1150px) { .lab-header-inner { flex-wrap:wrap; padding-block:14px; gap:12px; } .lab-stepper { order:3; width:100%; justify-content:center; } }
+@media(max-width:640px) { .lab-header-inner { min-height:64px; } .lab-stepper { gap:2px; overflow:auto; justify-content:flex-start; font-size:10px; } .lab-stepper span { white-space:nowrap; } .lab-page { padding:28px 16px; } }
+@media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none!important; transition:none!important; scroll-behavior:auto!important; } }
