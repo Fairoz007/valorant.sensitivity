@@ -436,6 +436,11 @@ export class TestCoordinator {
         })),
         targetPosDeg: { yaw: targetYaw, pitch: targetPitch, radius: targetDef.radius },
         rawSamplesCount: samples.length,
+        rawTrajectory: samples.map(sample => ({ ...sample })),
+        fullTrajectory: this.currentTrialPoints.map(point => ({
+          t: point.timestamp - this.targetSpawnTime, yaw: point.yaw, pitch: point.pitch,
+          v: point.v, dx: point.dx, dy: point.dy,
+        })),
         startPosDeg: { yaw: startPoint.yaw, pitch: startPoint.pitch },
         clickPosDeg: { yaw: shotEvent.cameraYawDeg, pitch: shotEvent.cameraPitchDeg },
       };

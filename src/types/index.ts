@@ -188,6 +188,10 @@ export interface TrialResult {
   startPosDeg: { yaw: number; pitch: number };
   clickPosDeg: { yaw: number; pitch: number };
   rawSamplesCount?: number;
+  /** Complete delivered pre-click mouse events, retained for session inspection. */
+  rawTrajectory?: MouseSample[];
+  /** Complete camera path, separate from the downsampled display summary. */
+  fullTrajectory?: { t: number; yaw: number; pitch: number; v: number; dx: number; dy: number }[];
 }
 
 export interface DirectionalMetricSummary {
