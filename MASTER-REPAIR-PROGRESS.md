@@ -1,12 +1,22 @@
 # Master repair progress
 
-FOLLOW-UP IN PROGRESS: the additional one-clean-trial-per-target and speed–accuracy request is being implemented and revalidated. The evidence below records the preceding repair pass; it is not final acceptance of the new follow-up.
+FOLLOW-UP VERIFIED: one-clean-trial-per-target and speed–accuracy repairs passed the final browser and regression gates. Physical human acceptance remains REQUIRED.
 
 Date: 2026-10-03 (Asia/Muscat).
 
+## Follow-up implementation and validation
+
+Target Lifecycle, Shooting, Flick Telemetry, Sensitivity Analysis, browser QA and looping validation roles ran in staged sub-agent waves. A confirmed hit now deactivates and removes its target before callbacks/cosmetics, closes capture, stores a single trial, and schedules the next target after120ms. Repeated clicks and gap movement cannot enter completed or future trials; misses retain the target for correction. Complete rawTrajectory/fullTrajectory data persists with each trial.
+
+Initial flick segmentation now detects the first stop or reversal before a faster secondary correction. Scoring uses movement time rather than stimulus reaction, actual stopping control, measured corrections and continuous overshoot/undershoot rates/magnitudes. Similar tested scores produce a range. Seeded Monte Carlo reports actual pass/fail statuses and confidence is explicitly heuristic.
+
+The validator reproduced the intermittent exact-center false miss in a seeded full session (camera/target angle agreement≈7.16e-16degrees). Triangle-fan barycentric rounding could exclude the shared center vertex. Exact local ray-plane intersection against the visible256-sided polygon fixes this without enlarging the outer hitbox. The failing seed now passes, along with1200random centers and six complete seeded sessions. The PointerLock promise/change-event startup race is also repaired.
+
+Final evidence:176tests/23files, clean lint and production build PASS; complete browser session PASS with195validtrials/15blocks and allphases/results; ten clean-trial browser scenarios PASS after final collider repair. See MASTER-VALORANT-ACCEPTANCE.md and CLEAN-TRIAL-QA.md. Human physical validation remains REQUIRED; no claim of physical center/off-target/flick testing is made.
+
 Application, gameplay and sensitivity implementation sub-agents repaired their scopes; MASTER-VALORANT-VALIDATOR independently looped through review, repair and regression. Root coordinated integration and browser acceptance.
 
-Final programmatic evidence: 18 test files / 150 tests PASS; lint PASS with no warnings; production build PASS (bundle-size advisory). Browser runner PASS: 208 shooting actions including 13 warmup targets, 195 valid measured trials across 15 candidate blocks, every search phase, finite displayed recommendation, zero page errors, restart, complete optional calibration, 20 unscored stationary center hits, Pointer Lock release/relock, and zero crosshair/canvas center offset at three viewport sizes. Browser trace/screenshot files are in validation-artifacts. Synthetic recommendations vary with blinded randomized order and are not a personal recommendation.
+Final programmatic evidence: 23 test files / 176 tests PASS; lint PASS with no warnings; production build PASS (bundle-size advisory). Browser runner PASS: 208 shooting actions including 13 warmup targets, 195 valid measured trials across 15 candidate blocks, every search phase, finite displayed recommendation, zero page errors, restart, complete optional calibration, 20 unscored stationary center hits, Pointer Lock release/relock, and zero crosshair/canvas center offset at three viewport sizes. Browser trace/screenshot files are in validation-artifacts. Synthetic recommendations vary with blinded randomized order and are not a personal recommendation.
 
 Physical human validation is REQUIRED. The overall acceptance gate remains pending that evidence; automated readiness is not a hardware certification.
 
@@ -22,7 +32,7 @@ FILES CHANGED: src/engine/RawInputEngine.ts; src/arena/ArenaManager.ts; src/aren
 
 FIX IMPLEMENTED: Timestamped input applies once outside React; event-time camera snapshots and center NDC rays are authoritative. Camera-local full-disk target visibility, safe target lifecycle, cosmetic weapon/tracer isolation, pause/stall recovery, F3/F4 and diagnostic capture are repaired.
 
-AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -44,7 +54,7 @@ FILES CHANGED: src/engine/RawInputEngine.ts; src/arena/ArenaManager.ts; src/aren
 
 FIX IMPLEMENTED: Timestamped input applies once outside React; event-time camera snapshots and center NDC rays are authoritative. Camera-local full-disk target visibility, safe target lifecycle, cosmetic weapon/tracer isolation, pause/stall recovery, F3/F4 and diagnostic capture are repaired.
 
-AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -66,7 +76,7 @@ FILES CHANGED: src/engine/RawInputEngine.ts; src/arena/ArenaManager.ts; src/aren
 
 FIX IMPLEMENTED: Timestamped input applies once outside React; event-time camera snapshots and center NDC rays are authoritative. Camera-local full-disk target visibility, safe target lifecycle, cosmetic weapon/tracer isolation, pause/stall recovery, F3/F4 and diagnostic capture are repaired.
 
-AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -88,7 +98,7 @@ FILES CHANGED: src/engine/RawInputEngine.ts; src/arena/ArenaManager.ts; src/aren
 
 FIX IMPLEMENTED: Timestamped input applies once outside React; event-time camera snapshots and center NDC rays are authoritative. Camera-local full-disk target visibility, safe target lifecycle, cosmetic weapon/tracer isolation, pause/stall recovery, F3/F4 and diagnostic capture are repaired.
 
-AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -110,7 +120,7 @@ FILES CHANGED: src/engine/RawInputEngine.ts; src/arena/ArenaManager.ts; src/aren
 
 FIX IMPLEMENTED: Timestamped input applies once outside React; event-time camera snapshots and center NDC rays are authoritative. Camera-local full-disk target visibility, safe target lifecycle, cosmetic weapon/tracer isolation, pause/stall recovery, F3/F4 and diagnostic capture are repaired.
 
-AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -132,7 +142,7 @@ FILES CHANGED: src/engine/RawInputEngine.ts; src/arena/ArenaManager.ts; src/aren
 
 FIX IMPLEMENTED: Timestamped input applies once outside React; event-time camera snapshots and center NDC rays are authoritative. Camera-local full-disk target visibility, safe target lifecycle, cosmetic weapon/tracer isolation, pause/stall recovery, F3/F4 and diagnostic capture are repaired.
 
-AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -154,7 +164,7 @@ FILES CHANGED: src/engine/RawInputEngine.ts; src/arena/ArenaManager.ts; src/aren
 
 FIX IMPLEMENTED: Timestamped input applies once outside React; event-time camera snapshots and center NDC rays are authoritative. Camera-local full-disk target visibility, safe target lifecycle, cosmetic weapon/tracer isolation, pause/stall recovery, F3/F4 and diagnostic capture are repaired.
 
-AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -176,7 +186,7 @@ FILES CHANGED: src/engine/RawInputEngine.ts; src/arena/ArenaManager.ts; src/aren
 
 FIX IMPLEMENTED: Timestamped input applies once outside React; event-time camera snapshots and center NDC rays are authoritative. Camera-local full-disk target visibility, safe target lifecycle, cosmetic weapon/tracer isolation, pause/stall recovery, F3/F4 and diagnostic capture are repaired.
 
-AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -198,7 +208,7 @@ FILES CHANGED: src/engine/RawInputEngine.ts; src/arena/ArenaManager.ts; src/aren
 
 FIX IMPLEMENTED: Timestamped input applies once outside React; event-time camera snapshots and center NDC rays are authoritative. Camera-local full-disk target visibility, safe target lifecycle, cosmetic weapon/tracer isolation, pause/stall recovery, F3/F4 and diagnostic capture are repaired.
 
-AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -220,7 +230,7 @@ FILES CHANGED: src/engine/RawInputEngine.ts; src/arena/ArenaManager.ts; src/aren
 
 FIX IMPLEMENTED: Timestamped input applies once outside React; event-time camera snapshots and center NDC rays are authoritative. Camera-local full-disk target visibility, safe target lifecycle, cosmetic weapon/tracer isolation, pause/stall recovery, F3/F4 and diagnostic capture are repaired.
 
-AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -242,7 +252,7 @@ FILES CHANGED: src/engine/RawInputEngine.ts; src/arena/ArenaManager.ts; src/aren
 
 FIX IMPLEMENTED: Timestamped input applies once outside React; event-time camera snapshots and center NDC rays are authoritative. Camera-local full-disk target visibility, safe target lifecycle, cosmetic weapon/tracer isolation, pause/stall recovery, F3/F4 and diagnostic capture are repaired.
 
-AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -264,7 +274,7 @@ FILES CHANGED: src/engine/RawInputEngine.ts; src/arena/ArenaManager.ts; src/aren
 
 FIX IMPLEMENTED: Timestamped input applies once outside React; event-time camera snapshots and center NDC rays are authoritative. Camera-local full-disk target visibility, safe target lifecycle, cosmetic weapon/tracer isolation, pause/stall recovery, F3/F4 and diagnostic capture are repaired.
 
-AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -286,7 +296,7 @@ FILES CHANGED: src/engine/RawInputEngine.ts; src/arena/ArenaManager.ts; src/aren
 
 FIX IMPLEMENTED: Timestamped input applies once outside React; event-time camera snapshots and center NDC rays are authoritative. Camera-local full-disk target visibility, safe target lifecycle, cosmetic weapon/tracer isolation, pause/stall recovery, F3/F4 and diagnostic capture are repaired.
 
-AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -308,7 +318,7 @@ FILES CHANGED: src/engine/RawInputEngine.ts; src/arena/ArenaManager.ts; src/aren
 
 FIX IMPLEMENTED: Timestamped input applies once outside React; event-time camera snapshots and center NDC rays are authoritative. Camera-local full-disk target visibility, safe target lifecycle, cosmetic weapon/tracer isolation, pause/stall recovery, F3/F4 and diagnostic capture are repaired.
 
-AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -330,7 +340,7 @@ FILES CHANGED: src/engine/RawInputEngine.ts; src/arena/ArenaManager.ts; src/aren
 
 FIX IMPLEMENTED: Timestamped input applies once outside React; event-time camera snapshots and center NDC rays are authoritative. Camera-local full-disk target visibility, safe target lifecycle, cosmetic weapon/tracer isolation, pause/stall recovery, F3/F4 and diagnostic capture are repaired.
 
-AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -352,7 +362,7 @@ FILES CHANGED: src/arena/TestCoordinator.ts; src/sensitivity/SensitivityOptimize
 
 FIX IMPLEMENTED: Balanced real trials feed distinct camera-applied candidates. Fresh confirmation can choose a neighbor/baseline. Finite and minimum-data guards reject failures; atomic results survive teardown, explicit UI states display measured values, and restart clears the session.
 
-AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -374,7 +384,7 @@ FILES CHANGED: src/arena/TestCoordinator.ts; src/sensitivity/SensitivityOptimize
 
 FIX IMPLEMENTED: Balanced real trials feed distinct camera-applied candidates. Fresh confirmation can choose a neighbor/baseline. Finite and minimum-data guards reject failures; atomic results survive teardown, explicit UI states display measured values, and restart clears the session.
 
-AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -396,7 +406,7 @@ FILES CHANGED: src/arena/TestCoordinator.ts; src/sensitivity/SensitivityOptimize
 
 FIX IMPLEMENTED: Balanced real trials feed distinct camera-applied candidates. Fresh confirmation can choose a neighbor/baseline. Finite and minimum-data guards reject failures; atomic results survive teardown, explicit UI states display measured values, and restart clears the session.
 
-AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -418,7 +428,7 @@ FILES CHANGED: src/arena/TestCoordinator.ts; src/sensitivity/SensitivityOptimize
 
 FIX IMPLEMENTED: Balanced real trials feed distinct camera-applied candidates. Fresh confirmation can choose a neighbor/baseline. Finite and minimum-data guards reject failures; atomic results survive teardown, explicit UI states display measured values, and restart clears the session.
 
-AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -440,7 +450,7 @@ FILES CHANGED: src/arena/TestCoordinator.ts; src/sensitivity/SensitivityOptimize
 
 FIX IMPLEMENTED: Balanced real trials feed distinct camera-applied candidates. Fresh confirmation can choose a neighbor/baseline. Finite and minimum-data guards reject failures; atomic results survive teardown, explicit UI states display measured values, and restart clears the session.
 
-AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -462,7 +472,7 @@ FILES CHANGED: src/arena/TestCoordinator.ts; src/sensitivity/SensitivityOptimize
 
 FIX IMPLEMENTED: Balanced real trials feed distinct camera-applied candidates. Fresh confirmation can choose a neighbor/baseline. Finite and minimum-data guards reject failures; atomic results survive teardown, explicit UI states display measured values, and restart clears the session.
 
-AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -484,7 +494,7 @@ FILES CHANGED: src/arena/TestCoordinator.ts; src/sensitivity/SensitivityOptimize
 
 FIX IMPLEMENTED: Balanced real trials feed distinct camera-applied candidates. Fresh confirmation can choose a neighbor/baseline. Finite and minimum-data guards reject failures; atomic results survive teardown, explicit UI states display measured values, and restart clears the session.
 
-AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -506,7 +516,7 @@ FILES CHANGED: src/arena/TestCoordinator.ts; src/sensitivity/SensitivityOptimize
 
 FIX IMPLEMENTED: Balanced real trials feed distinct camera-applied candidates. Fresh confirmation can choose a neighbor/baseline. Finite and minimum-data guards reject failures; atomic results survive teardown, explicit UI states display measured values, and restart clears the session.
 
-AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -528,7 +538,7 @@ FILES CHANGED: src/arena/TestCoordinator.ts; src/sensitivity/SensitivityOptimize
 
 FIX IMPLEMENTED: Balanced real trials feed distinct camera-applied candidates. Fresh confirmation can choose a neighbor/baseline. Finite and minimum-data guards reject failures; atomic results survive teardown, explicit UI states display measured values, and restart clears the session.
 
-AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -550,7 +560,7 @@ FILES CHANGED: src/arena/TestCoordinator.ts; src/sensitivity/SensitivityOptimize
 
 FIX IMPLEMENTED: Balanced real trials feed distinct camera-applied candidates. Fresh confirmation can choose a neighbor/baseline. Finite and minimum-data guards reject failures; atomic results survive teardown, explicit UI states display measured values, and restart clears the session.
 
-AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -572,7 +582,7 @@ FILES CHANGED: src/arena/TestCoordinator.ts; src/sensitivity/SensitivityOptimize
 
 FIX IMPLEMENTED: Balanced real trials feed distinct camera-applied candidates. Fresh confirmation can choose a neighbor/baseline. Finite and minimum-data guards reject failures; atomic results survive teardown, explicit UI states display measured values, and restart clears the session.
 
-AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -594,7 +604,7 @@ FILES CHANGED: src/arena/TestCoordinator.ts; src/sensitivity/SensitivityOptimize
 
 FIX IMPLEMENTED: Balanced real trials feed distinct camera-applied candidates. Fresh confirmation can choose a neighbor/baseline. Finite and minimum-data guards reject failures; atomic results survive teardown, explicit UI states display measured values, and restart clears the session.
 
-AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -616,7 +626,7 @@ FILES CHANGED: src/arena/TestCoordinator.ts; src/sensitivity/SensitivityOptimize
 
 FIX IMPLEMENTED: Balanced real trials feed distinct camera-applied candidates. Fresh confirmation can choose a neighbor/baseline. Finite and minimum-data guards reject failures; atomic results survive teardown, explicit UI states display measured values, and restart clears the session.
 
-AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -638,7 +648,7 @@ FILES CHANGED: src/arena/TestCoordinator.ts; src/sensitivity/SensitivityOptimize
 
 FIX IMPLEMENTED: Balanced real trials feed distinct camera-applied candidates. Fresh confirmation can choose a neighbor/baseline. Finite and minimum-data guards reject failures; atomic results survive teardown, explicit UI states display measured values, and restart clears the session.
 
-AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -660,7 +670,7 @@ FILES CHANGED: src/arena/TestCoordinator.ts; src/sensitivity/SensitivityOptimize
 
 FIX IMPLEMENTED: Balanced real trials feed distinct camera-applied candidates. Fresh confirmation can choose a neighbor/baseline. Finite and minimum-data guards reject failures; atomic results survive teardown, explicit UI states display measured values, and restart clears the session.
 
-AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -682,7 +692,7 @@ FILES CHANGED: src/engine/RawInputEngine.ts; src/arena/ArenaManager.ts; src/aren
 
 FIX IMPLEMENTED: Timestamped input applies once outside React; event-time camera snapshots and center NDC rays are authoritative. Camera-local full-disk target visibility, safe target lifecycle, cosmetic weapon/tracer isolation, pause/stall recovery, F3/F4 and diagnostic capture are repaired.
 
-AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -704,7 +714,7 @@ FILES CHANGED: src/engine/RawInputEngine.ts; src/arena/ArenaManager.ts; src/aren
 
 FIX IMPLEMENTED: Timestamped input applies once outside React; event-time camera snapshots and center NDC rays are authoritative. Camera-local full-disk target visibility, safe target lifecycle, cosmetic weapon/tracer isolation, pause/stall recovery, F3/F4 and diagnostic capture are repaired.
 
-AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -726,7 +736,7 @@ FILES CHANGED: src/engine/RawInputEngine.ts; src/arena/ArenaManager.ts; src/aren
 
 FIX IMPLEMENTED: Timestamped input applies once outside React; event-time camera snapshots and center NDC rays are authoritative. Camera-local full-disk target visibility, safe target lifecycle, cosmetic weapon/tracer isolation, pause/stall recovery, F3/F4 and diagnostic capture are repaired.
 
-AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -748,7 +758,7 @@ FILES CHANGED: src/engine/RawInputEngine.ts; src/arena/ArenaManager.ts; src/aren
 
 FIX IMPLEMENTED: Timestamped input applies once outside React; event-time camera snapshots and center NDC rays are authoritative. Camera-local full-disk target visibility, safe target lifecycle, cosmetic weapon/tracer isolation, pause/stall recovery, F3/F4 and diagnostic capture are repaired.
 
-AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -770,7 +780,7 @@ FILES CHANGED: src/engine/RawInputEngine.ts; src/arena/ArenaManager.ts; src/aren
 
 FIX IMPLEMENTED: Timestamped input applies once outside React; event-time camera snapshots and center NDC rays are authoritative. Camera-local full-disk target visibility, safe target lifecycle, cosmetic weapon/tracer isolation, pause/stall recovery, F3/F4 and diagnostic capture are repaired.
 
-AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -792,7 +802,7 @@ FILES CHANGED: src/calibration/CalibrationManager.ts; src/components/SystemCheck
 
 FIX IMPLEMENTED: Removed outerWidth-based zoom claims; desktop zoom is explicitly unknown and 100% user setting is requested; display scaling is supported.
 
-AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -814,7 +824,7 @@ FILES CHANGED: src/engine/RawInputEngine.ts; src/arena/ArenaManager.ts; src/aren
 
 FIX IMPLEMENTED: Timestamped input applies once outside React; event-time camera snapshots and center NDC rays are authoritative. Camera-local full-disk target visibility, safe target lifecycle, cosmetic weapon/tracer isolation, pause/stall recovery, F3/F4 and diagnostic capture are repaired.
 
-AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -836,7 +846,7 @@ FILES CHANGED: src/engine/RawInputEngine.ts; src/arena/ArenaManager.ts; src/aren
 
 FIX IMPLEMENTED: Timestamped input applies once outside React; event-time camera snapshots and center NDC rays are authoritative. Camera-local full-disk target visibility, safe target lifecycle, cosmetic weapon/tracer isolation, pause/stall recovery, F3/F4 and diagnostic capture are repaired.
 
-AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -858,7 +868,7 @@ FILES CHANGED: src/engine/RawInputEngine.ts; src/arena/ArenaManager.ts; src/aren
 
 FIX IMPLEMENTED: Timestamped input applies once outside React; event-time camera snapshots and center NDC rays are authoritative. Camera-local full-disk target visibility, safe target lifecycle, cosmetic weapon/tracer isolation, pause/stall recovery, F3/F4 and diagnostic capture are repaired.
 
-AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -880,7 +890,7 @@ FILES CHANGED: src/engine/RawInputEngine.ts; src/arena/ArenaManager.ts; src/aren
 
 FIX IMPLEMENTED: Timestamped input applies once outside React; event-time camera snapshots and center NDC rays are authoritative. Camera-local full-disk target visibility, safe target lifecycle, cosmetic weapon/tracer isolation, pause/stall recovery, F3/F4 and diagnostic capture are repaired.
 
-AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -902,7 +912,7 @@ FILES CHANGED: src/arena/TestCoordinator.ts; src/sensitivity/SensitivityOptimize
 
 FIX IMPLEMENTED: Balanced real trials feed distinct camera-applied candidates. Fresh confirmation can choose a neighbor/baseline. Finite and minimum-data guards reject failures; atomic results survive teardown, explicit UI states display measured values, and restart clears the session.
 
-AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -924,7 +934,7 @@ FILES CHANGED: src/engine/RawInputEngine.ts; src/arena/ArenaManager.ts; src/aren
 
 FIX IMPLEMENTED: Timestamped input applies once outside React; event-time camera snapshots and center NDC rays are authoritative. Camera-local full-disk target visibility, safe target lifecycle, cosmetic weapon/tracer isolation, pause/stall recovery, F3/F4 and diagnostic capture are repaired.
 
-AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -946,7 +956,7 @@ FILES CHANGED: src/engine/RawInputEngine.ts; src/arena/ArenaManager.ts; src/aren
 
 FIX IMPLEMENTED: Timestamped input applies once outside React; event-time camera snapshots and center NDC rays are authoritative. Camera-local full-disk target visibility, safe target lifecycle, cosmetic weapon/tracer isolation, pause/stall recovery, F3/F4 and diagnostic capture are repaired.
 
-AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -968,7 +978,7 @@ FILES CHANGED: src/engine/RawInputEngine.ts; src/arena/ArenaManager.ts; src/aren
 
 FIX IMPLEMENTED: Timestamped input applies once outside React; event-time camera snapshots and center NDC rays are authoritative. Camera-local full-disk target visibility, safe target lifecycle, cosmetic weapon/tracer isolation, pause/stall recovery, F3/F4 and diagnostic capture are repaired.
 
-AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -990,7 +1000,7 @@ FILES CHANGED: src/engine/RawInputEngine.ts; src/arena/ArenaManager.ts; src/aren
 
 FIX IMPLEMENTED: Timestamped input applies once outside React; event-time camera snapshots and center NDC rays are authoritative. Camera-local full-disk target visibility, safe target lifecycle, cosmetic weapon/tracer isolation, pause/stall recovery, F3/F4 and diagnostic capture are repaired.
 
-AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: gameplayRepair.test.ts, shootingPipelineIntegration.test.ts, masterValidator.test.ts; mounted browser events; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -1012,7 +1022,7 @@ FILES CHANGED: src/engine/AimTelemetry.ts; src/engine/MathEngine.ts; src/types/i
 
 FIX IMPLEMENTED: Spherical progress and finite chronological trajectory analysis measure endpoint, overshoot, stopped undershoot, corrections and explicit acceleration/deceleration; future samples are excluded.
 
-AUTOMATED VERIFICATION: groundTruthTelemetry.test.ts, validatorTelemetryRegression.test.ts, telemetry.test.ts; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: groundTruthTelemetry.test.ts, validatorTelemetryRegression.test.ts, telemetry.test.ts; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -1034,7 +1044,7 @@ FILES CHANGED: src/engine/AimTelemetry.ts; src/engine/MathEngine.ts; src/types/i
 
 FIX IMPLEMENTED: Spherical progress and finite chronological trajectory analysis measure endpoint, overshoot, stopped undershoot, corrections and explicit acceleration/deceleration; future samples are excluded.
 
-AUTOMATED VERIFICATION: groundTruthTelemetry.test.ts, validatorTelemetryRegression.test.ts, telemetry.test.ts; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: groundTruthTelemetry.test.ts, validatorTelemetryRegression.test.ts, telemetry.test.ts; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -1056,7 +1066,7 @@ FILES CHANGED: src/engine/AimTelemetry.ts; src/engine/MathEngine.ts; src/types/i
 
 FIX IMPLEMENTED: Spherical progress and finite chronological trajectory analysis measure endpoint, overshoot, stopped undershoot, corrections and explicit acceleration/deceleration; future samples are excluded.
 
-AUTOMATED VERIFICATION: groundTruthTelemetry.test.ts, validatorTelemetryRegression.test.ts, telemetry.test.ts; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: groundTruthTelemetry.test.ts, validatorTelemetryRegression.test.ts, telemetry.test.ts; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -1078,7 +1088,7 @@ FILES CHANGED: src/engine/AimTelemetry.ts; src/engine/MathEngine.ts; src/types/i
 
 FIX IMPLEMENTED: Spherical progress and finite chronological trajectory analysis measure endpoint, overshoot, stopped undershoot, corrections and explicit acceleration/deceleration; future samples are excluded.
 
-AUTOMATED VERIFICATION: groundTruthTelemetry.test.ts, validatorTelemetryRegression.test.ts, telemetry.test.ts; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: groundTruthTelemetry.test.ts, validatorTelemetryRegression.test.ts, telemetry.test.ts; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -1100,7 +1110,7 @@ FILES CHANGED: src/engine/AimTelemetry.ts; src/engine/MathEngine.ts; src/types/i
 
 FIX IMPLEMENTED: Spherical progress and finite chronological trajectory analysis measure endpoint, overshoot, stopped undershoot, corrections and explicit acceleration/deceleration; future samples are excluded.
 
-AUTOMATED VERIFICATION: groundTruthTelemetry.test.ts, validatorTelemetryRegression.test.ts, telemetry.test.ts; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: groundTruthTelemetry.test.ts, validatorTelemetryRegression.test.ts, telemetry.test.ts; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -1122,7 +1132,7 @@ FILES CHANGED: src/arena/TestCoordinator.ts; src/sensitivity/SensitivityOptimize
 
 FIX IMPLEMENTED: Balanced real trials feed distinct camera-applied candidates. Fresh confirmation can choose a neighbor/baseline. Finite and minimum-data guards reject failures; atomic results survive teardown, explicit UI states display measured values, and restart clears the session.
 
-AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -1144,7 +1154,7 @@ FILES CHANGED: src/arena/TestCoordinator.ts; src/sensitivity/SensitivityOptimize
 
 FIX IMPLEMENTED: Balanced real trials feed distinct camera-applied candidates. Fresh confirmation can choose a neighbor/baseline. Finite and minimum-data guards reject failures; atomic results survive teardown, explicit UI states display measured values, and restart clears the session.
 
-AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -1166,7 +1176,7 @@ FILES CHANGED: src/arena/TestCoordinator.ts; src/sensitivity/SensitivityOptimize
 
 FIX IMPLEMENTED: Balanced real trials feed distinct camera-applied candidates. Fresh confirmation can choose a neighbor/baseline. Finite and minimum-data guards reject failures; atomic results survive teardown, explicit UI states display measured values, and restart clears the session.
 
-AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -1188,7 +1198,7 @@ FILES CHANGED: src/arena/TestCoordinator.ts; src/sensitivity/SensitivityOptimize
 
 FIX IMPLEMENTED: Balanced real trials feed distinct camera-applied candidates. Fresh confirmation can choose a neighbor/baseline. Finite and minimum-data guards reject failures; atomic results survive teardown, explicit UI states display measured values, and restart clears the session.
 
-AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -1210,7 +1220,7 @@ FILES CHANGED: src/arena/TestCoordinator.ts; src/sensitivity/SensitivityOptimize
 
 FIX IMPLEMENTED: Balanced real trials feed distinct camera-applied candidates. Fresh confirmation can choose a neighbor/baseline. Finite and minimum-data guards reject failures; atomic results survive teardown, explicit UI states display measured values, and restart clears the session.
 
-AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -1232,7 +1242,7 @@ FILES CHANGED: src/arena/TestCoordinator.ts; src/sensitivity/SensitivityOptimize
 
 FIX IMPLEMENTED: Balanced real trials feed distinct camera-applied candidates. Fresh confirmation can choose a neighbor/baseline. Finite and minimum-data guards reject failures; atomic results survive teardown, explicit UI states display measured values, and restart clears the session.
 
-AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -1320,7 +1330,7 @@ FILES CHANGED: src/arena/TestCoordinator.ts; src/sensitivity/SensitivityOptimize
 
 FIX IMPLEMENTED: Balanced real trials feed distinct camera-applied candidates. Fresh confirmation can choose a neighbor/baseline. Finite and minimum-data guards reject failures; atomic results survive teardown, explicit UI states display measured values, and restart clears the session.
 
-AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -1342,7 +1352,7 @@ FILES CHANGED: src/arena/TestCoordinator.ts; src/sensitivity/SensitivityOptimize
 
 FIX IMPLEMENTED: Balanced real trials feed distinct camera-applied candidates. Fresh confirmation can choose a neighbor/baseline. Finite and minimum-data guards reject failures; atomic results survive teardown, explicit UI states display measured values, and restart clears the session.
 
-AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -1364,7 +1374,7 @@ FILES CHANGED: src/arena/TestCoordinator.ts; src/sensitivity/SensitivityOptimize
 
 FIX IMPLEMENTED: Balanced real trials feed distinct camera-applied candidates. Fresh confirmation can choose a neighbor/baseline. Finite and minimum-data guards reject failures; atomic results survive teardown, explicit UI states display measured values, and restart clears the session.
 
-AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -1386,7 +1396,7 @@ FILES CHANGED: src/arena/TestCoordinator.ts; src/sensitivity/SensitivityOptimize
 
 FIX IMPLEMENTED: Balanced real trials feed distinct camera-applied candidates. Fresh confirmation can choose a neighbor/baseline. Finite and minimum-data guards reject failures; atomic results survive teardown, explicit UI states display measured values, and restart clears the session.
 
-AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -1408,7 +1418,7 @@ FILES CHANGED: src/arena/TestCoordinator.ts; src/sensitivity/SensitivityOptimize
 
 FIX IMPLEMENTED: Balanced real trials feed distinct camera-applied candidates. Fresh confirmation can choose a neighbor/baseline. Finite and minimum-data guards reject failures; atomic results survive teardown, explicit UI states display measured values, and restart clears the session.
 
-AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 150-test suite/build/lint PASS.
+AUTOMATED VERIFICATION: sessionRepair.test.ts, applicationFlowIntegration.test.ts, optimizer.test.ts, confidence.test.ts, browser-validator.mjs; final 176-test suite/build/lint PASS.
 
 BROWSER VERIFICATION: Mounted complete session PASS, with actual browser events through the real input/coordinator/optimizer pipeline. See validation-artifacts/browser-session.json.
 
@@ -1417,5 +1427,6 @@ OBSERVED VALUES: 195 valid measured browser trials,15 candidate blocks,208 shoot
 REGRESSION STATUS: PASS — full automated suite, build, lint and browser runner.
 
 REMAINING RISK: Physical human validation REQUIRED.
+
 
 

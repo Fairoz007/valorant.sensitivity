@@ -2,6 +2,8 @@
 
 Date: 2026-10-03
 
+Final root acceptance update: 23files/176tests PASS, lint PASS, production build PASS. Full browser session PASS with195validtrials/15blocks/208shootingactions; allphases and displayed finite0.276 syntheticrecommendation, complete rawtrajectory persistence, calibration/skip/restart, pointerlockresume,20unscored diagnosticcenters and viewportalignment PASS, no pageerrors. Ten clean-trial browser scenarios PASS after exactpolygon collider repair. Root also eliminated listener-startup race when PointerLock promise resolves before its change event and added an automated regression. Hardwarehuman acceptance remains REQUIRED.
+
 ## Scope and review loop
 
 Reviewed the requested complete mission and the repaired input → camera → center ray → target → shot → trajectory → trial → candidate → phase → recommendation chain. The validator did not run a second browser session concurrently with the root agent's full browser E2E. Browser evidence is recorded by the root run separately in validation-artifacts.
