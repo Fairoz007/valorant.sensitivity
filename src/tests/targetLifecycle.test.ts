@@ -1,0 +1,42 @@
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import { ArenaManager } from '../arena/ArenaManager';
+import { TestCoordinator } from '../arena/TestCoordinator';
+import { RawInputEngine } from '../engine/RawInputEngine';
+import { useAppStore } from '../store/useAppStore';
+import { VALORANT_YAW_DEG_PER_COUNT } from '../config/constants';
+afterEach(() => { vi.useRealTimers(); vi.restoreAllMocks(); });
+describe('Synchronous clean target lifecycle', () => {
+  it('closes before effects, ignores duplicate clicks and gap motion, then starts fresh capture', () => {
+    vi.useFakeTimers({ toFake: ['performance', 'setTimeout', 'clearTimeout', 'setInterval', 'clearInterval'] });
+    useAppStore.getState().resetSession(); useAppStore.getState().setPhase('coarse');
+    const input = new RawInputEngine(); const arena = new ArenaManager(null, input); const coordinator = new TestCoordinator(arena, input);
+    coordinator.startPhase('coarse');
+    const target = arena.getActiveTargets()[0];
+    vi.advanceTimersByTime(150);
+    const scale = arena.getSensitivity() * VALORANT_YAW_DEG_PER_COUNT;
+    input.handleMouseMove({movementX:target.yaw * 180 / Math.PI / scale, movementY:-target.pitch * 180 / Math.PI / scale} as MouseEvent);
+    vi.advanceTimersByTime(70);
+    const weapon = (arena as unknown as { dummyWeapon: { triggerFireAnimation(): void } }).dummyWeapon;
+    const fire = vi.spyOn(weapon, 'triggerFireAnimation').mockImplementation(() => {
+      expect(arena.getActiveTargets()).toHaveLength(0);
+      expect(useAppStore.getState().allTrialResults).toHaveLength(1);
+    });
+    expect(arena.processShot().isHit).toBe(true);
+    const completed = structuredClone(useAppStore.getState().allTrialResults[0]);
+    expect(arena.getActiveTargets()).toHaveLength(0);
+    expect(arena.processShot().isHit).toBe(false);
+    input.handleMouseMove({ movementX: 400, movementY: 20 } as MouseEvent);
+    vi.advanceTimersByTime(119);
+    expect(arena.getActiveTargets()).toHaveLength(0);
+    expect(useAppStore.getState().allTrialResults[0]).toEqual(completed);
+    vi.advanceTimersByTime(1);
+    expect(arena.getActiveTargets()).toHaveLength(1);
+    const points = (coordinator as unknown as {currentTrialPoints: unknown[]}).currentTrialPoints;
+    expect(points).toHaveLength(1);
+    fire.mockRestore();
+    const next = arena.getActiveTargets()[0]; arena.setCameraOrientation(next.yaw*180/Math.PI,next.pitch*180/Math.PI);
+    arena.processShot(); coordinator.stop(); vi.advanceTimersByTime(500);
+    expect(arena.getActiveTargets()).toHaveLength(0);
+    arena.dispose(); input.dispose();
+  });
+});

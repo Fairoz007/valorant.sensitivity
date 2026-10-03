@@ -1,5 +1,7 @@
 # Master repair progress
 
+FOLLOW-UP IN PROGRESS: the additional one-clean-trial-per-target and speed–accuracy request is being implemented and revalidated. The evidence below records the preceding repair pass; it is not final acceptance of the new follow-up.
+
 Date: 2026-10-03 (Asia/Muscat).
 
 Application, gameplay and sensitivity implementation sub-agents repaired their scopes; MASTER-VALORANT-VALIDATOR independently looped through review, repair and regression. Root coordinated integration and browser acceptance.

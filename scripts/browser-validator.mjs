@@ -79,6 +79,8 @@ try {
   const candidates = new Map();
   let shots = 0;
   while (shots < 1500) {
+    // The controlled inter-trial interval is excluded from aiming telemetry.
+    await page.clock.runFor(150);
     const state = await page.evaluate(() => {
       const s = window.__validationStore.getState();
       if (window.__valorantArena && window.__firstArena !== window.__valorantArena.arena) throw new Error('Arena remounted');
