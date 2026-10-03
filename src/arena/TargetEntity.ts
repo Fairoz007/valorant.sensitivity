@@ -107,6 +107,25 @@ export class TargetEntity {
     (this.innerBullseye.material as THREE.MeshBasicMaterial).color.setHex(0xffffff);
   }
 
+  /** Intersect the visible planar disk without triangle-fan vertex cracks. */
+  public intersectRay(ray: THREE.Ray): THREE.Vector3 | null {
+    if (this.isHitState || !this.mesh.visible) return null;
+    this.mesh.updateMatrixWorld(true);
+    const localRay = ray.clone().applyMatrix4(this.mesh.matrixWorld.clone().invert());
+    if (Math.abs(localRay.direction.z) < 1e-12) return null;
+    const distance = -localRay.origin.z / localRay.direction.z;
+    if (distance < 0) return null;
+    const point = localRay.at(distance, new THREE.Vector3());
+    const radius = this.distance * Math.tan(THREE.MathUtils.degToRad(this.radiusDeg));
+    // RingGeometry's 256 outer segments form a regular polygon. Use that
+    // boundary rather than an enlarged angular or circular approximation.
+    const segmentAngle = 2 * Math.PI / 256;
+    const angle = ((Math.atan2(point.y, point.x) % segmentAngle) + segmentAngle) % segmentAngle;
+    const visibleRadius = radius * Math.cos(segmentAngle / 2) / Math.cos(angle - segmentAngle / 2);
+    if (Math.hypot(point.x, point.y) > visibleRadius + 1e-12 * Math.max(1, radius)) return null;
+    return point.applyMatrix4(this.mesh.matrixWorld);
+  }
+
   public dispose() {
     this.outerRing.geometry.dispose();
     (this.outerRing.material as THREE.Material).dispose();

@@ -205,6 +205,9 @@ export class RawInputEngine {
       this.rawInputSupported = !!promise && typeof promise.then === 'function';
       this.rawInputActive = this.rawInputSupported;
       this.locked = document.pointerLockElement === element;
+      // Promise resolution can precede pointerlockchange delivery. Once DOM
+      // ownership is confirmed, input must already be listening to the next click.
+      if (this.locked) this.handlePointerLockChange();
       return { success: this.locked, unadjusted: this.rawInputActive && this.locked };
     } catch {
       // Standard pointer lock fallback
@@ -216,6 +219,7 @@ export class RawInputEngine {
           await fallbackPromise;
         }
         this.locked = document.pointerLockElement === element;
+        if (this.locked) this.handlePointerLockChange();
         return { success: this.locked, unadjusted: false };
       } catch (fallbackError) {
         console.error("Pointer lock rejected:", fallbackError);

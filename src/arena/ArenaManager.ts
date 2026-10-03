@@ -442,24 +442,20 @@ export class ArenaManager {
 
     // 3. TARGET INTERSECTION (Task 7, 8, 9, 10)
     // Only test against targets (dummy gun and environment are NEVER tested)
-    const targetMeshes = this.targets.filter(t => !t.isHitState).map((t) => t.mesh);
-    const intersects = this.raycaster.intersectObjects(targetMeshes, true);
+    // A triangle fan can falsely reject its exact shared center vertex after
+    // floating-point world transforms. Intersect the same visible polygon in
+    // the target plane directly, preserving the disk boundary and depth order.
+    const intersects = this.targets.flatMap(target => {
+      const point = target.intersectRay(this.raycaster.ray);
+      return point ? [{ target, point, distance: point.distanceTo(rayOrigin) }] : [];
+    }).sort((a, b) => a.distance - b.distance);
 
     let hitTarget: TargetEntity | null = null;
     let hitPoint: THREE.Vector3 = rayOrigin.clone().addScaledVector(rayDirection, 30);
 
     if (intersects.length > 0) {
-      for (const intersect of intersects) {
-        let obj: THREE.Object3D | null = intersect.object;
-        while (obj && !obj.userData?.targetEntity && obj.parent) {
-          obj = obj.parent;
-        }
-        if (obj?.userData?.targetEntity) {
-          hitTarget = obj.userData.targetEntity as TargetEntity;
-          hitPoint = intersect.point.clone();
-          break;
-        }
-      }
+      hitTarget = intersects[0].target;
+      hitPoint = intersects[0].point;
     }
 
     // 4. ANGULAR ERROR MEASUREMENT (Task 20)

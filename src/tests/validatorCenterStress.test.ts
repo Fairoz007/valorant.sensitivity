@@ -47,10 +47,12 @@ describe('seeded validator center-ray stress', () => {
         useAppStore.getState().setPhase('warmup');
         const engine=new RawInputEngine(), arena=new ArenaManager(null,engine), coordinator=new TestCoordinator(arena,engine);
         try {
+          const visited = new Set<string>();
           coordinator.startWarmup();
           for (let i=0;i<2500 && useAppStore.getState().phase!=='results';i++) {
             clock+=120; vi.advanceTimersByTime(120);
             const phase=useAppStore.getState().phase;
+            visited.add(phase);
             if(phase==='results') break;
             if(phase==='rest') {coordinator.resumeAfterRest();continue;}
             const target=arena.getActiveTargets()[0]; expect(target).toBeDefined();
@@ -65,7 +67,10 @@ describe('seeded validator center-ray stress', () => {
             expect(event.isHit,JSON.stringify({session,i,phase,ty,tp,start,cam:arena.getCameraOrientation(),error:event.angularErrorDeg})).toBe(true);
           }
           expect(useAppStore.getState().phase).toBe('results');
-          expect(useAppStore.getState().allTrialResults.length).toBeGreaterThanOrEqual(195);
+          expect([...visited]).toEqual(expect.arrayContaining(['warmup','coarse','bracketing','fine','confirmation','results']));
+          // Confirmation adds current sensitivity only when outside the winning neighborhood.
+          expect(useAppStore.getState().allTrialResults.length).toBeGreaterThanOrEqual(182);
+          expect(new Set(useAppStore.getState().allTrialResults.map(t => t.candidateId)).size).toBeGreaterThanOrEqual(14);
           expect(useAppStore.getState().finalRecommendation?.recommendedSens).toBeGreaterThan(0);
         } finally {coordinator.stop();arena.dispose();engine.dispose();}
       }

@@ -131,7 +131,8 @@ try {
       trialCount: s.allTrialResults.length, validTrials: s.allTrialResults.filter(t => t.isValid).length,
       candidateCount: new Set(s.allTrialResults.map(t => t.candidateId)).size,
       rawCount: s.allTrialResults.reduce((n, t) => n + t.rawCounts.totalRawVectorTravel, 0),
-      completeTrajectories: s.allTrialResults.every(t => t.rawTrajectory?.length === t.rawSamplesCount && t.fullTrajectory?.length >= t.trajectorySummary.length && t.rawTrajectory.every(p => p.timestamp <= t.shotTime)),
+      completeTrajectories: s.allTrialResults.every(t => t.rawTrajectory?.length === t.rawSamplesCount && t.fullTrajectory?.length >= t.rawTrajectory.length + 1 && t.rawTrajectory.every(p => p.timestamp <= t.shotTime)),
+      incompleteTrajectoryExamples: s.allTrialResults.filter(t => !t.rawTrajectory || !t.fullTrajectory || t.rawTrajectory.length !== t.rawSamplesCount || t.fullTrajectory.length < t.rawTrajectory.length + 1 || t.rawTrajectory.some(p => p.timestamp > t.shotTime)).slice(0, 3).map(t => ({ id: t.id, samples: t.rawSamplesCount, raw: t.rawTrajectory?.length, path: t.fullTrajectory?.length, shotTime: t.shotTime })),
       arenaTornDown: !window.__valorantArena };
   });
   assert.equal(final.phase, 'results', JSON.stringify(final));
@@ -140,7 +141,7 @@ try {
   assert.ok(final.result.recommendedRange[0] <= final.result.recommendedSens);
   assert.ok(final.result.recommendedRange[1] >= final.result.recommendedSens);
   assert.ok(final.trialCount > 0 && final.validTrials > 0 && final.candidateCount > 1 && final.rawCount > 0);
-  assert.ok(final.completeTrajectories, 'Full event trajectories were not persisted');
+  assert.ok(final.completeTrajectories, `Full event trajectories were not persisted: ${JSON.stringify(final.incompleteTrajectoryExamples)}`);
   for (const phase of ['warmup', 'coarse', 'bracketing', 'fine', 'confirmation', 'results']) assert.ok(phases.has(phase), phase);
   await page.getByText(final.result.recommendedSens.toFixed(3), { exact: true }).first().waitFor();
   assert.equal(errors.length, 0, errors.join('\n'));

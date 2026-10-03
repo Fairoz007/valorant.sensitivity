@@ -2,6 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { ArenaManager } from '../arena/ArenaManager';
 import { RawInputEngine } from '../engine/RawInputEngine';
 import { VALORANT_YAW_DEG_PER_COUNT } from '../config/constants';
+import * as THREE from 'three';
 
 describe('Click-time shooting isolation', () => {
   let engine: RawInputEngine;
@@ -53,6 +54,19 @@ describe('Click-time shooting isolation', () => {
     arena.setCameraOrientation(10, 5);
     expect(arena.processShot(20).isHit).toBe(true);
     expect(recorded).toEqual([false, true]);
+  });
+
+  it('preserves the visible outer polygon boundary rather than enlarging its hitbox', () => {
+    const target = arena.spawnTarget(0, 0, 1.25);
+    const radius = target.distance * Math.tan(THREE.MathUtils.degToRad(target.radiusDeg));
+    const angle = Math.PI / 256;
+    const edgeRadius = radius * Math.cos(angle);
+    const rayAt = (travel: number) => new THREE.Ray(new THREE.Vector3(),
+      new THREE.Vector3(travel * Math.cos(angle), travel * Math.sin(angle), -target.distance).normalize());
+    expect(target.intersectRay(rayAt(edgeRadius * 0.99999))).not.toBeNull();
+    // This point is inside an analytic circle but outside the rendered polygon.
+    expect(target.intersectRay(rayAt((radius + edgeRadius) / 2))).toBeNull();
+    expect(target.intersectRay(rayAt(radius * 1.001))).toBeNull();
   });
 
   it('finalizes and removes the target even when weapon cosmetics fail', () => {

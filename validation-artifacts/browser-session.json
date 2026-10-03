@@ -12,64 +12,64 @@
   ],
   "candidates": [
     [
-      "p1_c3",
-      0.345
-    ],
-    [
-      "p1_c0",
-      0.21
-    ],
-    [
       "p1_c1",
       0.255
-    ],
-    [
-      "p1_c2",
-      0.3
     ],
     [
       "p1_c4",
       0.39
     ],
     [
-      "p2_c2",
-      0.3726
+      "p1_c0",
+      0.21
     ],
     [
-      "p2_c0",
-      0.3174
+      "p1_c2",
+      0.3
     ],
     [
-      "p2_c1",
+      "p1_c3",
       0.345
     ],
     [
-      "p3_c0",
-      0.35769599999999996
+      "p2_c1",
+      0.3
     ],
     [
-      "p3_c2",
-      0.387504
+      "p2_c0",
+      0.276
+    ],
+    [
+      "p2_c2",
+      0.324
     ],
     [
       "p3_c1",
-      0.3726
+      0.276
     ],
     [
-      "p4_c2",
-      0.3755808
+      "p3_c2",
+      0.28704
+    ],
+    [
+      "p3_c0",
+      0.26496000000000003
     ],
     [
       "p4_c1",
-      0.35769599999999996
-    ],
-    [
-      "p4_c0",
-      0.3398111999999999
+      0.276
     ],
     [
       "p4_current",
       0.3
+    ],
+    [
+      "p4_c0",
+      0.2622
+    ],
+    [
+      "p4_c2",
+      0.28980000000000006
     ]
   ],
   "geometry": [
@@ -124,24 +124,24 @@
     "trialsCompleted": 195,
     "candidatesTested": 11,
     "shotsAnalyzed": 195,
-    "medianEndpointErrorDeg": 0.00846186894464786,
+    "medianEndpointErrorDeg": 0.007929925084296201,
     "overshootRate": 0,
     "undershootRate": 0,
-    "recommendedSens": 0.358,
+    "recommendedSens": 0.276,
     "recommendedRange": [
-      0.3,
-      0.3755808
+      0.2622,
+      0.3
     ],
     "dpi": 800,
-    "edpi": 286.4,
-    "cm360": 45.6,
+    "edpi": 220.8,
+    "cm360": 59.2,
     "confidence": "MODERATE",
-    "confidenceScore": 74,
+    "confidenceScore": 73.4,
     "currentSens": 0.3,
     "currentEdpi": 240,
     "currentCm360": 54.4,
-    "percentageChange": 19.3,
-    "explanation": "The strongest tested confirmation candidate was 0.358, compared with your entered sensitivity of 0.300 (+19.3%). Across valid measured trials, first-shot accuracy was 100%, path efficiency was 100.0%, and median movement time was 81 ms. The session averaged 0.0 corrections per target; overshooting tendency was low and undershooting tendency was low. The strong-performing range describes similar tested scores. Confidence reflects this session's trial quality and candidate separation; it does not prove a universal optimum.",
+    "percentageChange": -8,
+    "explanation": "The strongest tested confirmation candidate was 0.276, compared with your entered sensitivity of 0.300 (-8.0%). Across valid measured trials, first-shot accuracy was 100%, path efficiency was 100.0%, and median movement time was 81 ms. The session averaged 0.0 corrections per target; overshooting tendency was low and undershooting tendency was low. The strong-performing range describes similar tested scores. Confidence reflects this session's trial quality and candidate separation; it does not prove a universal optimum.",
     "directionalScores": {
       "leftAimPct": 100,
       "rightAimPct": 100,
@@ -154,13 +154,13 @@
       "targetSwitching": 100,
       "control": 100,
       "movementEfficiency": 100,
-      "consistency": 94
+      "consistency": 92
     },
     "telemetrySummary": {
       "overshootTendency": "Low",
       "undershootTendency": "Low",
       "avgCorrections": 0,
-      "medianAcquisitionMs": 305,
+      "medianAcquisitionMs": 331,
       "medianMovementMs": 81,
       "pathEfficiencyPct": 100,
       "hitAccuracyPct": 100,
@@ -168,44 +168,44 @@
     },
     "sampleTrajectories": [
       {
-        "id": "t_1791019638907_8gdaa",
-        "candidateId": "p4_current",
-        "candidateSens": 0.3,
+        "id": "t_1791020582686_ywtp0",
+        "candidateId": "p4_c2",
+        "candidateSens": 0.28980000000000006,
         "scenario": "medium",
         "targetId": "tgt_medium_3",
         "isValid": true,
         "targetDirection": "LEFT",
-        "targetYawDelta": -18.00885206997816,
-        "targetPitchDelta": -0.18404340713628908,
-        "totalAngularDistance": 17.999990438210546,
+        "targetYawDelta": -18.00879170823191,
+        "targetPitchDelta": -0.18373682099177624,
+        "totalAngularDistance": 17.99999043821049,
         "targetRadiusDeg": 1.25,
         "rawCounts": {
           "totalRightCounts": 0,
-          "totalLeftCounts": 858,
-          "netHorizontalCounts": -858,
-          "absoluteHorizontalTravel": 858,
+          "totalLeftCounts": 888,
+          "netHorizontalCounts": -888,
+          "absoluteHorizontalTravel": 888,
           "totalUpCounts": 0,
           "totalDownCounts": 9,
           "netVerticalCounts": 9,
           "absoluteVerticalTravel": 9,
-          "totalRawVectorTravel": 858.0473408700468
+          "totalRawVectorTravel": 888.0457418042009
         },
-        "targetSpawnTime": 62114,
-        "movementStartTime": 62215,
-        "shotTime": 62296,
-        "reactionLatencyMs": 101,
+        "targetSpawnTime": 91351,
+        "movementStartTime": 91603,
+        "shotTime": 91684,
+        "reactionLatencyMs": 252,
         "movementTimeMs": 81,
-        "totalAcquisitionTimeMs": 182,
-        "peakVelocityDegPerSec": 142.6410889156228,
-        "peakAccelerationDegPerSec2": 1412.2880090655722,
-        "peakDecelerationDegPerSec2": 1210.4380466959863,
-        "timeToPeakVelocityMs": 0,
-        "stoppingControlScore": 92,
+        "totalAcquisitionTimeMs": 333,
+        "peakVelocityDegPerSec": 44.58192500482458,
+        "peakAccelerationDegPerSec2": 173.64795483960995,
+        "peakDecelerationDegPerSec2": 0,
+        "timeToPeakVelocityMs": 81,
+        "stoppingControlScore": 100,
         "firstFlickEndpointDeg": {
-          "yaw": -19.509,
-          "pitch": 1.7850000000000001
+          "yaw": -19.515132000000005,
+          "pitch": 1.7851680000000005
         },
-        "initialFlickErrorDeg": 0.010400529533713232,
+        "initialFlickErrorDeg": 0.005302844884422528,
         "isOvershoot": false,
         "overshootMagnitudeDeg": 0,
         "overshootPercentage": 0,
@@ -214,116 +214,174 @@
         "undershootPercentage": 0,
         "correctionCount": 0,
         "directionReversals": 0,
-        "idealDistanceDeg": 17.999990438210546,
-        "actualPathDistanceDeg": 18.00922951332559,
-        "pathEfficiency": 0.999486981099985,
-        "horizontalEndpointErrorDeg": -0.009147930021867978,
-        "verticalEndpointErrorDeg": -0.0049565928637109735,
-        "totalEndpointErrorDeg": 0.010400529533713232,
-        "endpointErrorDeg": 0.010400529533713232,
+        "idealDistanceDeg": 17.99999043821049,
+        "actualPathDistanceDeg": 18.005166250496515,
+        "pathEfficiency": 0.9997125373787713,
+        "horizontalEndpointErrorDeg": -0.005176291768066221,
+        "verticalEndpointErrorDeg": 0.0011628209917762256,
+        "totalEndpointErrorDeg": 0.005302844884422528,
+        "endpointErrorDeg": 0.005302844884422528,
         "isHit": true,
         "firstShotHit": true,
-        "firstShotHorizontalErrorDeg": -0.009147930021867978,
-        "firstShotVerticalErrorDeg": -0.0049565928637109735,
-        "firstShotTotalErrorDeg": 0.010400529533713232,
+        "firstShotHorizontalErrorDeg": -0.005176291768066221,
+        "firstShotVerticalErrorDeg": 0.0011628209917762256,
+        "firstShotTotalErrorDeg": 0.005302844884422528,
         "eventualHit": true,
         "shotsRequired": 1,
         "trajectorySummary": [
           {
             "t": 0,
-            "yaw": -1.4909999999999997,
-            "pitch": 1.9740000000000002,
+            "yaw": -1.5011640000000004,
+            "pitch": 1.9677420000000005,
             "v": 0,
             "dx": 0,
             "dy": 0
           },
           {
-            "t": 101,
-            "yaw": -15.897000000000002,
-            "pitch": 1.827,
-            "v": 142.6410889156228,
-            "dx": -686,
+            "t": 252,
+            "yaw": -15.904224000000005,
+            "pitch": 1.8257400000000006,
+            "v": 30.516440662816176,
+            "dx": -710,
             "dy": 7
           },
           {
-            "t": 182,
-            "yaw": -19.509,
-            "pitch": 1.7850000000000001,
-            "v": 44.595607133247896,
-            "dx": -172,
+            "t": 333,
+            "yaw": -19.515132000000005,
+            "pitch": 1.7851680000000005,
+            "v": 44.58192500482458,
+            "dx": -178,
             "dy": 2
           },
           {
-            "t": 182,
-            "yaw": -19.509,
-            "pitch": 1.7850000000000001,
+            "t": 333,
+            "yaw": -19.515132000000005,
+            "pitch": 1.7851680000000005,
             "v": 0,
             "dx": 0,
             "dy": 0
           },
           {
-            "t": 182,
-            "yaw": -19.509,
-            "pitch": 1.7850000000000001,
-            "v": 44.595607133247896,
-            "dx": -172,
+            "t": 333,
+            "yaw": -19.515132000000005,
+            "pitch": 1.7851680000000005,
+            "v": 44.58192500482458,
+            "dx": -178,
             "dy": 2
           }
         ],
         "targetPosDeg": {
-          "yaw": -19.499852069978157,
-          "pitch": 1.7899565928637111,
+          "yaw": -19.50995570823191,
+          "pitch": 1.7840051790082243,
           "radius": 1.25
         },
         "rawSamplesCount": 2,
+        "rawTrajectory": [
+          {
+            "timestamp": 91603,
+            "dx": -710,
+            "dy": 7,
+            "accumulatedX": -646,
+            "accumulatedY": -5062,
+            "cameraYaw": -15.904224000000005,
+            "cameraPitch": 1.8257400000000006,
+            "angularVelocityX": -30.514957627118655,
+            "angularVelocityY": -0.3008516949152544
+          },
+          {
+            "timestamp": 91684,
+            "dx": -178,
+            "dy": 2,
+            "accumulatedX": -824,
+            "accumulatedY": -5060,
+            "cameraYaw": -19.515132000000005,
+            "cameraPitch": 1.7851680000000005,
+            "angularVelocityX": -44.579111111111125,
+            "angularVelocityY": -0.500888888888889
+          }
+        ],
+        "fullTrajectory": [
+          {
+            "t": 0,
+            "yaw": -1.5011640000000004,
+            "pitch": 1.9677420000000005,
+            "v": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          {
+            "t": 252,
+            "yaw": -15.904224000000005,
+            "pitch": 1.8257400000000006,
+            "v": 30.516440662816176,
+            "dx": -710,
+            "dy": 7
+          },
+          {
+            "t": 333,
+            "yaw": -19.515132000000005,
+            "pitch": 1.7851680000000005,
+            "v": 44.58192500482458,
+            "dx": -178,
+            "dy": 2
+          },
+          {
+            "t": 333,
+            "yaw": -19.515132000000005,
+            "pitch": 1.7851680000000005,
+            "v": 0,
+            "dx": 0,
+            "dy": 0
+          }
+        ],
         "startPosDeg": {
-          "yaw": -1.4909999999999997,
-          "pitch": 1.9740000000000002
+          "yaw": -1.5011640000000004,
+          "pitch": 1.9677420000000005
         },
         "clickPosDeg": {
-          "yaw": -19.509,
-          "pitch": 1.7850000000000001
+          "yaw": -19.515132000000005,
+          "pitch": 1.7851680000000005
         }
       },
       {
-        "id": "t_1791019639216_ov8n7",
-        "candidateId": "p4_current",
-        "candidateSens": 0.3,
+        "id": "t_1791020583205_62y35",
+        "candidateId": "p4_c2",
+        "candidateSens": 0.28980000000000006,
         "scenario": "medium",
         "targetId": "tgt_medium_4",
         "isValid": true,
         "targetDirection": "RIGHT",
-        "targetYawDelta": 17.60019127438818,
-        "targetPitchDelta": 0.05752014952356199,
-        "totalAngularDistance": 17.591396718822853,
+        "targetYawDelta": 17.600192908608733,
+        "targetPitchDelta": 0.057512285385443285,
+        "totalAngularDistance": 17.591396718822892,
         "targetRadiusDeg": 1.25,
         "rawCounts": {
-          "totalRightCounts": 838,
+          "totalRightCounts": 868,
           "totalLeftCounts": 0,
-          "netHorizontalCounts": 838,
-          "absoluteHorizontalTravel": 838,
+          "netHorizontalCounts": 868,
+          "absoluteHorizontalTravel": 868,
           "totalUpCounts": 3,
           "totalDownCounts": 0,
           "netVerticalCounts": -3,
           "absoluteVerticalTravel": 3,
-          "totalRawVectorTravel": 838.0059612320915
+          "totalRawVectorTravel": 868.0057553778877
         },
-        "targetSpawnTime": 62297,
-        "movementStartTime": 62524,
-        "shotTime": 62605,
-        "reactionLatencyMs": 227,
-        "movementTimeMs": 81,
-        "totalAcquisitionTimeMs": 308,
-        "peakVelocityDegPerSec": 61.71080125626104,
-        "peakAccelerationDegPerSec2": 271.85375002758167,
-        "peakDecelerationDegPerSec2": 224.1293099086636,
-        "timeToPeakVelocityMs": 0,
+        "targetSpawnTime": 91851,
+        "movementStartTime": 92123,
+        "shotTime": 92203,
+        "reactionLatencyMs": 272,
+        "movementTimeMs": 80,
+        "totalAcquisitionTimeMs": 352,
+        "peakVelocityDegPerSec": 44.122778657776365,
+        "peakAccelerationDegPerSec2": 150.66507317169985,
+        "peakDecelerationDegPerSec2": 0,
+        "timeToPeakVelocityMs": 80,
         "stoppingControlScore": 100,
         "firstFlickEndpointDeg": {
-          "yaw": -1.9109999999999998,
-          "pitch": 1.8480000000000003
+          "yaw": -1.9068839999999978,
+          "pitch": 1.8460260000000004
         },
-        "initialFlickErrorDeg": 0.0059013105337306195,
+        "initialFlickErrorDeg": 0.00871843412520026,
         "isOvershoot": false,
         "overshootMagnitudeDeg": 0,
         "overshootPercentage": 0,
@@ -332,116 +390,174 @@
         "undershootPercentage": 0,
         "correctionCount": 0,
         "directionReversals": 0,
-        "idealDistanceDeg": 17.591396718822853,
-        "actualPathDistanceDeg": 17.589285838312243,
-        "pathEfficiency": 1,
-        "horizontalEndpointErrorDeg": -0.002191274388223974,
-        "verticalEndpointErrorDeg": 0.005479850476438175,
-        "totalEndpointErrorDeg": 0.0059013105337306195,
-        "endpointErrorDeg": 0.0059013105337306195,
+        "idealDistanceDeg": 17.591396718822892,
+        "actualPathDistanceDeg": 17.599527680239884,
+        "pathEfficiency": 0.9995380011574901,
+        "horizontalEndpointErrorDeg": 0.008055091391270253,
+        "verticalEndpointErrorDeg": 0.003345714614556572,
+        "totalEndpointErrorDeg": 0.00871843412520026,
+        "endpointErrorDeg": 0.00871843412520026,
         "isHit": true,
         "firstShotHit": true,
-        "firstShotHorizontalErrorDeg": -0.002191274388223974,
-        "firstShotVerticalErrorDeg": 0.005479850476438175,
-        "firstShotTotalErrorDeg": 0.0059013105337306195,
+        "firstShotHorizontalErrorDeg": 0.008055091391270253,
+        "firstShotVerticalErrorDeg": 0.003345714614556572,
+        "firstShotTotalErrorDeg": 0.00871843412520026,
         "eventualHit": true,
         "shotsRequired": 1,
         "trajectorySummary": [
           {
             "t": 0,
-            "yaw": -19.509,
-            "pitch": 1.7850000000000001,
+            "yaw": -19.515132000000005,
+            "pitch": 1.7851680000000005,
             "v": 0,
             "dx": 0,
             "dy": 0
           },
           {
-            "t": 227,
-            "yaw": -5.438999999999999,
-            "pitch": 1.827,
-            "v": 61.71080125626104,
-            "dx": 670,
+            "t": 272,
+            "yaw": -5.436647999999998,
+            "pitch": 1.8257400000000006,
+            "v": 32.06957280404038,
+            "dx": 694,
             "dy": -2
           },
           {
-            "t": 308,
-            "yaw": -1.9109999999999998,
-            "pitch": 1.8480000000000003,
-            "v": 43.55632715365929,
-            "dx": 168,
+            "t": 352,
+            "yaw": -1.9068839999999978,
+            "pitch": 1.8460260000000004,
+            "v": 44.122778657776365,
+            "dx": 174,
             "dy": -1
           },
           {
-            "t": 308,
-            "yaw": -1.9109999999999998,
-            "pitch": 1.8480000000000003,
+            "t": 352,
+            "yaw": -1.9068839999999978,
+            "pitch": 1.8460260000000004,
             "v": 0,
             "dx": 0,
             "dy": 0
           },
           {
-            "t": 308,
-            "yaw": -1.9109999999999998,
-            "pitch": 1.8480000000000003,
-            "v": 43.55632715365929,
-            "dx": 168,
+            "t": 352,
+            "yaw": -1.9068839999999978,
+            "pitch": 1.8460260000000004,
+            "v": 44.122778657776365,
+            "dx": 174,
             "dy": -1
           }
         ],
         "targetPosDeg": {
-          "yaw": -1.9088087256118202,
-          "pitch": 1.8425201495235621,
+          "yaw": -1.9149390913912718,
+          "pitch": 1.8426802853854438,
           "radius": 1.25
         },
         "rawSamplesCount": 2,
+        "rawTrajectory": [
+          {
+            "timestamp": 92123,
+            "dx": 694,
+            "dy": -2,
+            "accumulatedX": -130,
+            "accumulatedY": -5062,
+            "cameraYaw": -5.436647999999998,
+            "cameraPitch": 1.8257400000000006,
+            "angularVelocityX": 32.06943963553532,
+            "angularVelocityY": 0.09241913439635538
+          },
+          {
+            "timestamp": 92203,
+            "dx": 174,
+            "dy": -1,
+            "accumulatedX": 44,
+            "accumulatedY": -5063,
+            "cameraYaw": -1.9068839999999978,
+            "cameraPitch": 1.8460260000000004,
+            "angularVelocityX": 44.12205000000001,
+            "angularVelocityY": 0.25357500000000005
+          }
+        ],
+        "fullTrajectory": [
+          {
+            "t": 0,
+            "yaw": -19.515132000000005,
+            "pitch": 1.7851680000000005,
+            "v": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          {
+            "t": 272,
+            "yaw": -5.436647999999998,
+            "pitch": 1.8257400000000006,
+            "v": 32.06957280404038,
+            "dx": 694,
+            "dy": -2
+          },
+          {
+            "t": 352,
+            "yaw": -1.9068839999999978,
+            "pitch": 1.8460260000000004,
+            "v": 44.122778657776365,
+            "dx": 174,
+            "dy": -1
+          },
+          {
+            "t": 352,
+            "yaw": -1.9068839999999978,
+            "pitch": 1.8460260000000004,
+            "v": 0,
+            "dx": 0,
+            "dy": 0
+          }
+        ],
         "startPosDeg": {
-          "yaw": -19.509,
-          "pitch": 1.7850000000000001
+          "yaw": -19.515132000000005,
+          "pitch": 1.7851680000000005
         },
         "clickPosDeg": {
-          "yaw": -1.9109999999999998,
-          "pitch": 1.8480000000000003
+          "yaw": -1.9068839999999978,
+          "pitch": 1.8460260000000004
         }
       },
       {
-        "id": "t_1791019639593_db6f6",
-        "candidateId": "p4_current",
-        "candidateSens": 0.3,
+        "id": "t_1791020583563_0484g",
+        "candidateId": "p4_c2",
+        "candidateSens": 0.28980000000000006,
         "scenario": "medium",
         "targetId": "tgt_medium_5",
         "isValid": true,
         "targetDirection": "UP",
-        "targetYawDelta": -0.0436090774794593,
-        "targetPitchDelta": 16.6464668970439,
-        "totalAngularDistance": 16.64652180974993,
+        "targetYawDelta": -0.04360857495817072,
+        "targetPitchDelta": 16.64646689761567,
+        "totalAngularDistance": 16.646521809749927,
         "targetRadiusDeg": 1.25,
         "rawCounts": {
           "totalRightCounts": 0,
           "totalLeftCounts": 2,
           "netHorizontalCounts": -2,
           "absoluteHorizontalTravel": 2,
-          "totalUpCounts": 793,
+          "totalUpCounts": 821,
           "totalDownCounts": 0,
-          "netVerticalCounts": -793,
-          "absoluteVerticalTravel": 793,
-          "totalRawVectorTravel": 793.0031545662845
+          "netVerticalCounts": -821,
+          "absoluteVerticalTravel": 821,
+          "totalRawVectorTravel": 821.0030487734032
         },
-        "targetSpawnTime": 62605,
-        "movementStartTime": 62902,
-        "shotTime": 62982,
-        "reactionLatencyMs": 297,
-        "movementTimeMs": 80,
-        "totalAcquisitionTimeMs": 377,
-        "peakVelocityDegPerSec": 44.82850587842415,
-        "peakAccelerationDegPerSec2": 150.93773023038435,
-        "peakDecelerationDegPerSec2": 38.63757348030185,
+        "targetSpawnTime": 92323,
+        "movementStartTime": 92480,
+        "shotTime": 92561,
+        "reactionLatencyMs": 157,
+        "movementTimeMs": 81,
+        "totalAcquisitionTimeMs": 238,
+        "peakVelocityDegPerSec": 48.04215829392511,
+        "peakAccelerationDegPerSec2": 306.00100824156124,
+        "peakDecelerationDegPerSec2": 82.94845630360207,
         "timeToPeakVelocityMs": 0,
         "stoppingControlScore": 100,
         "firstFlickEndpointDeg": {
-          "yaw": -1.9529999999999998,
-          "pitch": 18.501000000000005
+          "yaw": -1.9474559999999974,
+          "pitch": 18.500832000000003
         },
-        "initialFlickErrorDeg": 0.006708945278378813,
+        "initialFlickErrorDeg": 0.008822322238104252,
         "isOvershoot": false,
         "overshootMagnitudeDeg": 0,
         "overshootPercentage": 0,
@@ -451,115 +567,173 @@
         "correctionCount": 0,
         "directionReversals": 0,
         "idealDistanceDeg": 16.646521809749927,
-        "actualPathDistanceDeg": 16.65306448540717,
-        "pathEfficiency": 0.9996071188181024,
-        "horizontalEndpointErrorDeg": 0.0016090774794292884,
-        "verticalEndpointErrorDeg": 0.006533102956105097,
-        "totalEndpointErrorDeg": 0.006708945278378813,
-        "endpointErrorDeg": 0.006708945278378813,
+        "actualPathDistanceDeg": 16.65486620574638,
+        "pathEfficiency": 0.9994989815052628,
+        "horizontalEndpointErrorDeg": 0.0030365749581733326,
+        "verticalEndpointErrorDeg": 0.008339102384329777,
+        "totalEndpointErrorDeg": 0.008822322238104252,
+        "endpointErrorDeg": 0.008822322238104252,
         "isHit": true,
         "firstShotHit": true,
-        "firstShotHorizontalErrorDeg": 0.0016090774794292884,
-        "firstShotVerticalErrorDeg": 0.006533102956105097,
-        "firstShotTotalErrorDeg": 0.006708945278378813,
+        "firstShotHorizontalErrorDeg": 0.0030365749581733326,
+        "firstShotVerticalErrorDeg": 0.008339102384329777,
+        "firstShotTotalErrorDeg": 0.008822322238104252,
         "eventualHit": true,
         "shotsRequired": 1,
         "trajectorySummary": [
           {
             "t": 0,
-            "yaw": -1.9109999999999998,
-            "pitch": 1.8480000000000003,
+            "yaw": -1.9068839999999978,
+            "pitch": 1.8460260000000004,
             "v": 0,
             "dx": 0,
             "dy": 0
           },
           {
-            "t": 297,
-            "yaw": -1.9529999999999998,
-            "pitch": 15.162000000000004,
-            "v": 44.82850587842415,
+            "t": 157,
+            "yaw": -1.9474559999999974,
+            "pitch": 15.153642000000005,
+            "v": 48.04215829392511,
             "dx": -2,
-            "dy": -634
+            "dy": -656
           },
           {
-            "t": 377,
-            "yaw": -1.9529999999999998,
-            "pitch": 18.501000000000005,
-            "v": 41.737500000000004,
+            "t": 238,
+            "yaw": -1.9474559999999974,
+            "pitch": 18.500832000000003,
+            "v": 41.323333333333345,
             "dx": 0,
-            "dy": -159
+            "dy": -165
           },
           {
-            "t": 377,
-            "yaw": -1.9529999999999998,
-            "pitch": 18.501000000000005,
+            "t": 238,
+            "yaw": -1.9474559999999974,
+            "pitch": 18.500832000000003,
             "v": 0,
             "dx": 0,
             "dy": 0
           },
           {
-            "t": 377,
-            "yaw": -1.9529999999999998,
-            "pitch": 18.501000000000005,
-            "v": 41.737500000000004,
+            "t": 238,
+            "yaw": -1.9474559999999974,
+            "pitch": 18.500832000000003,
+            "v": 41.323333333333345,
             "dx": 0,
-            "dy": -159
+            "dy": -165
           }
         ],
         "targetPosDeg": {
-          "yaw": -1.9546090774794591,
-          "pitch": 18.4944668970439,
+          "yaw": -1.9504925749581685,
+          "pitch": 18.492492897615673,
           "radius": 1.25
         },
         "rawSamplesCount": 2,
+        "rawTrajectory": [
+          {
+            "timestamp": 92480,
+            "dx": -2,
+            "dy": -656,
+            "accumulatedX": 42,
+            "accumulatedY": -5719,
+            "cameraYaw": -1.9474559999999974,
+            "cameraPitch": 15.153642000000005,
+            "angularVelocityX": -0.1464693140794224,
+            "angularVelocityY": 48.041935018050545
+          },
+          {
+            "timestamp": 92561,
+            "dx": 0,
+            "dy": -165,
+            "accumulatedX": 42,
+            "accumulatedY": -5884,
+            "cameraYaw": -1.9474559999999974,
+            "cameraPitch": 18.500832000000003,
+            "angularVelocityX": 0,
+            "angularVelocityY": 41.323333333333345
+          }
+        ],
+        "fullTrajectory": [
+          {
+            "t": 0,
+            "yaw": -1.9068839999999978,
+            "pitch": 1.8460260000000004,
+            "v": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          {
+            "t": 157,
+            "yaw": -1.9474559999999974,
+            "pitch": 15.153642000000005,
+            "v": 48.04215829392511,
+            "dx": -2,
+            "dy": -656
+          },
+          {
+            "t": 238,
+            "yaw": -1.9474559999999974,
+            "pitch": 18.500832000000003,
+            "v": 41.323333333333345,
+            "dx": 0,
+            "dy": -165
+          },
+          {
+            "t": 238,
+            "yaw": -1.9474559999999974,
+            "pitch": 18.500832000000003,
+            "v": 0,
+            "dx": 0,
+            "dy": 0
+          }
+        ],
         "startPosDeg": {
-          "yaw": -1.9109999999999998,
-          "pitch": 1.8480000000000003
+          "yaw": -1.9068839999999978,
+          "pitch": 1.8460260000000004
         },
         "clickPosDeg": {
-          "yaw": -1.9529999999999998,
-          "pitch": 18.501000000000005
+          "yaw": -1.9474559999999974,
+          "pitch": 18.500832000000003
         }
       },
       {
-        "id": "t_1791019639987_j7rft",
-        "candidateId": "p4_current",
-        "candidateSens": 0.3,
+        "id": "t_1791020583895_hmng4",
+        "candidateId": "p4_c2",
+        "candidateSens": 0.28980000000000006,
         "scenario": "medium",
         "targetId": "tgt_medium_6",
         "isValid": true,
         "targetDirection": "DOWN_RIGHT",
-        "targetYawDelta": 10.816889470464162,
-        "targetPitchDelta": -11.22528116557341,
-        "totalAngularDistance": 15.387075142514474,
+        "targetYawDelta": 10.816885445170783,
+        "targetPitchDelta": -11.225278180545875,
+        "totalAngularDistance": 15.387075142514481,
         "targetRadiusDeg": 1.25,
         "rawCounts": {
-          "totalRightCounts": 515,
+          "totalRightCounts": 533,
           "totalLeftCounts": 0,
-          "netHorizontalCounts": 515,
-          "absoluteHorizontalTravel": 515,
+          "netHorizontalCounts": 533,
+          "absoluteHorizontalTravel": 533,
           "totalUpCounts": 0,
-          "totalDownCounts": 535,
-          "netVerticalCounts": 535,
-          "absoluteVerticalTravel": 535,
-          "totalRawVectorTravel": 742.5967950375224
+          "totalDownCounts": 553,
+          "netVerticalCounts": 553,
+          "absoluteVerticalTravel": 553,
+          "totalRawVectorTravel": 768.0481765697027
         },
-        "targetSpawnTime": 62983,
-        "movementStartTime": 63295,
-        "shotTime": 63375,
-        "reactionLatencyMs": 312,
-        "movementTimeMs": 80,
-        "totalAcquisitionTimeMs": 392,
-        "peakVelocityDegPerSec": 39.858230532365425,
-        "peakAccelerationDegPerSec2": 127.75073888578662,
-        "peakDecelerationDegPerSec2": 10.898734911193753,
+        "targetSpawnTime": 92681,
+        "movementStartTime": 92812,
+        "shotTime": 92893,
+        "reactionLatencyMs": 131,
+        "movementTimeMs": 81,
+        "totalAcquisitionTimeMs": 212,
+        "peakVelocityDegPerSec": 49.72793051513097,
+        "peakAccelerationDegPerSec2": 379.60252301626696,
+        "peakDecelerationDegPerSec2": 141.60152737852312,
         "timeToPeakVelocityMs": 0,
         "stoppingControlScore": 100,
         "firstFlickEndpointDeg": {
-          "yaw": 8.862,
-          "pitch": 7.266
+          "yaw": 8.864982000000005,
+          "pitch": 7.282674000000003
         },
-        "initialFlickErrorDeg": 0.009897911765388859,
+        "initialFlickErrorDeg": 0.008376108996516455,
         "isOvershoot": false,
         "overshootMagnitudeDeg": 0,
         "overshootPercentage": 0,
@@ -568,116 +742,174 @@
         "undershootPercentage": 0,
         "correctionCount": 0,
         "directionReversals": 0,
-        "idealDistanceDeg": 15.387075142514474,
-        "actualPathDistanceDeg": 15.394106558822493,
-        "pathEfficiency": 0.9995432397274144,
-        "horizontalEndpointErrorDeg": -0.0018894704642207216,
-        "verticalEndpointErrorDeg": -0.009718834426595713,
-        "totalEndpointErrorDeg": 0.009897911765388859,
-        "endpointErrorDeg": 0.009897911765388859,
+        "idealDistanceDeg": 15.387075142514485,
+        "actualPathDistanceDeg": 15.379898301562088,
+        "pathEfficiency": 1,
+        "horizontalEndpointErrorDeg": -0.004447445170853825,
+        "verticalEndpointErrorDeg": 0.0071201805458755985,
+        "totalEndpointErrorDeg": 0.008376108996516455,
+        "endpointErrorDeg": 0.008376108996516455,
         "isHit": true,
         "firstShotHit": true,
-        "firstShotHorizontalErrorDeg": -0.0018894704642207216,
-        "firstShotVerticalErrorDeg": -0.009718834426595713,
-        "firstShotTotalErrorDeg": 0.009897911765388859,
+        "firstShotHorizontalErrorDeg": -0.004447445170853825,
+        "firstShotVerticalErrorDeg": 0.0071201805458755985,
+        "firstShotTotalErrorDeg": 0.008376108996516455,
         "eventualHit": true,
         "shotsRequired": 1,
         "trajectorySummary": [
           {
             "t": 0,
-            "yaw": -1.9529999999999998,
-            "pitch": 18.501000000000005,
+            "yaw": -1.9474559999999974,
+            "pitch": 18.500832000000003,
             "v": 0,
             "dx": 0,
             "dy": 0
           },
           {
-            "t": 312,
-            "yaw": 6.699000000000002,
-            "pitch": 9.513000000000002,
-            "v": 39.858230532365425,
-            "dx": 412,
-            "dy": 428
+            "t": 131,
+            "yaw": 6.714666000000005,
+            "pitch": 9.514134000000002,
+            "v": 49.72793051513097,
+            "dx": 427,
+            "dy": 443
           },
           {
-            "t": 392,
-            "yaw": 8.862,
-            "pitch": 7.266,
-            "v": 38.986331739469925,
-            "dx": 103,
-            "dy": 107
+            "t": 212,
+            "yaw": 8.864982000000005,
+            "pitch": 7.282674000000003,
+            "v": 38.2582067974706,
+            "dx": 106,
+            "dy": 110
           },
           {
-            "t": 392,
-            "yaw": 8.862,
-            "pitch": 7.266,
+            "t": 212,
+            "yaw": 8.864982000000005,
+            "pitch": 7.282674000000003,
             "v": 0,
             "dx": 0,
             "dy": 0
           },
           {
-            "t": 392,
-            "yaw": 8.862,
-            "pitch": 7.266,
-            "v": 38.986331739469925,
-            "dx": 103,
-            "dy": 107
+            "t": 212,
+            "yaw": 8.864982000000005,
+            "pitch": 7.282674000000003,
+            "v": 38.2582067974706,
+            "dx": 106,
+            "dy": 110
           }
         ],
         "targetPosDeg": {
-          "yaw": 8.863889470464162,
-          "pitch": 7.275718834426596,
+          "yaw": 8.869429445170788,
+          "pitch": 7.275553819454127,
           "radius": 1.25
         },
         "rawSamplesCount": 2,
+        "rawTrajectory": [
+          {
+            "timestamp": 92812,
+            "dx": 427,
+            "dy": 443,
+            "accumulatedX": 469,
+            "accumulatedY": -5441,
+            "cameraYaw": 6.714666000000005,
+            "cameraPitch": 9.514134000000002,
+            "angularVelocityX": 34.51044621513945,
+            "angularVelocityY": -35.803577689243035
+          },
+          {
+            "timestamp": 92893,
+            "dx": 106,
+            "dy": 110,
+            "accumulatedX": 575,
+            "accumulatedY": -5331,
+            "cameraYaw": 8.864982000000005,
+            "cameraPitch": 7.282674000000003,
+            "angularVelocityX": 26.547111111111118,
+            "angularVelocityY": -27.548888888888897
+          }
+        ],
+        "fullTrajectory": [
+          {
+            "t": 0,
+            "yaw": -1.9474559999999974,
+            "pitch": 18.500832000000003,
+            "v": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          {
+            "t": 131,
+            "yaw": 6.714666000000005,
+            "pitch": 9.514134000000002,
+            "v": 49.72793051513097,
+            "dx": 427,
+            "dy": 443
+          },
+          {
+            "t": 212,
+            "yaw": 8.864982000000005,
+            "pitch": 7.282674000000003,
+            "v": 38.2582067974706,
+            "dx": 106,
+            "dy": 110
+          },
+          {
+            "t": 212,
+            "yaw": 8.864982000000005,
+            "pitch": 7.282674000000003,
+            "v": 0,
+            "dx": 0,
+            "dy": 0
+          }
+        ],
         "startPosDeg": {
-          "yaw": -1.9529999999999998,
-          "pitch": 18.501000000000005
+          "yaw": -1.9474559999999974,
+          "pitch": 18.500832000000003
         },
         "clickPosDeg": {
-          "yaw": 8.862,
-          "pitch": 7.266
+          "yaw": 8.864982000000005,
+          "pitch": 7.282674000000003
         }
       },
       {
-        "id": "t_1791019640180_89ql4",
-        "candidateId": "p4_current",
-        "candidateSens": 0.3,
+        "id": "t_1791020584460_ozjg7",
+        "candidateId": "p4_c2",
+        "candidateSens": 0.28980000000000006,
         "scenario": "large",
         "targetId": "tgt_large_7",
         "isValid": true,
         "targetDirection": "LEFT",
-        "targetYawDelta": -44.683636852875566,
-        "targetPitchDelta": -2.086156178321965,
+        "targetYawDelta": -44.68470098730688,
+        "targetPitchDelta": -2.0909750676949415,
         "totalAngularDistance": 44.45268302876506,
         "targetRadiusDeg": 1.6,
         "rawCounts": {
           "totalRightCounts": 0,
-          "totalLeftCounts": 2128,
-          "netHorizontalCounts": -2128,
-          "absoluteHorizontalTravel": 2128,
+          "totalLeftCounts": 2203,
+          "netHorizontalCounts": -2203,
+          "absoluteHorizontalTravel": 2203,
           "totalUpCounts": 0,
-          "totalDownCounts": 99,
-          "netVerticalCounts": 99,
-          "absoluteVerticalTravel": 99,
-          "totalRawVectorTravel": 2130.3016699637014
+          "totalDownCounts": 103,
+          "netVerticalCounts": 103,
+          "absoluteVerticalTravel": 103,
+          "totalRawVectorTravel": 2205.406743902554
         },
-        "targetSpawnTime": 63376,
-        "movementStartTime": 63488,
-        "shotTime": 63569,
-        "reactionLatencyMs": 112,
-        "movementTimeMs": 81,
-        "totalAcquisitionTimeMs": 193,
-        "peakVelocityDegPerSec": 316.64142779724557,
-        "peakAccelerationDegPerSec2": 2827.15560533255,
-        "peakDecelerationDegPerSec2": 2544.1399060246777,
-        "timeToPeakVelocityMs": 0,
+        "targetSpawnTime": 93093,
+        "movementStartTime": 93378,
+        "shotTime": 93458,
+        "reactionLatencyMs": 285,
+        "movementTimeMs": 80,
+        "totalAcquisitionTimeMs": 365,
+        "peakVelocityDegPerSec": 111.95329070637565,
+        "peakAccelerationDegPerSec2": 477.1837124302843,
+        "peakDecelerationDegPerSec2": 0,
+        "timeToPeakVelocityMs": 80,
         "stoppingControlScore": 92,
         "firstFlickEndpointDeg": {
-          "yaw": -35.82600000000001,
-          "pitch": 5.187
+          "yaw": -35.825075999999996,
+          "pitch": 5.193216000000002
         },
-        "initialFlickErrorDeg": 0.008372129858240086,
+        "initialFlickErrorDeg": 0.005546533269052987,
         "isOvershoot": false,
         "overshootMagnitudeDeg": 0,
         "overshootPercentage": 0,
@@ -687,115 +919,173 @@
         "correctionCount": 0,
         "directionReversals": 0,
         "idealDistanceDeg": 44.45268302876506,
-        "actualPathDistanceDeg": 44.46275757314106,
-        "pathEfficiency": 0.9997734161143867,
-        "horizontalEndpointErrorDeg": -0.0043631471244225395,
-        "verticalEndpointErrorDeg": 0.007156178321965356,
-        "totalEndpointErrorDeg": 0.008372129858240086,
-        "endpointErrorDeg": 0.008372129858240086,
+        "actualPathDistanceDeg": 44.464105040535834,
+        "pathEfficiency": 0.9997431183701918,
+        "horizontalEndpointErrorDeg": -0.0053570126931390405,
+        "verticalEndpointErrorDeg": 0.0015170676949409767,
+        "totalEndpointErrorDeg": 0.005546533269052987,
+        "endpointErrorDeg": 0.005546533269052987,
         "isHit": true,
         "firstShotHit": true,
-        "firstShotHorizontalErrorDeg": -0.0043631471244225395,
-        "firstShotVerticalErrorDeg": 0.007156178321965356,
-        "firstShotTotalErrorDeg": 0.008372129858240086,
+        "firstShotHorizontalErrorDeg": -0.0053570126931390405,
+        "firstShotVerticalErrorDeg": 0.0015170676949409767,
+        "firstShotTotalErrorDeg": 0.005546533269052987,
         "eventualHit": true,
         "shotsRequired": 1,
         "trajectorySummary": [
           {
             "t": 0,
-            "yaw": 8.862,
-            "pitch": 7.266,
+            "yaw": 8.864982000000005,
+            "pitch": 7.282674000000003,
             "v": 0,
             "dx": 0,
             "dy": 0
           },
           {
-            "t": 112,
-            "yaw": -26.880000000000006,
-            "pitch": 5.607000000000001,
-            "v": 316.64142779724557,
-            "dx": -1702,
-            "dy": 79
+            "t": 285,
+            "yaw": -26.878949999999996,
+            "pitch": 5.619222000000003,
+            "v": 73.77859371195291,
+            "dx": -1762,
+            "dy": 82
           },
           {
-            "t": 193,
-            "yaw": -35.82600000000001,
-            "pitch": 5.187,
-            "v": 110.56609540924669,
-            "dx": -426,
-            "dy": 20
+            "t": 365,
+            "yaw": -35.825075999999996,
+            "pitch": 5.193216000000002,
+            "v": 111.95329070637565,
+            "dx": -441,
+            "dy": 21
           },
           {
-            "t": 193,
-            "yaw": -35.82600000000001,
-            "pitch": 5.187,
+            "t": 365,
+            "yaw": -35.825075999999996,
+            "pitch": 5.193216000000002,
             "v": 0,
             "dx": 0,
             "dy": 0
           },
           {
-            "t": 193,
-            "yaw": -35.82600000000001,
-            "pitch": 5.187,
-            "v": 110.56609540924669,
-            "dx": -426,
-            "dy": 20
+            "t": 365,
+            "yaw": -35.825075999999996,
+            "pitch": 5.193216000000002,
+            "v": 111.95329070637565,
+            "dx": -441,
+            "dy": 21
           }
         ],
         "targetPosDeg": {
-          "yaw": -35.821636852875564,
-          "pitch": 5.179843821678035,
+          "yaw": -35.81971898730688,
+          "pitch": 5.191698932305061,
           "radius": 1.6
         },
         "rawSamplesCount": 2,
+        "rawTrajectory": [
+          {
+            "timestamp": 93378,
+            "dx": -1762,
+            "dy": 82,
+            "accumulatedX": -1187,
+            "accumulatedY": -5249,
+            "cameraYaw": -26.878949999999996,
+            "cameraPitch": 5.619222000000003,
+            "angularVelocityX": -73.6988288659794,
+            "angularVelocityY": -3.429797938144331
+          },
+          {
+            "timestamp": 93458,
+            "dx": -441,
+            "dy": 21,
+            "accumulatedX": -1628,
+            "accumulatedY": -5228,
+            "cameraYaw": -35.825075999999996,
+            "cameraPitch": 5.193216000000002,
+            "angularVelocityX": -111.82657500000003,
+            "angularVelocityY": -5.325075000000001
+          }
+        ],
+        "fullTrajectory": [
+          {
+            "t": 0,
+            "yaw": 8.864982000000005,
+            "pitch": 7.282674000000003,
+            "v": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          {
+            "t": 285,
+            "yaw": -26.878949999999996,
+            "pitch": 5.619222000000003,
+            "v": 73.77859371195291,
+            "dx": -1762,
+            "dy": 82
+          },
+          {
+            "t": 365,
+            "yaw": -35.825075999999996,
+            "pitch": 5.193216000000002,
+            "v": 111.95329070637565,
+            "dx": -441,
+            "dy": 21
+          },
+          {
+            "t": 365,
+            "yaw": -35.825075999999996,
+            "pitch": 5.193216000000002,
+            "v": 0,
+            "dx": 0,
+            "dy": 0
+          }
+        ],
         "startPosDeg": {
-          "yaw": 8.862,
-          "pitch": 7.266
+          "yaw": 8.864982000000005,
+          "pitch": 7.282674000000003
         },
         "clickPosDeg": {
-          "yaw": -35.82600000000001,
-          "pitch": 5.187
+          "yaw": -35.825075999999996,
+          "pitch": 5.193216000000002
         }
       },
       {
-        "id": "t_1791019640624_2e3ov",
-        "candidateId": "p4_current",
-        "candidateSens": 0.3,
+        "id": "t_1791020585099_1knon",
+        "candidateId": "p4_c2",
+        "candidateSens": 0.28980000000000006,
         "scenario": "large",
         "targetId": "tgt_large_8",
         "isValid": true,
         "targetDirection": "RIGHT",
-        "targetYawDelta": 39.66732497611997,
-        "targetPitchDelta": -1.1897894606213866,
-        "totalAngularDistance": 39.55184415169056,
+        "targetYawDelta": 39.667602408586845,
+        "targetPitchDelta": -1.1912206189999344,
+        "totalAngularDistance": 39.551844151690545,
         "targetRadiusDeg": 1.6,
         "rawCounts": {
-          "totalRightCounts": 1889,
+          "totalRightCounts": 1955,
           "totalLeftCounts": 0,
-          "netHorizontalCounts": 1889,
-          "absoluteHorizontalTravel": 1889,
+          "netHorizontalCounts": 1955,
+          "absoluteHorizontalTravel": 1955,
           "totalUpCounts": 0,
-          "totalDownCounts": 57,
-          "netVerticalCounts": 57,
-          "absoluteVerticalTravel": 57,
-          "totalRawVectorTravel": 1889.860365743097
+          "totalDownCounts": 59,
+          "netVerticalCounts": 59,
+          "absoluteVerticalTravel": 59,
+          "totalRawVectorTravel": 1955.8901425615948
         },
-        "targetSpawnTime": 63569,
-        "movementStartTime": 63932,
-        "shotTime": 64012,
-        "reactionLatencyMs": 363,
-        "movementTimeMs": 80,
-        "totalAcquisitionTimeMs": 443,
-        "peakVelocityDegPerSec": 99.27498740871238,
-        "peakAccelerationDegPerSec2": 240.91454505921763,
+        "targetSpawnTime": 93634,
+        "movementStartTime": 94011,
+        "shotTime": 94097,
+        "reactionLatencyMs": 377,
+        "movementTimeMs": 86,
+        "totalAcquisitionTimeMs": 463,
+        "peakVelocityDegPerSec": 92.27396104876203,
+        "peakAccelerationDegPerSec2": 405.523228019564,
         "peakDecelerationDegPerSec2": 0,
-        "timeToPeakVelocityMs": 80,
+        "timeToPeakVelocityMs": 86,
         "stoppingControlScore": 100,
         "firstFlickEndpointDeg": {
-          "yaw": 3.8429999999999933,
-          "pitch": 3.9900000000000007
+          "yaw": 3.834054000000008,
+          "pitch": 3.996342000000002
         },
-        "initialFlickErrorDeg": 0.007401619701641451,
+        "initialFlickErrorDeg": 0.010168248696139361,
         "isOvershoot": false,
         "overshootMagnitudeDeg": 0,
         "overshootPercentage": 0,
@@ -804,116 +1094,174 @@
         "undershootPercentage": 0,
         "correctionCount": 0,
         "directionReversals": 0,
-        "idealDistanceDeg": 39.55184415169056,
-        "actualPathDistanceDeg": 39.556072571200396,
-        "pathEfficiency": 0.999893103151173,
-        "horizontalEndpointErrorDeg": 0.0016750238800113948,
-        "verticalEndpointErrorDeg": -0.007210539378613046,
-        "totalEndpointErrorDeg": 0.007401619701641451,
-        "endpointErrorDeg": 0.007401619701641451,
+        "idealDistanceDeg": 39.551844151690545,
+        "actualPathDistanceDeg": 39.546102294423115,
+        "pathEfficiency": 1,
+        "horizontalEndpointErrorDeg": -0.008472408586840174,
+        "verticalEndpointErrorDeg": -0.005653381000065849,
+        "totalEndpointErrorDeg": 0.010168248696139361,
+        "endpointErrorDeg": 0.010168248696139361,
         "isHit": true,
         "firstShotHit": true,
-        "firstShotHorizontalErrorDeg": 0.0016750238800113948,
-        "firstShotVerticalErrorDeg": -0.007210539378613046,
-        "firstShotTotalErrorDeg": 0.007401619701641451,
+        "firstShotHorizontalErrorDeg": -0.008472408586840174,
+        "firstShotVerticalErrorDeg": -0.005653381000065849,
+        "firstShotTotalErrorDeg": 0.010168248696139361,
         "eventualHit": true,
         "shotsRequired": 1,
         "trajectorySummary": [
           {
             "t": 0,
-            "yaw": -35.82600000000001,
-            "pitch": 5.187,
+            "yaw": -35.825075999999996,
+            "pitch": 5.193216000000002,
             "v": 0,
             "dx": 0,
             "dy": 0
           },
           {
-            "t": 363,
-            "yaw": -4.095000000000006,
-            "pitch": 4.242000000000001,
-            "v": 87.451979856496,
-            "dx": 1511,
-            "dy": 45
+            "t": 377,
+            "yaw": -4.097771999999994,
+            "pitch": 4.2397740000000015,
+            "v": 57.39896343907953,
+            "dx": 1564,
+            "dy": 47
           },
           {
-            "t": 443,
-            "yaw": 3.8429999999999933,
-            "pitch": 3.9900000000000007,
-            "v": 99.27498740871238,
-            "dx": 378,
+            "t": 463,
+            "yaw": 3.834054000000008,
+            "pitch": 3.996342000000002,
+            "v": 92.27396104876203,
+            "dx": 391,
             "dy": 12
           },
           {
-            "t": 443,
-            "yaw": 3.8429999999999933,
-            "pitch": 3.9900000000000007,
+            "t": 463,
+            "yaw": 3.834054000000008,
+            "pitch": 3.996342000000002,
             "v": 0,
             "dx": 0,
             "dy": 0
           },
           {
-            "t": 443,
-            "yaw": 3.8429999999999933,
-            "pitch": 3.9900000000000007,
-            "v": 99.27498740871238,
-            "dx": 378,
+            "t": 463,
+            "yaw": 3.834054000000008,
+            "pitch": 3.996342000000002,
+            "v": 92.27396104876203,
+            "dx": 391,
             "dy": 12
           }
         ],
         "targetPosDeg": {
-          "yaw": 3.8413249761199637,
-          "pitch": 3.9972105393786137,
+          "yaw": 3.842526408586849,
+          "pitch": 4.001995381000068,
           "radius": 1.6
         },
         "rawSamplesCount": 2,
+        "rawTrajectory": [
+          {
+            "timestamp": 94011,
+            "dx": 1564,
+            "dy": 47,
+            "accumulatedX": -64,
+            "accumulatedY": -5181,
+            "cameraYaw": -4.097771999999994,
+            "cameraPitch": 4.2397740000000015,
+            "angularVelocityX": 57.373063291139246,
+            "angularVelocityY": -1.7241265822784813
+          },
+          {
+            "timestamp": 94097,
+            "dx": 391,
+            "dy": 12,
+            "accumulatedX": 327,
+            "accumulatedY": -5169,
+            "cameraYaw": 3.834054000000008,
+            "cameraPitch": 3.996342000000002,
+            "angularVelocityX": 92.23053488372096,
+            "angularVelocityY": -2.830604651162792
+          }
+        ],
+        "fullTrajectory": [
+          {
+            "t": 0,
+            "yaw": -35.825075999999996,
+            "pitch": 5.193216000000002,
+            "v": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          {
+            "t": 377,
+            "yaw": -4.097771999999994,
+            "pitch": 4.2397740000000015,
+            "v": 57.39896343907953,
+            "dx": 1564,
+            "dy": 47
+          },
+          {
+            "t": 463,
+            "yaw": 3.834054000000008,
+            "pitch": 3.996342000000002,
+            "v": 92.27396104876203,
+            "dx": 391,
+            "dy": 12
+          },
+          {
+            "t": 463,
+            "yaw": 3.834054000000008,
+            "pitch": 3.996342000000002,
+            "v": 0,
+            "dx": 0,
+            "dy": 0
+          }
+        ],
         "startPosDeg": {
-          "yaw": -35.82600000000001,
-          "pitch": 5.187
+          "yaw": -35.825075999999996,
+          "pitch": 5.193216000000002
         },
         "clickPosDeg": {
-          "yaw": 3.8429999999999933,
-          "pitch": 3.9900000000000007
+          "yaw": 3.834054000000008,
+          "pitch": 3.996342000000002
         }
       },
       {
-        "id": "t_1791019640822_6hiqc",
-        "candidateId": "p4_current",
-        "candidateSens": 0.3,
+        "id": "t_1791020585430_cp4o9",
+        "candidateId": "p4_c2",
+        "candidateSens": 0.28980000000000006,
         "scenario": "switching",
         "targetId": "tgt_switch_9",
         "isValid": true,
         "targetDirection": "LEFT",
-        "targetYawDelta": -11.026072251537471,
-        "targetPitchDelta": -0.0734230096297992,
-        "totalAngularDistance": 11.000000000000064,
+        "targetYawDelta": -11.02615536080259,
+        "targetPitchDelta": -0.07354008221315045,
+        "totalAngularDistance": 11.00000000000001,
         "targetRadiusDeg": 1.2,
         "rawCounts": {
           "totalRightCounts": 0,
-          "totalLeftCounts": 525,
-          "netHorizontalCounts": -525,
-          "absoluteHorizontalTravel": 525,
+          "totalLeftCounts": 544,
+          "netHorizontalCounts": -544,
+          "absoluteHorizontalTravel": 544,
           "totalUpCounts": 0,
-          "totalDownCounts": 3,
-          "netVerticalCounts": 3,
-          "absoluteVerticalTravel": 3,
-          "totalRawVectorTravel": 525.010714149056
+          "totalDownCounts": 4,
+          "netVerticalCounts": 4,
+          "absoluteVerticalTravel": 4,
+          "totalRawVectorTravel": 544.0149317640273
         },
-        "targetSpawnTime": 64013,
-        "movementStartTime": 64130,
-        "shotTime": 64211,
-        "reactionLatencyMs": 117,
+        "targetSpawnTime": 94217,
+        "movementStartTime": 94347,
+        "shotTime": 94428,
+        "reactionLatencyMs": 130,
         "movementTimeMs": 81,
-        "totalAcquisitionTimeMs": 198,
-        "peakVelocityDegPerSec": 74.74766946720487,
-        "peakAccelerationDegPerSec2": 638.8689698051699,
-        "peakDecelerationDegPerSec2": 586.7339166047241,
+        "totalAcquisitionTimeMs": 211,
+        "peakVelocityDegPerSec": 35.29847941070868,
+        "peakAccelerationDegPerSec2": 271.52676469775906,
+        "peakDecelerationDegPerSec2": 98.75168102111155,
         "timeToPeakVelocityMs": 0,
-        "stoppingControlScore": 92,
+        "stoppingControlScore": 100,
         "firstFlickEndpointDeg": {
-          "yaw": -7.182000000000007,
-          "pitch": 3.9270000000000005
+          "yaw": -7.201529999999996,
+          "pitch": 3.915198000000003
         },
-        "initialFlickErrorDeg": 0.010477760967177726,
+        "initialFlickErrorDeg": 0.01209559990839728,
         "isOvershoot": false,
         "overshootMagnitudeDeg": 0,
         "overshootPercentage": 0,
@@ -922,116 +1270,174 @@
         "undershootPercentage": 0,
         "correctionCount": 0,
         "directionReversals": 0,
-        "idealDistanceDeg": 11.000000000000064,
-        "actualPathDistanceDeg": 10.99896411499345,
-        "pathEfficiency": 1,
-        "horizontalEndpointErrorDeg": 0.0010722515374936847,
-        "verticalEndpointErrorDeg": 0.01042300962979903,
-        "totalEndpointErrorDeg": 0.010477760967177726,
-        "endpointErrorDeg": 0.010477760967177726,
+        "idealDistanceDeg": 11.00000000000001,
+        "actualPathDistanceDeg": 11.009526480318964,
+        "pathEfficiency": 0.9991347057172728,
+        "horizontalEndpointErrorDeg": -0.009428639197381017,
+        "verticalEndpointErrorDeg": -0.007603917786848768,
+        "totalEndpointErrorDeg": 0.01209559990839728,
+        "endpointErrorDeg": 0.01209559990839728,
         "isHit": true,
         "firstShotHit": true,
-        "firstShotHorizontalErrorDeg": 0.0010722515374936847,
-        "firstShotVerticalErrorDeg": 0.01042300962979903,
-        "firstShotTotalErrorDeg": 0.010477760967177726,
+        "firstShotHorizontalErrorDeg": -0.009428639197381017,
+        "firstShotVerticalErrorDeg": -0.007603917786848768,
+        "firstShotTotalErrorDeg": 0.01209559990839728,
         "eventualHit": true,
         "shotsRequired": 1,
         "trajectorySummary": [
           {
             "t": 0,
-            "yaw": 3.8429999999999933,
-            "pitch": 3.9900000000000007,
+            "yaw": 3.834054000000008,
+            "pitch": 3.996342000000002,
             "v": 0,
             "dx": 0,
             "dy": 0
           },
           {
-            "t": 117,
-            "yaw": -4.9770000000000065,
-            "pitch": 3.9270000000000005,
-            "v": 74.74766946720487,
-            "dx": -420,
+            "t": 130,
+            "yaw": -4.990355999999995,
+            "pitch": 3.935484000000003,
+            "v": 35.29847941070868,
+            "dx": -435,
             "dy": 3
           },
           {
-            "t": 198,
-            "yaw": -7.182000000000007,
-            "pitch": 3.9270000000000005,
-            "v": 27.22222222222222,
-            "dx": -105,
-            "dy": 0
+            "t": 211,
+            "yaw": -7.201529999999996,
+            "pitch": 3.915198000000003,
+            "v": 27.299593247998644,
+            "dx": -109,
+            "dy": 1
           },
           {
-            "t": 198,
-            "yaw": -7.182000000000007,
-            "pitch": 3.9270000000000005,
+            "t": 211,
+            "yaw": -7.201529999999996,
+            "pitch": 3.915198000000003,
             "v": 0,
             "dx": 0,
             "dy": 0
           },
           {
-            "t": 198,
-            "yaw": -7.182000000000007,
-            "pitch": 3.9270000000000005,
-            "v": 27.22222222222222,
-            "dx": -105,
-            "dy": 0
+            "t": 211,
+            "yaw": -7.201529999999996,
+            "pitch": 3.915198000000003,
+            "v": 27.299593247998644,
+            "dx": -109,
+            "dy": 1
           }
         ],
         "targetPosDeg": {
-          "yaw": -7.183072251537479,
-          "pitch": 3.9165769903702015,
+          "yaw": -7.1921013608025826,
+          "pitch": 3.9228019177868516,
           "radius": 1.2
         },
         "rawSamplesCount": 2,
+        "rawTrajectory": [
+          {
+            "timestamp": 94347,
+            "dx": -435,
+            "dy": 3,
+            "accumulatedX": -108,
+            "accumulatedY": -5166,
+            "cameraYaw": -4.990355999999995,
+            "cameraPitch": 3.935484000000003,
+            "angularVelocityX": -35.29764000000001,
+            "angularVelocityY": -0.24343200000000006
+          },
+          {
+            "timestamp": 94428,
+            "dx": -109,
+            "dy": 1,
+            "accumulatedX": -217,
+            "accumulatedY": -5165,
+            "cameraYaw": -7.201529999999996,
+            "cameraPitch": 3.915198000000003,
+            "angularVelocityX": -27.298444444444453,
+            "angularVelocityY": -0.2504444444444445
+          }
+        ],
+        "fullTrajectory": [
+          {
+            "t": 0,
+            "yaw": 3.834054000000008,
+            "pitch": 3.996342000000002,
+            "v": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          {
+            "t": 130,
+            "yaw": -4.990355999999995,
+            "pitch": 3.935484000000003,
+            "v": 35.29847941070868,
+            "dx": -435,
+            "dy": 3
+          },
+          {
+            "t": 211,
+            "yaw": -7.201529999999996,
+            "pitch": 3.915198000000003,
+            "v": 27.299593247998644,
+            "dx": -109,
+            "dy": 1
+          },
+          {
+            "t": 211,
+            "yaw": -7.201529999999996,
+            "pitch": 3.915198000000003,
+            "v": 0,
+            "dx": 0,
+            "dy": 0
+          }
+        ],
         "startPosDeg": {
-          "yaw": 3.8429999999999933,
-          "pitch": 3.9900000000000007
+          "yaw": 3.834054000000008,
+          "pitch": 3.996342000000002
         },
         "clickPosDeg": {
-          "yaw": -7.182000000000007,
-          "pitch": 3.9270000000000005
+          "yaw": -7.201529999999996,
+          "pitch": 3.915198000000003
         }
       },
       {
-        "id": "t_1791019641005_ad5bc",
-        "candidateId": "p4_current",
-        "candidateSens": 0.3,
+        "id": "t_1791020585959_7r34v",
+        "candidateId": "p4_c2",
+        "candidateSens": 0.28980000000000006,
         "scenario": "switching",
         "targetId": "tgt_switch_10",
         "isValid": true,
         "targetDirection": "UP_RIGHT",
-        "targetYawDelta": 9.993239746102063,
-        "targetPitchDelta": 5.880663693352681,
-        "totalAngularDistance": 11.529329586727835,
+        "targetYawDelta": 9.992885928872852,
+        "targetPitchDelta": 5.880842744202217,
+        "totalAngularDistance": 11.529329586727865,
         "targetRadiusDeg": 1.2,
         "rawCounts": {
-          "totalRightCounts": 476,
+          "totalRightCounts": 493,
           "totalLeftCounts": 0,
-          "netHorizontalCounts": 476,
-          "absoluteHorizontalTravel": 476,
-          "totalUpCounts": 280,
+          "netHorizontalCounts": 493,
+          "absoluteHorizontalTravel": 493,
+          "totalUpCounts": 290,
           "totalDownCounts": 0,
-          "netVerticalCounts": -280,
-          "absoluteVerticalTravel": 280,
-          "totalRawVectorTravel": 552.246380108283
+          "netVerticalCounts": -290,
+          "absoluteVerticalTravel": 290,
+          "totalRawVectorTravel": 571.9696289927452
         },
-        "targetSpawnTime": 64212,
-        "movementStartTime": 64313,
-        "shotTime": 64394,
-        "reactionLatencyMs": 101,
+        "targetSpawnTime": 94625,
+        "movementStartTime": 94876,
+        "shotTime": 94957,
+        "reactionLatencyMs": 251,
         "movementTimeMs": 81,
-        "totalAcquisitionTimeMs": 182,
-        "peakVelocityDegPerSec": 90.99371152080886,
-        "peakAccelerationDegPerSec2": 900.9278368396916,
-        "peakDecelerationDegPerSec2": 770.4123191638585,
-        "timeToPeakVelocityMs": 0,
-        "stoppingControlScore": 92,
+        "totalAcquisitionTimeMs": 332,
+        "peakVelocityDegPerSec": 28.735703507124775,
+        "peakAccelerationDegPerSec2": 99.15705636910747,
+        "peakDecelerationDegPerSec2": 0,
+        "timeToPeakVelocityMs": 81,
+        "stoppingControlScore": 100,
         "firstFlickEndpointDeg": {
-          "yaw": 2.8139999999999965,
-          "pitch": 9.807000000000002
+          "yaw": 2.7994680000000076,
+          "pitch": 9.798138000000005
         },
-        "initialFlickErrorDeg": 0.0027997198247394464,
+        "initialFlickErrorDeg": 0.008264310388258584,
         "isOvershoot": false,
         "overshootMagnitudeDeg": 0,
         "overshootPercentage": 0,
@@ -1040,116 +1446,174 @@
         "undershootPercentage": 0,
         "correctionCount": 0,
         "directionReversals": 0,
-        "idealDistanceDeg": 11.529329586727835,
-        "actualPathDistanceDeg": 11.531573812703382,
-        "pathEfficiency": 0.9998053842422554,
-        "horizontalEndpointErrorDeg": 0.002760253897918119,
-        "verticalEndpointErrorDeg": -0.000663693352679573,
-        "totalEndpointErrorDeg": 0.0027997198247394464,
-        "endpointErrorDeg": 0.0027997198247394464,
+        "idealDistanceDeg": 11.529329586727865,
+        "actualPathDistanceDeg": 11.53743636270164,
+        "pathEfficiency": 0.999297350319523,
+        "horizontalEndpointErrorDeg": 0.008112071127129639,
+        "verticalEndpointErrorDeg": 0.0020972557977856354,
+        "totalEndpointErrorDeg": 0.008264310388258584,
+        "endpointErrorDeg": 0.008264310388258584,
         "isHit": true,
         "firstShotHit": true,
-        "firstShotHorizontalErrorDeg": 0.002760253897918119,
-        "firstShotVerticalErrorDeg": -0.000663693352679573,
-        "firstShotTotalErrorDeg": 0.0027997198247394464,
+        "firstShotHorizontalErrorDeg": 0.008112071127129639,
+        "firstShotVerticalErrorDeg": 0.0020972557977856354,
+        "firstShotTotalErrorDeg": 0.008264310388258584,
         "eventualHit": true,
         "shotsRequired": 1,
         "trajectorySummary": [
           {
             "t": 0,
-            "yaw": -7.182000000000007,
-            "pitch": 3.9270000000000005,
+            "yaw": -7.201529999999996,
+            "pitch": 3.915198000000003,
             "v": 0,
             "dx": 0,
             "dy": 0
           },
           {
-            "t": 101,
-            "yaw": 0.8189999999999962,
-            "pitch": 8.631,
-            "v": 90.99371152080886,
-            "dx": 381,
-            "dy": -224
+            "t": 251,
+            "yaw": 0.791154000000007,
+            "pitch": 8.621550000000004,
+            "v": 20.70398194122707,
+            "dx": 394,
+            "dy": -232
           },
           {
-            "t": 182,
-            "yaw": 2.8139999999999965,
-            "pitch": 9.807000000000002,
-            "v": 28.59031366853632,
-            "dx": 95,
-            "dy": -56
+            "t": 332,
+            "yaw": 2.7994680000000076,
+            "pitch": 9.798138000000005,
+            "v": 28.735703507124775,
+            "dx": 99,
+            "dy": -58
           },
           {
-            "t": 182,
-            "yaw": 2.8139999999999965,
-            "pitch": 9.807000000000002,
+            "t": 332,
+            "yaw": 2.7994680000000076,
+            "pitch": 9.798138000000005,
             "v": 0,
             "dx": 0,
             "dy": 0
           },
           {
-            "t": 182,
-            "yaw": 2.8139999999999965,
-            "pitch": 9.807000000000002,
-            "v": 28.59031366853632,
-            "dx": 95,
-            "dy": -56
+            "t": 332,
+            "yaw": 2.7994680000000076,
+            "pitch": 9.798138000000005,
+            "v": 28.735703507124775,
+            "dx": 99,
+            "dy": -58
           }
         ],
         "targetPosDeg": {
-          "yaw": 2.811239746102056,
-          "pitch": 9.807663693352682,
+          "yaw": 2.7913559288728558,
+          "pitch": 9.79604074420222,
           "radius": 1.2
         },
         "rawSamplesCount": 2,
+        "rawTrajectory": [
+          {
+            "timestamp": 94876,
+            "dx": 394,
+            "dy": -232,
+            "accumulatedX": 177,
+            "accumulatedY": -5397,
+            "cameraYaw": 0.791154000000007,
+            "cameraPitch": 8.621550000000004,
+            "angularVelocityX": 17.840812500000006,
+            "angularVelocityY": 10.505250000000004
+          },
+          {
+            "timestamp": 94957,
+            "dx": 99,
+            "dy": -58,
+            "accumulatedX": 276,
+            "accumulatedY": -5455,
+            "cameraYaw": 2.7994680000000076,
+            "cameraPitch": 9.798138000000005,
+            "angularVelocityX": 24.794000000000004,
+            "angularVelocityY": 14.525777777777783
+          }
+        ],
+        "fullTrajectory": [
+          {
+            "t": 0,
+            "yaw": -7.201529999999996,
+            "pitch": 3.915198000000003,
+            "v": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          {
+            "t": 251,
+            "yaw": 0.791154000000007,
+            "pitch": 8.621550000000004,
+            "v": 20.70398194122707,
+            "dx": 394,
+            "dy": -232
+          },
+          {
+            "t": 332,
+            "yaw": 2.7994680000000076,
+            "pitch": 9.798138000000005,
+            "v": 28.735703507124775,
+            "dx": 99,
+            "dy": -58
+          },
+          {
+            "t": 332,
+            "yaw": 2.7994680000000076,
+            "pitch": 9.798138000000005,
+            "v": 0,
+            "dx": 0,
+            "dy": 0
+          }
+        ],
         "startPosDeg": {
-          "yaw": -7.182000000000007,
-          "pitch": 3.9270000000000005
+          "yaw": -7.201529999999996,
+          "pitch": 3.915198000000003
         },
         "clickPosDeg": {
-          "yaw": 2.8139999999999965,
-          "pitch": 9.807000000000002
+          "yaw": 2.7994680000000076,
+          "pitch": 9.798138000000005
         }
       },
       {
-        "id": "t_1791019641189_ooyhk",
-        "candidateId": "p4_current",
-        "candidateSens": 0.3,
+        "id": "t_1791020586513_xmqe9",
+        "candidateId": "p4_c2",
+        "candidateSens": 0.28980000000000006,
         "scenario": "switching",
         "targetId": "tgt_switch_11",
         "isValid": true,
         "targetDirection": "DOWN_LEFT",
-        "targetYawDelta": -7.084186755233077,
-        "targetPitchDelta": -4.31696710601223,
-        "totalAngularDistance": 8.240581763153127,
+        "targetYawDelta": -7.084081795434486,
+        "targetPitchDelta": -4.316899454623039,
+        "totalAngularDistance": 8.240581763153155,
         "targetRadiusDeg": 1.2,
         "rawCounts": {
           "totalRightCounts": 0,
-          "totalLeftCounts": 337,
-          "netHorizontalCounts": -337,
-          "absoluteHorizontalTravel": 337,
+          "totalLeftCounts": 349,
+          "netHorizontalCounts": -349,
+          "absoluteHorizontalTravel": 349,
           "totalUpCounts": 0,
-          "totalDownCounts": 206,
-          "netVerticalCounts": 206,
-          "absoluteVerticalTravel": 206,
-          "totalRawVectorTravel": 394.9809619196878
+          "totalDownCounts": 213,
+          "netVerticalCounts": 213,
+          "absoluteVerticalTravel": 213,
+          "totalRawVectorTravel": 408.86470935716955
         },
-        "targetSpawnTime": 64395,
-        "movementStartTime": 64496,
-        "shotTime": 64577,
-        "reactionLatencyMs": 101,
+        "targetSpawnTime": 95156,
+        "movementStartTime": 95430,
+        "shotTime": 95511,
+        "reactionLatencyMs": 274,
         "movementTimeMs": 81,
-        "totalAcquisitionTimeMs": 182,
-        "peakVelocityDegPerSec": 65.03927479943168,
-        "peakAccelerationDegPerSec2": 643.9532158359572,
-        "peakDecelerationDegPerSec2": 549.8532370038945,
-        "timeToPeakVelocityMs": 0,
-        "stoppingControlScore": 92,
+        "totalAcquisitionTimeMs": 355,
+        "peakVelocityDegPerSec": 20.574586530804947,
+        "peakAccelerationDegPerSec2": 81.01927398132219,
+        "peakDecelerationDegPerSec2": 0,
+        "timeToPeakVelocityMs": 81,
+        "stoppingControlScore": 100,
         "firstFlickEndpointDeg": {
-          "yaw": -4.263000000000006,
-          "pitch": 5.4810000000000025
+          "yaw": -4.280345999999994,
+          "pitch": 5.477220000000003
         },
-        "initialFlickErrorDeg": 0.011522614266357036,
+        "initialFlickErrorDeg": 0.005847796200392019,
         "isOvershoot": false,
         "overshootMagnitudeDeg": 0,
         "overshootPercentage": 0,
@@ -1158,116 +1622,174 @@
         "undershootPercentage": 0,
         "correctionCount": 0,
         "directionReversals": 0,
-        "idealDistanceDeg": 8.240581763153127,
-        "actualPathDistanceDeg": 8.239325144191113,
+        "idealDistanceDeg": 8.240581763153155,
+        "actualPathDistanceDeg": 8.239138188254476,
         "pathEfficiency": 1,
-        "horizontalEndpointErrorDeg": 0.007186755233078657,
-        "verticalEndpointErrorDeg": -0.009032893987769519,
-        "totalEndpointErrorDeg": 0.011522614266357036,
-        "endpointErrorDeg": 0.011522614266357036,
+        "horizontalEndpointErrorDeg": 0.0042677954345435865,
+        "verticalEndpointErrorDeg": -0.004018545376963445,
+        "totalEndpointErrorDeg": 0.005847796200392019,
+        "endpointErrorDeg": 0.005847796200392019,
         "isHit": true,
         "firstShotHit": true,
-        "firstShotHorizontalErrorDeg": 0.007186755233078657,
-        "firstShotVerticalErrorDeg": -0.009032893987769519,
-        "firstShotTotalErrorDeg": 0.011522614266357036,
+        "firstShotHorizontalErrorDeg": 0.0042677954345435865,
+        "firstShotVerticalErrorDeg": -0.004018545376963445,
+        "firstShotTotalErrorDeg": 0.005847796200392019,
         "eventualHit": true,
         "shotsRequired": 1,
         "trajectorySummary": [
           {
             "t": 0,
-            "yaw": 2.8139999999999965,
-            "pitch": 9.807000000000002,
+            "yaw": 2.7994680000000076,
+            "pitch": 9.798138000000005,
             "v": 0,
             "dx": 0,
             "dy": 0
           },
           {
-            "t": 101,
-            "yaw": -2.856000000000005,
-            "pitch": 6.363000000000001,
-            "v": 65.03927479943168,
-            "dx": -270,
-            "dy": 164
+            "t": 274,
+            "yaw": -2.860325999999994,
+            "pitch": 6.349518000000004,
+            "v": 14.01202533831785,
+            "dx": -279,
+            "dy": 170
           },
           {
-            "t": 182,
-            "yaw": -4.263000000000006,
-            "pitch": 5.4810000000000025,
-            "v": 20.50116260211622,
-            "dx": -67,
-            "dy": 42
+            "t": 355,
+            "yaw": -4.280345999999994,
+            "pitch": 5.477220000000003,
+            "v": 20.574586530804947,
+            "dx": -70,
+            "dy": 43
           },
           {
-            "t": 182,
-            "yaw": -4.263000000000006,
-            "pitch": 5.4810000000000025,
+            "t": 355,
+            "yaw": -4.280345999999994,
+            "pitch": 5.477220000000003,
             "v": 0,
             "dx": 0,
             "dy": 0
           },
           {
-            "t": 182,
-            "yaw": -4.263000000000006,
-            "pitch": 5.4810000000000025,
-            "v": 20.50116260211622,
-            "dx": -67,
-            "dy": 42
+            "t": 355,
+            "yaw": -4.280345999999994,
+            "pitch": 5.477220000000003,
+            "v": 20.574586530804947,
+            "dx": -70,
+            "dy": 43
           }
         ],
         "targetPosDeg": {
-          "yaw": -4.27018675523308,
-          "pitch": 5.490032893987772,
+          "yaw": -4.284613795434478,
+          "pitch": 5.481238545376966,
           "radius": 1.2
         },
         "rawSamplesCount": 2,
+        "rawTrajectory": [
+          {
+            "timestamp": 95430,
+            "dx": -279,
+            "dy": 170,
+            "accumulatedX": -3,
+            "accumulatedY": -5285,
+            "cameraYaw": -2.860325999999994,
+            "cameraPitch": 6.349518000000004,
+            "angularVelocityX": -11.965737843551802,
+            "angularVelocityY": -7.29095137420719
+          },
+          {
+            "timestamp": 95511,
+            "dx": -70,
+            "dy": 43,
+            "accumulatedX": -73,
+            "accumulatedY": -5242,
+            "cameraYaw": -4.280345999999994,
+            "cameraPitch": 5.477220000000003,
+            "angularVelocityX": -17.531111111111112,
+            "angularVelocityY": -10.769111111111114
+          }
+        ],
+        "fullTrajectory": [
+          {
+            "t": 0,
+            "yaw": 2.7994680000000076,
+            "pitch": 9.798138000000005,
+            "v": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          {
+            "t": 274,
+            "yaw": -2.860325999999994,
+            "pitch": 6.349518000000004,
+            "v": 14.01202533831785,
+            "dx": -279,
+            "dy": 170
+          },
+          {
+            "t": 355,
+            "yaw": -4.280345999999994,
+            "pitch": 5.477220000000003,
+            "v": 20.574586530804947,
+            "dx": -70,
+            "dy": 43
+          },
+          {
+            "t": 355,
+            "yaw": -4.280345999999994,
+            "pitch": 5.477220000000003,
+            "v": 0,
+            "dx": 0,
+            "dy": 0
+          }
+        ],
         "startPosDeg": {
-          "yaw": 2.8139999999999965,
-          "pitch": 9.807000000000002
+          "yaw": 2.7994680000000076,
+          "pitch": 9.798138000000005
         },
         "clickPosDeg": {
-          "yaw": -4.263000000000006,
-          "pitch": 5.4810000000000025
+          "yaw": -4.280345999999994,
+          "pitch": 5.477220000000003
         }
       },
       {
-        "id": "t_1791019641657_5jsm6",
-        "candidateId": "p4_current",
-        "candidateSens": 0.3,
+        "id": "t_1791020586867_s4mex",
+        "candidateId": "p4_c2",
+        "candidateSens": 0.28980000000000006,
         "scenario": "tracking",
         "targetId": "tgt_track_12",
         "isValid": true,
         "targetDirection": "RIGHT",
-        "targetYawDelta": 7.360081644030743,
-        "targetPitchDelta": 2.2322823712496964,
-        "totalAngularDistance": 6.32339833299142,
+        "targetYawDelta": 6.887529576312886,
+        "targetPitchDelta": 2.1378034077284127,
+        "totalAngularDistance": 6.323398332991321,
         "targetRadiusDeg": 1.3,
         "rawCounts": {
-          "totalRightCounts": 350,
+          "totalRightCounts": 340,
           "totalLeftCounts": 0,
-          "netHorizontalCounts": 350,
-          "absoluteHorizontalTravel": 350,
-          "totalUpCounts": 106,
+          "netHorizontalCounts": 340,
+          "absoluteHorizontalTravel": 340,
+          "totalUpCounts": 105,
           "totalDownCounts": 0,
-          "netVerticalCounts": -106,
-          "absoluteVerticalTravel": 106,
-          "totalRawVectorTravel": 365.7295586525834
+          "netVerticalCounts": -105,
+          "absoluteVerticalTravel": 105,
+          "totalRawVectorTravel": 355.8581521246611
         },
-        "targetSpawnTime": 64578,
-        "movementStartTime": 64964,
-        "shotTime": 65046,
-        "reactionLatencyMs": 386,
-        "movementTimeMs": 82,
-        "totalAcquisitionTimeMs": 468,
-        "peakVelocityDegPerSec": 24.730327209291907,
-        "peakAccelerationDegPerSec2": 123.47018117645597,
+        "targetSpawnTime": 95631,
+        "movementStartTime": 95784,
+        "shotTime": 95865,
+        "reactionLatencyMs": 153,
+        "movementTimeMs": 81,
+        "totalAcquisitionTimeMs": 234,
+        "peakVelocityDegPerSec": 20.606571323934396,
+        "peakAccelerationDegPerSec2": 132.86902240327015,
         "peakDecelerationDegPerSec2": 0,
-        "timeToPeakVelocityMs": 82,
+        "timeToPeakVelocityMs": 81,
         "stoppingControlScore": 100,
         "firstFlickEndpointDeg": {
-          "yaw": 3.0869999999999957,
-          "pitch": 7.707000000000002
+          "yaw": 2.616894000000007,
+          "pitch": 7.607250000000005
         },
-        "initialFlickErrorDeg": 0.011801622386824225,
+        "initialFlickErrorDeg": 0.012371905627676398,
         "isOvershoot": false,
         "overshootMagnitudeDeg": 0,
         "overshootPercentage": 0,
@@ -1276,75 +1798,133 @@
         "undershootPercentage": 0,
         "correctionCount": 0,
         "directionReversals": 0,
-        "idealDistanceDeg": 7.644008775626886,
-        "actualPathDistanceDeg": 7.632974924169893,
-        "pathEfficiency": 1,
-        "horizontalEndpointErrorDeg": -0.010081644030833559,
-        "verticalEndpointErrorDeg": -0.006282371249697327,
-        "totalEndpointErrorDeg": 0.011801622386824225,
-        "endpointErrorDeg": 0.011801622386824225,
+        "idealDistanceDeg": 7.1683574013273175,
+        "actualPathDistanceDeg": 7.175424559882315,
+        "pathEfficiency": 0.9990150884458447,
+        "horizontalEndpointErrorDeg": 0.009710423687124603,
+        "verticalEndpointErrorDeg": -0.0077734077284103975,
+        "totalEndpointErrorDeg": 0.012371905627676398,
+        "endpointErrorDeg": 0.012371905627676398,
         "isHit": true,
         "firstShotHit": true,
-        "firstShotHorizontalErrorDeg": -0.010081644030833559,
-        "firstShotVerticalErrorDeg": -0.006282371249697327,
-        "firstShotTotalErrorDeg": 0.011801622386824225,
+        "firstShotHorizontalErrorDeg": 0.009710423687124603,
+        "firstShotVerticalErrorDeg": -0.0077734077284103975,
+        "firstShotTotalErrorDeg": 0.012371905627676398,
         "eventualHit": true,
         "shotsRequired": 1,
         "trajectorySummary": [
           {
             "t": 0,
-            "yaw": -4.263000000000006,
-            "pitch": 5.4810000000000025,
+            "yaw": -4.280345999999994,
+            "pitch": 5.477220000000003,
             "v": 0,
             "dx": 0,
             "dy": 0
           },
           {
-            "t": 386,
-            "yaw": 1.1339999999999957,
-            "pitch": 7.161000000000002,
-            "v": 14.605772352822518,
-            "dx": 257,
-            "dy": -80
+            "t": 153,
+            "yaw": 1.0143000000000062,
+            "pitch": 7.140672000000005,
+            "v": 20.32896042770033,
+            "dx": 261,
+            "dy": -82
           },
           {
-            "t": 468,
-            "yaw": 3.0869999999999957,
-            "pitch": 7.707000000000002,
-            "v": 24.730327209291907,
-            "dx": 93,
-            "dy": -26
+            "t": 234,
+            "yaw": 2.616894000000007,
+            "pitch": 7.607250000000005,
+            "v": 20.606571323934396,
+            "dx": 79,
+            "dy": -23
           },
           {
-            "t": 468,
-            "yaw": 3.0869999999999957,
-            "pitch": 7.707000000000002,
+            "t": 234,
+            "yaw": 2.616894000000007,
+            "pitch": 7.607250000000005,
             "v": 0,
             "dx": 0,
             "dy": 0
           },
           {
-            "t": 468,
-            "yaw": 3.0869999999999957,
-            "pitch": 7.707000000000002,
-            "v": 24.730327209291907,
-            "dx": 93,
-            "dy": -26
+            "t": 234,
+            "yaw": 2.616894000000007,
+            "pitch": 7.607250000000005,
+            "v": 20.606571323934396,
+            "dx": 79,
+            "dy": -23
           }
         ],
         "targetPosDeg": {
-          "yaw": 3.0970816440307973,
-          "pitch": 7.713282371249699,
+          "yaw": 2.6071835763129125,
+          "pitch": 7.615023407728415,
           "radius": 1.3
         },
         "rawSamplesCount": 2,
+        "rawTrajectory": [
+          {
+            "timestamp": 95784,
+            "dx": 261,
+            "dy": -82,
+            "accumulatedX": 188,
+            "accumulatedY": -5324,
+            "cameraYaw": 1.0143000000000062,
+            "cameraPitch": 7.140672000000005,
+            "angularVelocityX": 19.394307692307695,
+            "angularVelocityY": 6.09323076923077
+          },
+          {
+            "timestamp": 95865,
+            "dx": 79,
+            "dy": -23,
+            "accumulatedX": 267,
+            "accumulatedY": -5347,
+            "cameraYaw": 2.616894000000007,
+            "cameraPitch": 7.607250000000005,
+            "angularVelocityX": 19.785111111111117,
+            "angularVelocityY": 5.7602222222222235
+          }
+        ],
+        "fullTrajectory": [
+          {
+            "t": 0,
+            "yaw": -4.280345999999994,
+            "pitch": 5.477220000000003,
+            "v": 0,
+            "dx": 0,
+            "dy": 0
+          },
+          {
+            "t": 153,
+            "yaw": 1.0143000000000062,
+            "pitch": 7.140672000000005,
+            "v": 20.32896042770033,
+            "dx": 261,
+            "dy": -82
+          },
+          {
+            "t": 234,
+            "yaw": 2.616894000000007,
+            "pitch": 7.607250000000005,
+            "v": 20.606571323934396,
+            "dx": 79,
+            "dy": -23
+          },
+          {
+            "t": 234,
+            "yaw": 2.616894000000007,
+            "pitch": 7.607250000000005,
+            "v": 0,
+            "dx": 0,
+            "dy": 0
+          }
+        ],
         "startPosDeg": {
-          "yaw": -4.263000000000006,
-          "pitch": 5.4810000000000025
+          "yaw": -4.280345999999994,
+          "pitch": 5.477220000000003
         },
         "clickPosDeg": {
-          "yaw": 3.0869999999999957,
-          "pitch": 7.707000000000002
+          "yaw": 2.616894000000007,
+          "pitch": 7.607250000000005
         }
       }
     ]
@@ -1352,6 +1932,8 @@
   "trialCount": 195,
   "validTrials": 195,
   "candidateCount": 15,
-  "rawCount": 118707.3196045176,
+  "rawCount": 136373.39675690272,
+  "completeTrajectories": true,
+  "incompleteTrajectoryExamples": [],
   "arenaTornDown": true
 }

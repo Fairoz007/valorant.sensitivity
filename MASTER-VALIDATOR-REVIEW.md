@@ -40,3 +40,17 @@ Confidence requires the minimum valid trial count for every candidate and a four
 The 10,000-session synthetic Monte Carlo experiment now seeds both telemetry generation and candidate shuffling, restores the random spy after each test, checks the 95th percentile too, and derives each report PASS/FAIL from observed results. Current synthetic observations: 90th percentile error 3.04%; 95th 3.51%; range coverage 99.36%; 524 HIGH cases with one >8% error (0.19%). These are generated synthetic data findings, not physical performance guarantees.
 
 Browser evidence received from root: full real application browser run passed with 208 shooting actions including 13 warmup and 195 valid scored trials in 15 blocks; every phase visited; 0.300 recommended sensitivity visible; zero page errors; three viewport sizes centered exactly; 20 F3/F4 center diagnostic hits excluded from scored trials; pointer-lock release/relock restarted the interrupted trial; restart reset results; optional horizontal/vertical calibration and three debounced input clicks passed. Root owns the runnable script and artifacts.
+
+## Final-loop stress discovery
+
+A new seeded center-shot stress gate (src/tests/validatorCenterStress.test.ts) passed 1,200 randomized exact-center shots through RawInputEngine across sensitivity and camera orientations. It then found a reproducible failure in the third of six seeded complete sessions: confirmation shot index 184 aimed mathematically exactly at yaw -1.481802868941486 / pitch 1.979795599193124, reported angular error 7.16e-16 degrees, but returned a miss. This gate correctly blocks programmatic acceptance until the shooting repair agent resolves the root cause and the exact same seeded session passes. No failed check is hidden by repeated passing runs.
+
+Confidence output remains a heuristic score from measured sample size, validity, confirmation, separation and hardware integrity. Its numerical score is not a calibrated probability that the recommended sensitivity is physically optimal. Monte Carlo statistics describe the stated synthetic model only.
+
+## Final repaired stress gate and regression outcome
+
+The shooting agent replaced shared-vertex triangle-fan hit testing with ray-plane intersection against the exact visible 256-sided polygon boundary. The original failing seeded confirmation shot now passes. Reran the identical seed through all six full sessions; each completed all phases and produced a finite recommendation with at least 14 measured candidate blocks and 182 trials. The optional additional current-sensitivity confirmation block can raise this to 15 blocks / 195 trials, so the gate checks the required schedule rather than demanding an optional block. All 1,200 isolated randomized center shots also pass.
+
+Final independent loop after the collider repair: 175 tests in 23 files PASS; lint PASS; production build PASS. The bundle-size advisory is still present. The root agent is rerunning the final browser flow after the collider repair and owns browser acceptance evidence. The validator's geometric/shot/session loop found and fixed a failure that previous broad passing test runs did not expose.
+
+PHYSICAL HUMAN VALIDATION: REQUIRED. Programmatic checks do not claim operation of the user's physical mouse or real VALORANT comparison.

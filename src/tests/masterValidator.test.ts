@@ -7,6 +7,16 @@ import { CalibrationManager } from '../calibration/CalibrationManager';
 afterEach(() => vi.unstubAllGlobals());
 
 describe('MASTER-VALORANT-VALIDATOR projection and truthful diagnostics', () => {
+  it('listens immediately when pointer-lock resolves before the change event', async () => {
+    const doc = { pointerLockElement: null as HTMLElement | null, addEventListener: vi.fn(), removeEventListener: vi.fn(), exitPointerLock: vi.fn() };
+    vi.stubGlobal('document', doc);
+    const element = { requestPointerLock: async () => { doc.pointerLockElement = element as unknown as HTMLElement; } };
+    const engine = new RawInputEngine();
+    const result = await engine.requestLock(element as unknown as HTMLElement);
+    expect(result.success).toBe(true);
+    expect(doc.addEventListener.mock.calls.map(call => call[0])).toEqual(expect.arrayContaining(['mousemove', 'mousedown', 'mouseup']));
+    engine.dispose();
+  });
   it('mandatory flick ordering includes counts20+25+30 and excludes post-click50', () => {
     const engine = new RawInputEngine();
     const arena = new ArenaManager(null, engine);
