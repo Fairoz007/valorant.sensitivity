@@ -36,8 +36,10 @@ try {
   await page.waitForFunction(() => !!window.__valorantArena);
   await page.mouse.click(960, 540);
   await page.waitForFunction(() => window.__valorantArena.engine.isLocked());
-  await page.clock.install();
-  await page.clock.pauseAt(new Date());
+  // Install and pause against one future timestamp to avoid host/browser clock drift.
+  const clockStart = new Date(Date.now() + 60_000);
+  await page.clock.install({ time: clockStart });
+  await page.clock.pauseAt(new Date(clockStart.getTime() + 1000));
   await page.evaluate(async () => {
     window.__qaStore = (await import('/src/store/useAppStore.ts')).useAppStore;
     window.__qaStore.getState().setPhase('coarse');

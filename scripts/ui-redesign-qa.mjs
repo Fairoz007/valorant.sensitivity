@@ -1,11 +1,14 @@
+import { spawn } from 'node:child_process';
 import { chromium } from '@playwright/test';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
+const server=spawn(process.execPath,['node_modules/vite/bin/vite.js','--host','127.0.0.1','--port','5176','--strictPort'],{stdio:'ignore',windowsHide:true});
+for(let i=0;i<100;i++){try{if((await fetch('http://127.0.0.1:5176')).ok)break}catch{}await new Promise(r=>setTimeout(r,100))}
 const browser=await chromium.launch({headless:true});
 const page=await browser.newPage();
 const errors=[];page.on('pageerror',e=>errors.push(e.message));
 await mkdir('validation-artifacts/ui-qa',{recursive:true});
 const report=[];
-await page.goto('http://127.0.0.1:5173/?e2e');
+await page.goto('http://127.0.0.1:5176/?e2e');
 await page.locator('input[placeholder="800"]').fill('800');
 await page.locator('input[placeholder="0.30"]').fill('0.30');
 async function capture(name){for(const [width,height] of [[1920,1080],[2560,1440],[1366,768],[960,720]]){await page.setViewportSize({width,height});await page.waitForTimeout(150);await page.screenshot({path:`validation-artifacts/ui-qa/${name}-${width}.png`,fullPage:true});report.push(await page.evaluate(name=>({name,width:innerWidth,height:innerHeight,scrollWidth:document.documentElement.scrollWidth,scrollHeight:document.documentElement.scrollHeight,overflow:[...document.querySelectorAll('body *')].filter(e=>{const r=e.getBoundingClientRect();return r.width>0&&(r.left < -1 || r.right>innerWidth+1)}).slice(0,12).map(e=>({tag:e.tagName,class:e.className,text:e.textContent?.slice(0,70)}))}),name));}}
@@ -15,11 +18,13 @@ await page.getByRole('button',{name:/Continue to Motion Calibration/}).click();a
 await page.getByRole('button',{name:/Skip/}).click();await page.waitForFunction(()=>!!window.__valorantArena);await capture('aim-battery');
 await page.setViewportSize({width:1920,height:1080});await page.mouse.click(960,540);await page.waitForFunction(()=>window.__valorantArena.engine.isLocked());await capture('gameplay');
 await page.evaluate(()=>document.exitPointerLock());
-await page.goto('http://127.0.0.1:5173/?e2e');
+await page.goto('http://127.0.0.1:5176/?e2e');
 const saved=JSON.parse(await readFile('validation-artifacts/browser-session.json','utf8'));
 await page.evaluate(async result=>{const {useAppStore}=await import('/src/store/useAppStore.ts');useAppStore.getState().completeSession(result)},saved.result);
+await page.waitForSelector('[data-phase=results]');
 await capture('results');
 await writeFile('validation-artifacts/ui-qa/report.json',JSON.stringify({report,errors},null,2));
 console.log(JSON.stringify({errors,overflow:report.filter(r=>r.overflow.length)},null,2));
-await browser.close();
+await browser.close();server.kill();
+
 
