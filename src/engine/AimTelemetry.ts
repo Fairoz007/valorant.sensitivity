@@ -262,18 +262,40 @@ export function analyzeTrial(
       ? points[peakIndex].timestamp - points[startIndex].timestamp
       : 0;
 
-  // Ballistic deceleration inflection:
-  // After peak velocity (> 15 deg/s), velocity drops below 40% of peak (or < 10 deg/s)
-  // and subsequently accelerates again before click.
-  if (peakVelocity > 15.0 && peakIndex > -1) {
-    for (let i = peakIndex + 1; i < clickIndex; i++) {
-      if (
-        points[i].v < Math.min(10.0, peakVelocity * 0.4) &&
-        points[i + 1].v > points[i].v
-      ) {
-        primaryFlickEndIndex = i;
-        break;
-      }
+  // Segment from the FIRST burst. A faster corrective burst later in the trial
+  // must not replace the initial flick. Stops need a subsequent resumption;
+  // clicking during a continuous approach alone is not evidence of undershoot.
+  let firstBurstPeak = 0;
+  for (let i = startIndex; i < clickIndex; i++) {
+    firstBurstPeak = Math.max(firstBurstPeak, points[i].v);
+    if (firstBurstPeak > 15 && points[i].v < Math.min(10, firstBurstPeak * 0.4)
+      && points[i + 1].v > Math.max(points[i].v + 1, 6)) {
+      primaryFlickEndIndex = i;
+      break;
+    }
+  }
+
+  // 7. Corrections & Direction Reversals (Task 27, 28)
+  let correctionCount = 0;
+  let directionReversals = 0;
+  let lastSign = 0;
+  let turningIndex = 0;
+  // Hysteresis measures the counter-movement itself, rather than the entire
+  // outward flick (which would turn a tiny jitter into a counted correction).
+  for (let i = 1; i <= clickIndex; i++) {
+    const displacement = projectedProgress[i] - projectedProgress[turningIndex];
+    const currentSign = Math.sign(displacement);
+    if (lastSign === 0) {
+      if (Math.abs(displacement) > 0.12) lastSign = currentSign;
+    } else if (currentSign !== lastSign && Math.abs(displacement) > 0.12) {
+      directionReversals++;
+      correctionCount++;
+      primaryFlickEndIndex = Math.min(primaryFlickEndIndex, turningIndex);
+      lastSign = currentSign;
+      turningIndex = i;
+    }
+    if (lastSign && (projectedProgress[i] - projectedProgress[turningIndex]) * lastSign > 0) {
+      turningIndex = i;
     }
   }
 
@@ -298,30 +320,6 @@ export function analyzeTrial(
     isUndershoot = true;
     undershootMagnitude = Math.max(0, idealDistance - pFlick);
     undershootPercentage = idealDistance > 0 ? (undershootMagnitude / idealDistance) * 100 : 0;
-  }
-
-  // 7. Corrections & Direction Reversals (Task 27, 28)
-  let correctionCount = 0;
-  let directionReversals = 0;
-  let lastSign = 0;
-  let lastReversalP = projectedProgress[0];
-
-  for (let i = 1; i <= clickIndex; i++) {
-    const vParallel = projectedProgress[i] - projectedProgress[i - 1];
-    const currentSign = Math.sign(vParallel);
-
-    if (currentSign !== 0 && currentSign !== lastSign && lastSign !== 0) {
-      directionReversals++;
-      const excursion = Math.abs(projectedProgress[i] - lastReversalP);
-      // Meaningful correction threshold: ignore sensor noise (< 0.12° excursion)
-      if (excursion > 0.12) {
-        correctionCount++;
-      }
-      lastReversalP = projectedProgress[i];
-    }
-    if (currentSign !== 0) {
-      lastSign = currentSign;
-    }
   }
 
   // A same-direction secondary push after a ballistic stop is a correction too.
@@ -409,3 +407,4 @@ export function analyzeTrial(
     downsampledTrajectory,
   };
 }
+
